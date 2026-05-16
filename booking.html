@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+Booking - Penang Wonders
+</title>
+
+<link
+rel="stylesheet"
+href="booking.css"
+>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Nunito:wght@400;700;800&display=swap"
+rel="stylesheet"
+/>
+
+<!-- EMAILJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+
+  <div class="logo">
+
+    <div class="logo-circle">
+
+      <img
+      src="logop.jpeg"
+      alt="Penang Wonders"
+      >
+
+    </div>
+
+    <span class="logo-name">
+      Penang Wonders
+    </span>
+
+  </div>
+
+  <div class="nav-links">
+
+    <a href="#">
+      Home
+    </a>
+
+    <a href="package_alt.html">
+      Package
+    </a>
+
+    <a href="#">
+      Blog
+    </a>
+
+    <a href="#">
+      Coupon
+    </a>
+
+  </div>
+
+</nav>
+
+<!-- BOOKING -->
+<div class="booking-container">
+
+  <div class="booking-card">
+
+    <h1>
+      Book Your Adventure
+    </h1>
+
+    <p class="subtitle">
+
+      Complete your booking below and
+      we’ll contact you shortly.
+
+    </p>
+
+    <form id="bookingForm">
+
+      <!-- NAME -->
+      <div class="input-group">
+
+        <label>
+          Full Name
+        </label>
+
+        <input
+        type="text"
+        id="name"
+        required
+        >
+
+      </div>
+
+      <!-- EMAIL -->
+      <div class="input-group">
+
+        <label>
+          Email Address
+        </label>
+
+        <input
+        type="email"
+        id="email"
+        required
+        >
+
+      </div>
+
+      <!-- PHONE -->
+      <div class="input-group">
+
+        <label>
+          Phone Number
+        </label>
+
+        <input
+        type="text"
+        id="phone"
+        required
+        >
+
+      </div>
+
+      <!-- PACKAGE -->
+      <div class="input-group">
+
+        <label>
+          Package Code
+        </label>
+
+        <input
+        type="text"
+        id="package"
+        readonly
+        >
+
+      </div>
+
+      <!-- TOTAL -->
+      <div class="input-group">
+
+        <label>
+          Total Price
+        </label>
+
+        <input
+        type="text"
+        id="total"
+        readonly
+        >
+
+      </div>
+
+      <!-- COUPON -->
+      <div class="input-group">
+
+        <label>
+          Coupon Code
+        </label>
+
+        <input
+        type="text"
+        id="coupon"
+        >
+
+      </div>
+
+      <!-- BUTTON -->
+      <button
+      type="submit"
+      class="submit-btn"
+      >
+
+        Confirm Booking
+
+      </button>
+
+    </form>
+
+    <p id="status"></p>
+
+  </div>
+
+</div>
+
+<script src="booking.js"></script>
+
+</body>
+</html>

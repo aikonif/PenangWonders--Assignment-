@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Travel Packages</title>
+
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    margin: 0;
+    background: #f9fafc;
+    color: #333;
+  }
+
+  /* NAVBAR */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: linear-gradient(90deg, #1e3c72, #2a5298);
+    padding: 15px 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+  }
+
+  nav a {
+    color: #fff;
+    margin-right: 20px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+  }
+
+  nav a:hover {
+    opacity: 0.7;
+  }
+
+  .content {
+    margin-top: 70px;
+    display: flex;
+  }
+
+  /* FILTER PANEL */
+  .filters {
+    width: 25%;
+    background: #ffffff;
+    padding: 25px;
+    border-right: 1px solid #eee;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.05);
+  }
+
+  .filters h2 {
+    margin-top: 0;
+    color: #2a5298;
+  }
+
+  .filters label {
+    display: block;
+    margin: 10px 0;
+    cursor: pointer;
+  }
+
+  .filters input {
+    margin-right: 8px;
+  }
+
+  /* PACKAGES */
+  .packages {
+    width: 75%;
+    padding: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 25px;
+  }
+
+  .package {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+    transition: transform 0.25s, box-shadow 0.25s, opacity 0.3s;
+  }
+
+  .package:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  }
+
+  .package.hidden {
+    display: none;
+  }
+
+  .package img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+  }
+
+  .package-content {
+    padding: 15px;
+  }
+
+  .package h3 {
+    margin: 0 0 8px;
+    color: #1e3c72;
+  }
+
+  .package p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #555;
+  }
+
+  .price {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #27ae60;
+    font-size: 16px;
+  }
+
+  .btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 12px;
+    background: #2a5298;
+    color: #fff;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 13px;
+    transition: 0.3s;
+  }
+
+  .btn:hover {
+    background: #1e3c72;
+  }
+
+  .no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    color: #888;
+    font-size: 16px;
+    display: none;
+  }
+</style>
+</head>
+
+<body>
+
+<nav>
+  <a href="#">Home</a>
+  <a href="package_alt.html">Package</a>
+  <a href="#">Blog</a>
+  <a href="#">Coupon</a>
+</nav>
+
+<div class="content">
+
+  <!-- FILTERS -->
+  <div class="filters">
+    <h2>Activities</h2>
+    <label><input type="checkbox" data-filter="activity" value="jungle-trekking"> Jungle Trekking</label>
+    <label><input type="checkbox" data-filter="activity" value="snorkeling"> Snorkeling</label>
+    <label><input type="checkbox" data-filter="activity" value="beach"> Beach</label>
+    <label><input type="checkbox" data-filter="activity" value="mountain-climbing"> Mountain Climbing</label>
+
+    <h2>Hotel Preferences</h2>
+    <label><input type="checkbox" data-filter="hotel" value="close-to-city"> Close to city</label>
+    <label><input type="checkbox" data-filter="hotel" value="close-to-nature"> Close to nature</label>
+    <label><input type="checkbox" data-filter="hotel" value="comfy"> Comfy</label>
+    <label><input type="checkbox" data-filter="hotel" value="modern"> Modern</label>
+  </div>
+
+  <!-- PACKAGES -->
+  <div class="packages">
+
+    <div class="package" 
+         data-activities="jungle-trekking,mountain-climbing" 
+         data-hotels="close-to-nature,comfy">
+      <img src="package1.jpg">
+      <div class="package-content">
+        <h3>Package 1</h3>
+        <p>Cozy room with nature view</p>
+        <p class="price">RM 500</p>
+        <a href="package_option_1.html" class="btn" target="_blank">View Details</a>
+      </div>
+    </div>
+
+    <div class="package" 
+         data-activities="beach,snorkeling" 
+         data-hotels="close-to-city,modern">
+      <img src="package2.jpg">
+      <div class="package-content">
+        <h3>Package 2</h3>
+        <p>Budget-friendly stay near beach</p>
+        <p class="price">RM 250</p>
+        <a href="#" class="btn">View Details</a>
+      </div>
+    </div>
+
+    <div class="package" 
+         data-activities="mountain-climbing,jungle-trekking" 
+         data-hotels="close-to-nature,comfy">
+      <img src="package3.jpg">
+      <div class="package-content">
+        <h3>Package 3</h3>
+        <p>Mountain lodge experience</p>
+        <p class="price">Price not listed</p>
+        <a href="#" class="btn">View Details</a>
+      </div>
+    </div>
+
+    <div class="no-results">
+      <p>No packages match your filters. Try adjusting your selection.</p>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+  const filterCheckboxes = document.querySelectorAll('.filters input[type="checkbox"]');
+  const packages = document.querySelectorAll('.package');
+  const noResults = document.querySelector('.no-results');
+
+  function applyFilters() {
+    // Get all checked filters grouped by type
+    const activeFilters = {
+      activity: [],
+      hotel: []
+    };
+
+    filterCheckboxes.forEach(checkbox => {
+      if (checkbox.checked) {
+        const filterType = checkbox.dataset.filter;
+        activeFilters[filterType].push(checkbox.value);
+      }
+    });
+
+    let visibleCount = 0;
+
+    packages.forEach(pkg => {
+      const pkgActivities = (pkg.dataset.activities || '').split(',').filter(Boolean);
+      const pkgHotels = (pkg.dataset.hotels || '').split(',').filter(Boolean);
+
+      // Check if package matches active filters
+      // A package matches if it has AT LEAST ONE of the selected activities AND AT LEAST ONE of the selected hotels
+      // If no filters are selected in a category, that category is ignored
+      
+      const activityMatch = activeFilters.activity.length === 0 || 
+                            activeFilters.activity.some(f => pkgActivities.includes(f));
+      
+      const hotelMatch = activeFilters.hotel.length === 0 || 
+                         activeFilters.hotel.some(f => pkgHotels.includes(f));
+
+      if (activityMatch && hotelMatch) {
+        pkg.classList.remove('hidden');
+        visibleCount++;
+      } else {
+        pkg.classList.add('hidden');
+      }
+    });
+
+    // Show "no results" message if nothing matches
+    noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+  }
+
+  // Add event listeners to all checkboxes
+  filterCheckboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', applyFilters);
+  });
+</script>
+
+</body>
+</html>

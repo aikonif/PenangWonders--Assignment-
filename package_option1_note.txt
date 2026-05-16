@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Package 1 - Seaside Hotel</title>
+
+<link rel="stylesheet" href="package_option.css">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+
+<nav id ="navbar">
+  
+  <div class="logo">
+    <div class="logo-circle"><img src="logop.jpeg" alt="Penang Wonders"></div>
+    <span class="logo-name">Penang Wonders</span>
+  </div>
+
+  <div class="nav-links">
+    <a href="#">Home</a>
+    <a href="package_alt.html" class="active">Package</a>
+    <a href="#">Blog</a>
+    <a href="#">Coupon</a>
+  </div>
+
+</nav>
+
+<div class="content">
+
+  <!-- HERO -->
+  <div class="hero">
+
+    <div class="hero-img">
+  <img id="slide1" src="package1.jpg" alt="SeaSide Hotel" onclick="openLightbox(this)">
+
+  <button class ="prev" onclick="prevSlide('slide1')">❮</button>
+  <button class ="next" onclick="nextSlide('slide1')">❯</button>
+</div>
+
+    <div class="details">
+      <h1>Seaside Escape Package</h1>
+      <p class="price">RM350 / night</p>
+
+     <button class="showdesc" onclick="toggleText()">Hide Description</button>
+      <p id="text">
+        Discover the thrill of nature with our exclusive adventure package. <br>
+        Begin your mornings with guided jungle trekking, where lush greenery, exotic wildlife, and hidden waterfalls await. <br>
+        In the afternoons, challenge yourself with mountain climbing, scaling scenic trails that reward you with breathtaking panoramic views of the coastline and surrounding valleys.<br>
+        After a day of exploration, unwind at our seaside hotel with comfortable rooms, fresh local cuisine, and the soothing sound of ocean waves. <br>
+        Perfect for travelers who crave both relaxation and adventure.<br><br>
+        -> Includes:<br>
+            - Guided jungle trekking tours<br>
+            - Mountain climbing with professional guides<br>
+            - Seaside accommodation with private balcony<br>
+            - Complimentary breakfast and evening<br><br>
+
+            Tour Guide: <br>
+            En. Ahmad: +6013-467-8901<br>
+            Seasoned adventurer with over 10 years of experience leading tours in Penang's wilderness.<br>
+            Ahmad is passionate about sharing his knowledge of the local flora and fauna, ensuring you have an unforgettable and safe adventure.<br><br>
+
+      </p>
+
+      <br>
+      <a href="https://maps.app.goo.gl/zGsd3tkKjQMwt7DbA" target="_blank" class="map-link">
+        📍 View on Google Maps
+      </a>
+
+      <br>
+      <a href="booking.html?package=SEA-PKG-001" class="btn">Book Now</a>
+    </div>
+
+  </div>
+
+  <!-- EXTRA -->
+  <div class="extra-section">
+    <h2>Experience the Ocean</h2>
+
+</div>
+
+<!-- ✅ LIGHTBOX (correct position) -->
+<div id="lightbox" class="lightbox">
+  <span class="close">&times;</span>
+  <img id="lightbox-img">
+</div>
+
+<script src ="package_option.js"></script>
+
+</body>
+</html>

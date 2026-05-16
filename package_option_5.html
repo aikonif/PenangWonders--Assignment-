@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+
+<title>Package 5 - Jungle Adventure</title>
+
+<link rel="stylesheet" href="package_option.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet"/>
+</head>
+
+<body data-package="JNG-PKG-005">
+
+<nav id="navbar">
+
+  <div class="logo">
+    <div class="logo-circle">
+      <img src="logop.jpeg" alt="Penang Wonders">
+    </div>
+
+    <span class="logo-name">
+      Penang Wonders
+    </span>
+  </div>
+
+  <div class="nav-links">
+    <a href="#">Home</a>
+    <a href="package_alt.html" class="active">Package</a>
+    <a href="#">Blog</a>
+    <a href="#">Coupon</a>
+  </div>
+
+</nav>
+
+<div class="content">
+
+  <div class="hero">
+
+    <div class="hero-img">
+
+      <img
+        id="slide5"
+        src="package5.jpg"
+        alt="Jungle Adventure"
+        onclick="openLightbox(this)"
+      >
+
+      <button class="prev" onclick="prevSlide('slide5')">❮</button>
+      <button class="next" onclick="nextSlide('slide5')">❯</button>
+
+    </div>
+
+  <div class="details">
+
+    <h1 id="title"></h1>
+
+    <p class="price" id="price"></p>
+
+    <button class="showdesc" onclick="toggleText()">
+      Hide Description
+    </button>
+
+    <div id="text">
+
+      <div id="desc"></div>
+
+      <div id="includes"></div>
+
+      <div id="guide"></div>
+
+    </div>
+
+    <br>
+
+    <a href="https://google.com/maps/jungle"
+      target="_blank"
+      class="map-link">
+      📍 View on Google Maps
+    </a>
+
+    <br>
+
+    <a href="booking.html?package=JNG-PKG-005"
+      class="btn">
+      Book Now
+    </a>
+
+  </div>
+
+  </div>
+
+  <div class="extra-section">
+    <h2>Experience the Jungle</h2>
+  </div>
+
+</div>
+
+<div id="lightbox" class="lightbox">
+  <span class="close">&times;</span>
+  <img id="lightbox-img">
+</div>
+
+<script src="package_option.js"></script>
+
+</body>
+</html>

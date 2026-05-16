@@ -1,0 +1,360 @@
+  body {
+  /* Match the dark theme and font from package.css */
+  font-family: 'Nunito', sans-serif;
+  margin: 0;
+  background: #041618;
+  color: white;
+}
+
+/* NAVBAR - Fixed spacing and alignment to match package.css */
+/* FIXED NAVBAR */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* Ensures the bar spans the entire screen width */
+  width: 100%; 
+  height: 70px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  /* Standard padding for large screens */
+  padding: 0 50px;
+
+  background: rgba(6, 32, 35, 0.92);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+
+  z-index: 1000;
+  /* Prevents padding from adding to the total width */
+  box-sizing: border-box;
+  
+  /* Smooth transitions for scroll interactions */
+  transition: all 0.3s ease;
+}
+
+/* SCROLLED NAVBAR - Active when user scrolls down */
+nav.scrolled {
+  height: 50px;
+  padding: 0 40px;
+  background: rgba(6, 32, 35, 0.95);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* NAV LINKS - Ensuring they don't squash the logo */
+.nav-links {
+  display: flex;
+  align-items: center;
+  /* Allows links to take up necessary space without overflowing */
+  flex-shrink: 0; 
+}
+
+.nav-links a {
+  font-family: 'Cinzel', serif;
+  color: white;
+  margin-left: 40px;
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 2px;
+  transition: color 0.3s;
+  /* Ensures links stay on one line */
+  white-space: nowrap; 
+}
+
+/* RESPONSIVE FIXES */
+@media (max-width: 600px) {
+  nav {
+    padding: 0 20px;
+  }
+  
+  .nav-links a {
+    margin-left: 15px;
+    font-size: 11px;
+  }
+}
+
+/* LOGO - Preserved from your input */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+}
+
+.logo-circle {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 2px solid #f0a500;
+  background-color: #0c4f30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #f0a500;
+  transition: all 0.3s ease;
+}
+
+.logo-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Scrolled logo adjustments */
+nav.scrolled .logo-circle {
+  width: 38px;
+  height: 38px;
+  font-size: 9px;
+}
+
+.logo-name {
+  font-family: 'Cinzel', serif;
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+/* Scrolled logo name adjustments */
+nav.scrolled .logo-name {
+  font-size: 12px;
+}
+
+/* NAV LINKS - Fixed to use gold highlights */
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links a {
+  font-family: 'Cinzel', serif;
+  color: white;
+  margin-left: 40px;
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Scrolled nav links adjustments */
+nav.scrolled .nav-links a {
+  margin-left: 30px;
+  font-size: 12px;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #f0a500;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+/* CONTENT */
+.content {
+  margin-top: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: calc(100vh - 90px);
+  background: linear-gradient(180deg, #072527, #041618);
+  padding: 30px;
+  transition: margin-top 0.3s ease;
+}
+
+/* HERO CARD - Adjusted for dark glassmorphism look */
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  background: rgba(255, 255, 255, 0.05); /* Transparent card */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  max-width: 1000px;
+}
+
+.hero-img {
+  position: relative;
+  width: 500px;
+  height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  
+  /* Beautiful border styling */
+  border: 3px solid #f0a500;
+  border-radius: 12px;
+  box-shadow: 
+    0 0 20px rgba(240, 165, 0, 0.3),
+    inset 0 0 20px rgba(240, 165, 0, 0.1),
+    0 8px 25px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(135deg, rgba(15, 76, 48, 0.2), rgba(7, 37, 39, 0.2));
+}
+
+.hero-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+  transition: opacity 0.5s ease;
+}
+
+/* Slideshow Buttons */
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: #f0a500; /* Gold arrows */
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.prev { left: 5px; }
+.next { right: 5px; }
+
+.prev:hover, .next:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* Overlay */
+.hero-img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(4, 22, 24, 0.4), transparent);
+  pointer-events: none;
+}
+
+/* DETAILS - Color updates */
+.details {
+  width: 40%;
+  padding: 25px;
+}
+
+.details h1 {
+  margin-top: 0;
+  color: white;
+  font-family: 'Cinzel', serif;
+}
+
+.price {
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #f0a500; /* Gold price */
+  margin: 10px 0;
+  font-family: 'Cinzel', serif;
+}
+
+.details p {
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: justify;
+}
+
+.map-link {
+  display: inline-block;
+  margin-top: 10px;
+  color: #f0a500;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.map-link:hover {
+  text-decoration: underline;
+}
+
+/* BUTTON - Swapped to the Gold/Black style */
+.btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 16px;
+  background: #f0a500;
+  color: #000;
+  border-radius: 50px;
+  text-decoration: none;
+  font-family: 'Cinzel', serif;
+  font-size: 12px;
+  letter-spacing: 1px;
+  transition: opacity 0.3s;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.showdesc {
+  border: 1px solid #f0a500;
+  background: transparent;
+  color: #f0a500;
+  border-radius: 8px;
+  padding: 5px;
+}
+
+/* EXTRA SECTION */
+.extra-section {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.extra-section h2 {
+  color: #f0a500;
+  font-family: 'Cinzel', serif;
+}
+
+/* LIGHTBOX */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(4, 22, 24, 0.95);
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox img {
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 10px;
+  border: 2px solid #f0a500;
+  animation: zoom 0.3s ease;
+}
+
+@keyframes zoom {
+  from { transform: scale(0.7); }
+  to { transform: scale(1); }
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  color: #f0a500;
+  font-size: 35px;
+  cursor: pointer;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+  }
+
+  .hero-img, .details {
+    width: 100%;
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "SEA-PKG-001": {
+    "title": "Seaside Escape Package",
+    "price": 150,
+
+    "description": "Discover the thrill of nature with our exclusive adventure package. Begin your mornings with guided jungle trekking, where lush greenery, exotic wildlife, and hidden waterfalls await. In the afternoons, challenge yourself with mountain climbing, scaling scenic trails that reward you with breathtaking panoramic views of the coastline and surrounding valleys. After a day of exploration, unwind at our seaside hotel with comfortable rooms, fresh local cuisine, and the soothing sound of ocean waves. Perfect for travelers who crave both relaxation and adventure.",
+
+    "includes": [
+      "Guided jungle trekking tours",
+      "Mountain climbing with professional guides",
+      "Seaside accommodation with private balcony",
+      "Complimentary breakfast and evening"
+    ],
+
+    "guide": {
+      "name": "En. Ahmad",
+      "phone": "+6013-467-8901",
+      "info": "Seasoned adventurer with over 10 years of experience leading tours in Penang's wilderness."
+    }
+  },
+
+  "SNK-PKG-002": {
+    "title": "Snorkling Nature Package",
+    "price": 200,
+
+    "description":
+      "Discover the thrill of nature with our exclusive adventure package. Begin your mornings with guided jungle trekking, where lush greenery, exotic wildlife, and hidden waterfalls await. In the afternoons, challenge yourself with mountain climbing, scaling scenic trails that reward you with breathtaking panoramic views of the coastline and surrounding valleys. After a day of exploration, unwind at our seaside hotel with comfortable rooms, fresh local cuisine, and the soothing sound of ocean waves. Perfect for travelers who crave both relaxation and adventure.",
+
+    "includes": [
+      "Guided jungle trekking tours",
+      "Mountain climbing with professional guides",
+      "Seaside accommodation with private balcony",
+      "Complimentary breakfast and evening"
+    ],
+
+    "guide": {
+      "name": "En. Ahmad",
+      "phone": "+6013-467-8901",
+      "info":
+        "Seasoned adventurer with over 10 years of experience leading tours in Penang's wilderness."
+    }
+  },
+
+  "HIL-PKG-003": {
+    "title": "Hillside Adventure Package",
+    "price": 250,
+
+    "description":
+      "Discover the thrill of rugged exploration with our exclusive mountain-and-jungle adventure. Begin your mornings with guided jungle trekking, where lush greenery, exotic wildlife, and hidden waterfalls await. In the afternoons, challenge yourself with mountain climbing, scaling scenic trails that reward you with breathtaking panoramic views of the coastline and surrounding valleys. After a day of exploration, unwind at our hillside lodge with cozy rooms, hearty local cuisine, and the cool mountain breeze. Perfect for travelers who crave both adrenaline and serenity.",
+
+    "includes": [
+      "Guided jungle trekking tours",
+      "Hill climbing with professional guides",
+      "Hillside accommodation with panoramic views",
+      "Complimentary breakfast and evening tea"
+    ],
+
+    "guide": {
+      "name": "En. Farid",
+      "phone": "+6019-888-2211",
+      "info":
+        "Experienced hill guide specializing in hiking and outdoor survival adventures."
+    }
+  },
+
+  "BEA-PKG-004": {
+    "title": "Beach Escape Package",
+    "price": 280 ,
+
+    "description":
+      "Embrace the ocean’s beauty with our seaside escape. Start your mornings strolling along golden beaches, soaking in the sunrise and the calming sound of waves. In the afternoons, dive into crystal-clear waters for snorkeling adventures, discovering vibrant coral reefs and colorful marine life. After your aquatic explorations, relax at our beachfront resort with spacious rooms, fresh seafood dining, and spectacular sunset views. Perfect for travelers who love the sea and its wonders.",
+
+    "includes": [
+      "Daily beachside activities and relaxation",
+      "Guided snorkeling tours with equipment provided",
+      "Beachfront accommodation with private balcony",
+      "Complimentary breakfast and evening cocktails"
+    ],
+
+    "guide": {
+      "name": "En. Rizal",
+      "phone": "+6012-333-7788",
+      "info":
+        "Certified snorkeling instructor and marine tourism guide with years of coastal experience."
+    }
+  },
+
+  "JNG-PKG-005": {
+    "title": "Dual Nature Package",
+    "price": 350,
+
+    "description":
+      "Experience the best of land and sea with our dual nature package. Begin your mornings with guided jungle trekking, exploring hidden trails, exotic flora, and cascading waterfalls. Spend your afternoons unwinding on pristine beaches, basking in the sun or enjoying gentle swims in turquoise waters. After your adventures, retreat to our seaside hotel offering comfortable rooms, fresh local cuisine, and the soothing sound of ocean waves. Perfect for travelers who want a balance of adventure and relaxation.",
+
+    "includes": [
+      "Guided jungle trekking tours",
+      "Daily beach activities and leisure time",
+      "Seaside accommodation with private balcony",
+      "Complimentary breakfast and evening refreshments"
+    ],
+
+    "guide": {
+      "name": "En. Hafiz",
+      "phone": "+6017-555-9900",
+      "info":
+        "Nature explorer and eco-tourism specialist passionate about jungle and beach adventures."
+    }
+  }
+}

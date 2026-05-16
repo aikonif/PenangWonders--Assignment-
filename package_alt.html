@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+<meta charset="UTF-8">
+<title>Travel Packages</title>
+
+<link rel="stylesheet" href="package.css"> 
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet" />
+
+</head>
+
+<body>
+
+<nav>
+  
+  <div class="logo">
+    <div class="logo-circle"><img src="logop.jpeg" alt="Penang Wonders"></div>
+    <span class="logo-name">Penang Wonders</span>
+  </div>
+
+  <div class="nav-links">
+    <a href="#">Home</a>
+    <a href="package_alt.html" class="active">Package</a>
+    <a href="#">Blog</a>
+    <a href="#">Coupon</a>
+  </div>
+
+</nav>
+
+
+<div class="content">
+
+  <!-- FILTERS -->
+  <div class="filters">
+    <h2>Activities</h2>
+    <label><input type="checkbox" data-filter="activity" value="jungle-trekking"> Jungle Trekking</label>
+    <label><input type="checkbox" data-filter="activity" value="snorkeling"> Snorkeling</label>
+    <label><input type="checkbox" data-filter="activity" value="beach"> Beach</label>
+    <label><input type="checkbox" data-filter="activity" value="mountain-climbing"> Mountain Climbing</label>
+
+    <h2>Hotel Preferences</h2>
+    <label><input type="checkbox" data-filter="hotel" value="close-to-city"> Close to city</label>
+    <label><input type="checkbox" data-filter="hotel" value="close-to-nature"> Close to nature</label>
+    <label><input type="checkbox" data-filter="hotel" value="comfy"> Comfy</label>
+    <label><input type="checkbox" data-filter="hotel" value="modern"> Modern</label>
+
+    <button id="clear-filters" class="clear-btn">Clear All Filters</button>
+  </div>
+
+  <!-- PACKAGES -->
+  <div class="packages">
+
+    <div class="package" 
+         data-activities="jungle-trekking,mountain-climbing" 
+         data-hotels="close-to-nature,comfy">
+      <img src="package1.jpg">
+      <div class="package-content">
+        <h3>Package 1</h3>
+        <p>Cozy room with nature view</p>
+        <p class="price">RM 150</p>
+        <a href="package_option_1.html" class="btn" target="_blank">View Details</a>
+      </div>
+    </div>
+
+    <div class="package" 
+         data-activities="beach,snorkeling" 
+         data-hotels="close-to-city,modern">
+      <img src="package2.jpg">
+      <div class="package-content">
+        <h3>Package 2</h3>
+        <p>Budget-friendly stay near beach</p>
+        <p class="price">RM 200</p>
+        <a href="package_option_2.html" class="btn" target="_blank">View Details</a>
+      </div>
+    </div>
+
+    <div class="package" 
+         data-activities="mountain-climbing,jungle-trekking" 
+         data-hotels="close-to-nature,comfy">
+      <img src="package3.jpg">
+      <div class="package-content">
+        <h3>Package 3</h3>
+        <p>Mountain lodge experience</p>
+        <p class="price">RM 150</p>
+        <a href="package_option_3.html" class="btn" target="_blank">View Details</a>
+      </div>
+    </div>
+
+    <div class="package"
+         data-activities="beach,snorkeling"
+         data-hotels="close-to-city,comfy">
+      <img src="package4.jpg">
+      <div class="package-content">
+        <h3>Package 4</h3>
+        <p>Relaxing seaside retreat with sunset activities</p>
+        <p class="price">RM 200</p>
+        <a href="package_option_4.html" class="btn" target="_blank">View Details</a>
+      </div>
+    </div>
+
+    <div class="package"
+         data-activities="jungle-trekking,beach"
+         data-hotels="close-to-nature,modern">
+      <img src="package5.jpg">
+      <div class="package-content">
+        <h3>Package 5</h3>
+        <p>Adventure escape with island hopping experience</p>
+        <p class="price">RM 350</p>
+        <a href="package_option_5.html" class="btn" target="_blank">View Details</a>
+      </div>
+    </div>
+
+    <div class="no-results">
+      <p>No packages match your filters. Try adjusting your selection.</p>
+    </div>
+
+  </div>
+
+<script src="package.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+
+<title>Package 1 - Seaside Package</title>
+
+<link rel="stylesheet" href="package_option.css">
+
+<link
+href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Nunito:wght@700;800;900&display=swap"
+rel="stylesheet"
+/>
+
+</head>
+
+<body data-package="SEA-PKG-001">
+
+<!-- NAVBAR -->
+<nav id="navbar">
+
+  <div class="logo">
+
+    <div class="logo-circle">
+      <img src="logop.jpeg" alt="Penang Wonders">
+    </div>
+
+    <span class="logo-name">
+      Penang Wonders
+    </span>
+
+  </div>
+
+  <div class="nav-links">
+
+    <a href="#">Home</a>
+
+    <a href="package_alt.html" class="active">
+      Package
+    </a>
+
+    <a href="#">Blog</a>
+
+    <a href="#">Coupon</a>
+
+  </div>
+
+</nav>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <!-- HERO -->
+  <div class="hero">
+
+    <!-- IMAGE -->
+    <div class="hero-img">
+
+      <img
+        id="slide1"
+        src="package1.jpg"
+        alt="Seaside Package"
+        onclick="openLightbox(this)"
+      >
+
+      <button class="prev" onclick="prevSlide('slide1')">
+        ❮
+      </button>
+
+      <button class="next" onclick="nextSlide('slide1')">
+        ❯
+      </button>
+
+    </div>
+
+    <!-- DETAILS -->
+    <div class="details">
+
+      <!-- TITLE -->
+      <h1 id="title"></h1>
+
+      <!-- PRICE -->
+      <p class="price" id="price"></p>
+
+      <!-- BUTTON -->
+      <button
+        class="showdesc"
+        onclick="toggleText()"
+      >
+        Hide Description
+      </button>
+
+      <!-- TEXT SECTION -->
+      <div id="text">
+
+        <!-- DESCRIPTION -->
+        <div id="desc"></div>
+
+        <!-- INCLUDES -->
+        <div id="includes"></div>
+
+        <!-- GUIDE -->
+        <div id="guide"></div>
+
+      </div>
+
+      <br>
+
+      <!-- MAP -->
+      <a
+        href="https://maps.app.goo.gl/zGsd3tkKjQMwt7DbA"
+        target="_blank"
+        class="map-link"
+      >
+        📍 View on Google Maps
+      </a>
+
+      <br>
+
+      <!-- BOOK BUTTON -->
+      <a
+        id="bookBtn"
+        class="btn"
+      >
+        Book Now
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- EXTRA -->
+  <div class="extra-section">
+
+    <h2>
+      Experience the Ocean
+    </h2>
+
+  </div>
+
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox">
+
+  <span class="close">
+    &times;
+  </span>
+
+  <img id="lightbox-img">
+
+</div>
+
+<!-- SCRIPT -->
+<script src="package_option.js"></script>
+
+</body>
+</html>
