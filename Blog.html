@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Blog | Penang Wonders</title>
+    <link rel="stylesheet" href="Blog.css">
+</head>
+<body>
+    <header id="navbar">
+        <a href="Home.html" class="logo">
+            <img src="plz jadi.png" alt="Hotel Logo">
+            <span>Penang Wonders</span>
+        </a>
+        <nav class="nav-links">
+            <a href="Home.html">Home</a>
+            <a href="Package.html">Package</a>
+            <a href="Blog.html" class="active">Blog</a>
+            <a href="Coupon.html">Coupon</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-copy">
+                <p class="eyebrow">Hotel Stories & Travel Inspiration</p>
+                <h1>Discover the Heart of Penang Hospitality</h1>
+                <p>Explore our blog for curated hotel updates, local adventures, guest experiences, and the latest seasonal offers to make your stay unforgettable.</p>
+                <div class="hero-buttons">
+                    <a href="#about" class="button solid">Read More</a>
+                    <a href="#contact" class="button outline">Contact Us</a>
+                </div>
+            </div>
+            <div class="hero-card">
+                <div class="card-top">Guest Highlights</div>
+                <div class="card-item">Ocean-view suites with luxury comfort</div>
+                <div class="card-item">Breakfast favorites from local cuisine</div>
+                <div class="card-item">Personalized tour planning and concierge</div>
+            </div>
+        </section>
+
+        <section id="about" class="content-section">
+            <div class="section-heading">
+                <p class="eyebrow">About the Experience</p>
+                <h2>More than a stay — a memory shaped by every detail.</h2>
+            </div>
+            <div class="content-grid">
+                <article class="content-card">
+                    <h3>Hotel Website Story</h3>
+                    <p>Our website is designed to bring the essence of Penang to every visitor. From elegant room pairings to local travel stories, we want every guest to feel inspired before they even arrive.</p>
+                </article>
+                <article class="content-card">
+                    <h3>What Sets Us Apart</h3>
+                    <p>Enjoy curated packages, seamless booking, and thoughtful service. We blend modern comfort with the warmth of Malaysian hospitality in every detail.</p>
+                </article>
+                <article class="content-card">
+                    <h3>Local Adventure Picks</h3>
+                    <p>Use our blog as your travel guide: tasting Penang street food, exploring hidden beaches, and discovering cultural treasures just minutes from the hotel.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="highlights">
+            <div class="highlight-card">
+                <h3>Stay Inspired</h3>
+                <p>Follow our stories for seasonal events, guest testimonials, and insider travel tips.</p>
+            </div>
+            <div class="highlight-card">
+                <h3>Stay Connected</h3>
+                <p>Join our social feed for live moments, behind-the-scenes updates, and special deals only for followers.</p>
+            </div>
+            <div class="highlight-card">
+                <h3>Stay in Touch</h3>
+                <p>Reach out directly with your questions, booking requests, or personalized itinerary ideas.</p>
+            </div>
+        </section>
+
+        <section id="reviews" class="reviews-section">
+            <div class="section-heading">
+                <p class="eyebrow">Guest Reviews</p>
+                <h2>What Our Customers Say</h2>
+            </div>
+            <div class="reviews-grid">
+                <details class="review-card">
+                    <summary>JohnDoe - john@gmail.com <br><span class="stars">Rating: ★★★★★</span></summary>
+                    <p>Great stay at Penang Wonders! The rooms were clean and comfortable, and the staff was incredibly friendly. The breakfast buffet had amazing local delicacies. Highly recommend!</p>
+                </details>
+                <details class="review-card">
+                    <summary>JaneSmith - jane@gmail.com <br><span class="stars">Rating: ★★★★★</span></summary>
+                    <p>Excellent service from start to finish. The concierge helped us plan the perfect day trip around Penang. The ocean-view suite was breathtaking. Will definitely return!</p>
+                </details>
+                <details class="review-card">
+                    <summary>MikeJohnson - mike@gmail.com <br><span class="stars">Rating: ★★★★★</span></summary>
+                    <p>Beautiful views and top-notch amenities. The spa treatments were relaxing, and the pool area was pristine. A memorable experience that exceeded expectations.</p>
+                </details>
+                <details class="review-card hidden-review">
+                    <summary>SarahLee - sarah@gmail.com <br> <span class="stars">Rating: ★★★★★</span></summary>
+                    <p>Perfect location right by the beach. The hotel's attention to detail made our anniversary trip special. The food was delicious, and the service was impeccable.</p>
+                </details>
+            </div>
+            <div class="reviews-buttons">
+                <button id="showAllReviewsButton" type="button" class="button outline" onclick="showAllReviews()">Show all</button>
+                <button id="seeLessReviewsButton" type="button" class="button outline" onclick="showLessReviews()" style="display:none">Show less</button>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="contact-form-wrapper">
+                <div class="section-heading">
+                    <p class="eyebrow">Talk to Us</p>
+                    <h2>Contact our team anytime.</h2>
+                </div>
+                <form class="contact-form" onsubmit="sendEmail(event)">
+                    <label>
+                        Name
+                        <input type="text" name="name" placeholder="Your name" required>
+                    </label>
+                    <label>
+                        Email
+                        <input type="email" name="email" placeholder="you@example.com" required>
+                    </label>
+                    <label>
+                        Message
+                        <textarea name="message" rows="5" placeholder="What can we help you with?" required></textarea>
+                    </label>
+                    <button type="submit" class="button solid">Send Message</button>
+                    <p id="thankYouMessage" class="thank-you" hidden>Thanks! Your message is on its way.</p>
+                </form>
+            </div>
+            <aside class="contact-details">
+                <div class="detail-card">
+                    <h3>Hotel Contact</h3>
+                    <p>📞 +60 12-453 6739</p>
+                    <p>✉️ penangwonders@gmail.com</p>
+                </div>
+                <div class="detail-card social-card">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#" aria-label="Instagram"><img src="instagram-3.png" alt="Instagram">Instagram</a>
+                        <a href="#" aria-label="Tiktok"><img src="Tiktok-3.png" alt="Tiktok">Tiktok</a>
+                        <a href="#" aria-label="Facebook"><img src="facebook.png" alt="Facebook">Facebook</a>
+                    </div>
+                </div>
+                <div class="detail-card">
+                    <h3>Opening Hours</h3>
+                    <p>Daily: 7:00 AM – 11:00 PM</p>
+                    <p>Support: 24/7 live chat</p>
+                </div>
+            </aside>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 Penang Wonders • Crafted for memorable hotel stays and thoughtful travel planning.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="Blog.js"></script>
+</body>
+</html>
