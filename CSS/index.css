@@ -1,0 +1,194 @@
+/* ---------------------------------------------
+   SIMPLE & CLEAN STYLES
+   --------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    background: #353537;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* main card - simple, white, soft shadow */
+.card {
+    max-width: 550px;
+    width: 100%;
+    background: white;
+    border-radius: 32px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    padding: 28px 24px 36px 24px;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 8px;
+    letter-spacing: -0.3px;
+}
+
+.tagline {
+    color: #475569;
+    margin-bottom: 28px;
+    font-size: 0.95rem;
+    border-bottom: 1px solid #e2e8f0;
+    display: inline-block;
+    padding-bottom: 6px;
+}
+
+/* color box - interactive element */
+.color-box {
+    width: 180px;
+    height: 180px;
+    background-color: #3b82f6;
+    border-radius: 28px;
+    margin: 10px auto 20px auto;
+    box-shadow: 0 12px 18px -8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    cursor: pointer;
+}
+
+.color-box:active {
+    transform: scale(0.97);
+}
+
+/* info text */
+.color-code {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    background: #f1f5f9;
+    padding: 8px 16px;
+    border-radius: 40px;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #0f172a;
+    margin: 12px 0 18px 0;
+    letter-spacing: 0.3px;
+}
+
+/* simple button group */
+.button-group {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 16px 0 10px;
+}
+
+button {
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 60px;
+    background: #eef2ff;
+    color: #1e293b;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+button i {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background: #1e293b;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #0f172a;
+    transform: translateY(-2px);
+}
+
+button:hover {
+    background: #e2e8f0;
+    transform: translateY(-1px);
+}
+
+.btn-primary:active,
+button:active {
+    transform: translateY(1px);
+}
+
+/* counter section - simple and fun */
+.counter-area {
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.counter-title {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    color: #475569;
+    margin-bottom: 12px;
+}
+
+.click-counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.count-number {
+    font-size: 2.8rem;
+    font-weight: 700;
+    background: #f8fafc;
+    padding: 0 16px;
+    min-width: 100px;
+    border-radius: 48px;
+    color: #0f172a;
+    font-feature-settings: "tnum";
+    letter-spacing: 1px;
+}
+
+.counter-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.small-btn {
+    padding: 8px 18px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background: white;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.03);
+}
+
+.reset-btn {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+}
+
+/* simple footer */
+.footer-note {
+    margin-top: 28px;
+    font-size: 0.7rem;
+    color: #94a3b8;
+    text-align: center;
+    border-top: 1px solid #f0f2f5;
+    padding-top: 18px;
+}
