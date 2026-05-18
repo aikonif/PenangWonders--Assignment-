@@ -6,6 +6,7 @@
   <title>Penang Wonders</title>
   <link rel="stylesheet" href="Home.css">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 <body>
 
@@ -97,12 +98,28 @@
       </a>
     </div>
 
+  <!-- MAP CARD with Leaflet + OpenStreetMap (100% free) -->
+  <!-- Where the map will appear -->
+  <div class="map-card">
+    <div class="map-title">
+      <h3>📍 Explore Penang's Treasures</h3>
+    </div>
+    <div id="penang-map"></div>
+    <div class="map-caption">
+      🗺️ Interactive map powered by OpenStreetMap & Leaflet | Click any marker to discover attractions
+    </div>
+  </div>
+        
+  <!-- Attraction cards (optional) -->
+  <div class="attractions-grid" id="attractions-grid"></div>
+  
+
     <!-- Stats -->
     <div class="stats">
-      <div class="stat"><span class="num">500+</span><span class="label">Happy Travellers</span></div>
-      <div class="stat"><span class="num">12</span><span class="label">Tour Packages</span></div>
+      <div class="stat"><span class="num">100+</span><span class="label">Happy Travellers</span></div>
+      <div class="stat"><span class="num">5</span><span class="label">Tour Packages</span></div>
       <div class="stat"><span class="num">4.9★</span><span class="label">Average Rating</span></div>
-      <div class="stat"><span class="num">8 Yrs</span><span class="label">Experience</span></div>
+      <div class="stat"><span class="num">3 Yrs</span><span class="label">Experience</span></div>
     </div>
 
   </section>
@@ -111,7 +128,8 @@
   <footer>
     <p>© 2025 Penang Wonders · All Rights Reserved · Made with ❤️</p>
   </footer>
-
+  
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="Home.js"></script>
 
 </body>
