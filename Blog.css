@@ -41,29 +41,43 @@ img {
 
 /* Logo area */
 .logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    color: #ffffff;
-    font-weight: 700;
-    font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.logo img {
-    width: 40px;
-    height: 40px;
-    border-radius: 16px;
-    object-fit: cover;
+.logo-circle {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 2px solid #f0a500;
+  background-image: url(LogoPenangWonders.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  image-rendering: pixelated; 
+  image-rendering: crisp-edges;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width 0.3s, height 0.3s;
 }
 
-#navbar.scrolled .logo img {
+#navbar.scrolled .logo-circle {
   width: 36px;
   height: 36px;
   font-size: 9px;
 }
 
+.logo-name {
+  font-family: 'Cinzel', serif;
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: white;
+  transition: font-size 0.3s;
+}
 
-#navbar.scrolled .logo img {
+#navbar.scrolled .logo-name {
   font-size: 12px;
 }
 
