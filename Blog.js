@@ -21,6 +21,8 @@ function showThankYou() {
     }, 4000);
 }
 
+
+
 function showAllReviews() {
     document.querySelectorAll('.review-card.hidden-review').forEach(card => {
         card.classList.remove('hidden-review');
@@ -32,7 +34,7 @@ function showAllReviews() {
 }
 
 function showLessReviews() {
-    document.querySelectorAll('.reviews-grid .review-card:nth-child(n+4)').forEach(card => {
+    document.querySelectorAll('#reviews-grid .review-card:nth-child(n+4)').forEach(card => {
         card.classList.add('hidden-review');
         card.removeAttribute('open');
     });
@@ -46,7 +48,7 @@ const navbar = document.getElementById("navbar");
 
 // When user scrolls, shrink the navbar
 window.addEventListener("scroll", function () {
-  if (window.scrollY > 50) {
+  if (window.scrollY > 50) {  
     navbar.classList.add("scrolled");
   } else {
     navbar.classList.remove("scrolled");
@@ -87,26 +89,64 @@ navLinks.forEach(function (link) {
   });
 });
 
-const accessibilityToggle = document.getElementById('accessibilityToggle');
-const savedAccessibility = localStorage.getItem('colorBlindMode') === 'true';
 
-function applyAccessibilityMode(enabled) {
-  document.body.classList.toggle('color-blind', enabled);
+//JSON
+window.onload = function () {
+      fetchData();
+    };
 
-  if (accessibilityToggle) {
-    accessibilityToggle.textContent = enabled ? 'Normal view' : 'Color-blind mode';
-    accessibilityToggle.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+// GET data from local JSON file
+      function fetchData() {
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", "Blog.json", true);
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          const data = JSON.parse(xhr.responseText);
+          displayData(data);
+          showLessReviews(); // Hide reviews beyond the first 3 on page load
+        }
+      };
+      xhr.send();
+    }
+
+    function addReview(event) {
+    event.preventDefault();
+    const form = event.target;
+    const formData = new FormData(form);
+    const name = formData.get('name')?.trim();
+    const email = formData.get('email')?.trim();
+    const rating = formData.get('rating');
+    const message = formData.get('message')?.trim();
+
+    if (!name || !email || !rating || !message) {
+        return;
+    }
+    displayData([{ name, email, rating, description: message }]);
+    form.reset();
+    showLessReviews(); // Show only the first 3 reviews, including the new one
   }
-}
 
-function toggleAccessibilityMode() {
-  const enabled = !document.body.classList.contains('color-blind');
-  localStorage.setItem('colorBlindMode', enabled);
-  applyAccessibilityMode(enabled);
-}
+// Display function
+    function displayData(items) {
+      const container = document.getElementById("reviews-grid");
 
-if (accessibilityToggle) {
-  accessibilityToggle.addEventListener('click', toggleAccessibilityMode);
-  applyAccessibilityMode(savedAccessibility);
-}
+      items.forEach(item => {
+        const card = document.createElement("details");
+        card.className = "review-card";
 
+        card.innerHTML = `
+          <summary>${item.name} - ${item.email}<br><span class="stars">Rating: ${renderStars(item.rating)}</span></summary>
+          <p>${item.description}</p>
+        `;
+
+        container.appendChild(card);
+        showThankYou();
+      });
+    }
+
+    function renderStars(rating = 0) {
+      const value = Math.max(0, Math.min(5, Number(rating) || 0));
+      const filled = '★'.repeat(value);
+      const empty = '☆'.repeat(5 - value);
+      return filled + empty;
+    }

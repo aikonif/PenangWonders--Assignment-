@@ -14,14 +14,14 @@
         </a>
         <nav class="nav-links">
             <a href="Home.html">Home</a>
-            <a href="package_main.html">Package</a>
-            <a href="#hero" class="active">Blog</a>
+            <a href="Package.html">Package</a>
+            <a href="Blog.html" class="active">Blog</a>
             <a href="Coupon.html">Coupon</a>
         </nav>
     </header>
 
     <main>
-        <section class="hero" id="hero">
+        <section class="hero">
             <div class="hero-copy">
                 <p class="eyebrow">Hotel Stories & Travel Inspiration</p>
                 <h1>Discover the Heart of Penang Hospitality</h1>
@@ -80,27 +80,45 @@
                 <p class="eyebrow">Guest Reviews</p>
                 <h2>What Our Customers Say</h2>
             </div>
-            <div class="reviews-grid">
-                <details class="review-card">
-                    <summary>JohnDoe - john@gmail.com <br><span class="stars">Rating: ★★★★★</span></summary>
-                    <p>Great stay at Penang Wonders! The rooms were clean and comfortable, and the staff was incredibly friendly. The breakfast buffet had amazing local delicacies. Highly recommend!</p>
-                </details>
-                <details class="review-card">
-                    <summary>JaneSmith - jane@gmail.com <br><span class="stars">Rating: ★★★★★</span></summary>
-                    <p>Excellent service from start to finish. The concierge helped us plan the perfect day trip around Penang. The ocean-view suite was breathtaking. Will definitely return!</p>
-                </details>
-                <details class="review-card">
-                    <summary>MikeJohnson - mike@gmail.com <br><span class="stars">Rating: ★★★★★</span></summary>
-                    <p>Beautiful views and top-notch amenities. The spa treatments were relaxing, and the pool area was pristine. A memorable experience that exceeded expectations.</p>
-                </details>
-                <details class="review-card hidden-review">
-                    <summary>SarahLee - sarah@gmail.com <br> <span class="stars">Rating: ★★★★★</span></summary>
-                    <p>Perfect location right by the beach. The hotel's attention to detail made our anniversary trip special. The food was delicious, and the service was impeccable.</p>
-                </details>
+            <div id="reviews-grid">
+                <!-- Reviews loaded from Blog.json -->
             </div>
             <div class="reviews-buttons">
                 <button id="showAllReviewsButton" type="button" class="button outline" onclick="showAllReviews()">Show all</button>
                 <button id="seeLessReviewsButton" type="button" class="button outline" onclick="showLessReviews()" style="display:none">Show less</button>
+            </div>
+            <div class="review-form-wrapper">
+                <div class="review-form
+                \-heading">
+                    <h2>Leave a Review</h2>
+                </div>
+                <div class="review-form">
+                    <form onsubmit="addReview(event)">
+                        <label>
+                            Name
+                            <input type="text" name="name" placeholder="Your name" required>
+                        </label>
+                        <label>
+                            Email
+                            <input type="email" name="email" placeholder="you@example.com" required>
+                        </label>
+                        <fieldset class="rating-group">
+                            <legend>Rating</legend>
+                            <label><input type="radio" name="rating" value="1" required> 1 Star</label>
+                            <label><input type="radio" name="rating" value="2"> 2 Stars</label>
+                            <label><input type="radio" name="rating" value="3"> 3 Stars</label>
+                            <label><input type="radio" name="rating" value="4"> 4 Stars</label>
+                            <label><input type="radio" name="rating" value="5"> 5 Stars</label>
+                        </fieldset>
+                        <label>
+                            Message
+                            <textarea name="message" rows="5" placeholder="Share your experience with us!" required></textarea>
+                        </label>
+                        <button type="submit" class="button solid">Submit Review</button>
+                        <p id="thankYouMessage" class="thank-you" hidden>Thanks! Your message is on its way.</p>
+                    </form>
+                </div>
+            </div>
             </div>
         </section>
 
@@ -136,9 +154,9 @@
                 <div class="detail-card social-card">
                     <h3>Follow Us</h3>
                     <div class="social-links">
-                        <a href="#" aria-label="Instagram"><img src="instagram-3.png" alt="Instagram">Instagram</a>
-                        <a href="#" aria-label="Tiktok"><img src="Tiktok-3.png" alt="Tiktok">Tiktok</a>
-                        <a href="#" aria-label="Facebook"><img src="facebook.png" alt="Facebook">Facebook</a>
+                        <a href="#" aria-label="Instagram"><img src="LogoInsta.png" alt="Instagram">Instagram</a>
+                        <a href="#" aria-label="Tiktok"><img src="LogoTiktok.png" alt="Tiktok">Tiktok</a>
+                        <a href="#" aria-label="Facebook"><img src="LogoFacebook.png" alt="Facebook">Facebook</a>
                     </div>
                 </div>
                 <div class="detail-card">
@@ -148,10 +166,55 @@
                 </div>
             </aside>
         </section>
+
+        <section id="profiles" class="profiles-section">
+            <div class="section-heading">
+                <p class="eyebrow">Our Team</p>
+                <h2>Website Developers</h2>
+            </div>
+            <div class="profiles-grid">
+                <div class="profile-card">
+                    <div class="profile-image">
+                        <img src="Blogprofile1.jpg" alt="Profile 1">
+                    </div>
+                    <div class="profile-info">
+                        <h3>Muhammad Nur Ikmal bin Mohd Shihan</h3>
+                        <p class="matric-number">Matric no: 254225</p>
+                    </div>
+                </div>
+                <div class="profile-card">
+                    <div class="profile-image">
+                        <img src="Blogprofile2.jpeg" alt="Profile 2">
+                    </div>
+                    <div class="profile-info">
+                        <h3>Ahmad Rifaie bin Abdul Latiff</h3>
+                        <p class="matric-number">Matric no: 250485</p>
+                    </div>
+                </div>
+                <div class="profile-card">
+                    <div class="profile-image">
+                        <img src="Blogprofile3.jpeg" alt="Profile 3">
+                    </div>
+                    <div class="profile-info">
+                        <h3>Aiman Asyraf bin Mohamad Hafiz</h3>
+                        <p class="matric-number">Matric no: 250584</p>
+                    </div>
+                </div>
+                <div class="profile-card">
+                    <div class="profile-image">
+                        <img src="Blogprofile4.jpeg" alt="Profile 4">
+                    </div>
+                    <div class="profile-info">
+                        <h3>Muhammad Farish Hakimi bin Mohd Hairul Anuar</h3>
+                        <p class="matric-number">Matric no: 253621</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="footer">
-        <p>© 2025 Penang Wonders · All Rights Reserved · Made with ❤️</p>
+        <p>© 2026 Penang Wonders • Crafted for memorable hotel stays and thoughtful travel planning.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>

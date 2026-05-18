@@ -1,0 +1,27 @@
+[
+  {
+    "name": "John Doe",
+    "email": "john@gmail.com",
+    "rating": 5,
+    "description": "Great stay at Penang Wonders! The rooms were clean and comfortable, and the staff was incredibly friendly. The breakfast buffet had amazing local delicacies. Highly recommend!"
+  },
+  {
+    "name": "Jane Smith",
+    "email": "jane@gmail.com",
+    "rating": 5,
+    "description": "Excellent service from start to finish. The concierge helped us plan the perfect day trip around Penang. The ocean-view suite was breathtaking. Will definitely return!"
+  },
+  {
+    "name": "Mike Johnson",
+    "email": "mike@gmail.com",
+    "rating": 4,
+    "description": "Beautiful views and top-notch amenities. The spa treatments were relaxing, and the pool area was pristine. A memorable experience that exceeded expectations."
+  },
+
+  {
+    "name": "Sarah Lee",
+    "email": "sarah@gmail.com",
+    "rating": 5,
+    "description": "Perfect location right by the beach. The hotel's attention to detail made our anniversary trip special. The food was delicious, and the service was impeccable."
+  }
+]
