@@ -298,6 +298,166 @@ a {
   color: #f0a500;
 }
 
+/* ==== MAP ==== */
+/* Map container styling */
+#penang-map {
+    height: 500px;
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    z-index: 1;
+    margin-bottom: 20px;
+}
+.map-card {
+  background: white;
+  border-radius: 2rem;
+  box-shadow: 0 20px 35px -12px rgba(0,0,0,0.2);
+  overflow: hidden;
+  margin-bottom: 3rem;
+  transition: 0.2s;
+}
+.map-title {
+  background: #f4edd8;
+  padding: 1rem 1.8rem;
+  border-bottom: 1px solid #e2d5b6;
+}
+.map-title h3 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #2b5e42;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+#map {
+  height: 480px;
+  width: 100%;
+  background: #cbcdb5;
+  z-index: 1;
+}
+.map-caption {
+  padding: 0.8rem 1.5rem;
+  background: #fffbf0;
+  font-size: 0.85rem;
+  color: #4a5b52;
+  border-top: 1px solid #ece1ca;
+}
+
+/* Map section container */
+.map-container {
+    margin: 2rem auto;
+    padding: 0 1rem;
+    max-width: 1300px;
+}
+
+.map-container h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #1e3a2f;
+    border-left: 5px solid #f5b642;
+    padding-left: 1rem;
+}
+
+/* Attractions grid */
+.attractions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    max-width: 1300px;
+    margin: 3rem auto;
+    padding: 0 1rem;
+}
+
+/* Attraction card */
+.attraction-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.attraction-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Card image */
+.card-img {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.card-img .emoji-overlay {
+    font-size: 3rem;
+    padding: 1rem 0 0 1rem;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Card content */
+.card-content {
+    padding: 1.2rem;
+}
+
+.card-content h4 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: #1e3a2f;
+}
+
+.card-content p {
+    font-size: 0.9rem;
+    color: #4a5b52;
+    line-height: 1.4;
+    margin-bottom: 0.8rem;
+}
+
+/* Category badge */
+.badge {
+    display: inline-block;
+    background: #eef3fc;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #2c7da0;
+}
+
+/* Click hint */
+.click-hint {
+    margin-top: 12px;
+    font-size: 0.75rem;
+    color: #f5a623;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #penang-map {
+        height: 400px;
+    }
+    
+    .map-container h2 {
+        font-size: 1.4rem;
+    }
+    
+    .attractions-grid {
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #penang-map {
+        height: 350px;
+    }
+}
+
 /* ===== STATS ===== */
 .stats {
   display: flex;
