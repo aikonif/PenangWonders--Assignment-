@@ -5,7 +5,7 @@
     --purple: #e08000;       /* Ganti dengan Orange */
     --teal: #f7be00;         /* Ganti dengan Gold */
     --pink: #b85500;         /* Ganti dengan Deep Brown */
-    --bg: #04140d;           /* Ganti dengan Forest Green Gelap supaya tema 'naik' */
+    --bg: #041618;           /* Ganti dengan Forest Green Gelap supaya tema 'naik' */
     --surface: rgba(255,255,255,0.04);
     --border: rgba(255,255,255,0.08);
     --text: #e8e8f0;
@@ -29,11 +29,7 @@
     inset: -50%;
     width: 200%;
     height: 200%;
-    /* ── TUKAR: Warna gradien latar belakang (diubahsuai ke oren, hijau & gold malap) ── */
-    background:
-      radial-gradient(ellipse at 20% 30%, rgba(224,128,0,0.12) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 70%, rgba(12,79,48,0.15) 0%, transparent 50%),
-      radial-gradient(ellipse at 60% 10%, rgba(247,190,0,0.08) 0%, transparent 40%);
+    background: #041618;
     animation: meshMove 12s ease-in-out infinite alternate;
     z-index: 0;
     pointer-events: none;
@@ -61,8 +57,7 @@
     z-index: 100;
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
-    /* ── TUKAR: Ganti biru gelap kepada hijau/hitam gelap ── */
-    background: rgba(4, 20, 13, 0.8);
+    background: rgba(6, 32, 35, 0.92);
     border-bottom: 1px solid var(--border);
   }
 
@@ -79,12 +74,13 @@
     padding: 0 50px;
     z-index: 100;
     transition: height 0.3s, background 0.3s;
+    background: rgba(6, 32, 35, 0.92);
   }
 
   /* Navbar gets dark background when user scrolls */
   #navbar.scrolled {
     height: 52px;
-    background-color: #041f12;
+    background-color: rgba(6, 32, 35, 0.92);
     backdrop-filter: blur(10px);
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
   }
@@ -314,7 +310,28 @@
 
 
   .promo-card:hover .card-bg,
-  .promo-card.active .card-bg { transform: scale(1.07); }
+  .promo-card.active .card-bg {
+    transform: scale(1.07);
+  }
+
+  /* Hover overlays for each promo card */
+  .card-1:hover .card-bg,
+  .card-1.active .card-bg {
+    background: linear-gradient(180deg, rgba(75, 124, 230, 0.22), rgba(15, 45, 82, 0.14)), linear-gradient(145deg, #021a10 0%, #0c4f30 60%, #1c8554 100%);
+    background-blend-mode: overlay;
+  }
+
+  .card-2:hover .card-bg,
+  .card-2.active .card-bg {
+    background: linear-gradient(180deg, rgba(255, 205, 135, 0.25), rgba(65, 155, 190, 0.18)), linear-gradient(145deg, #241100 0%, #804000 60%, #e08000 100%);
+    background-blend-mode: overlay;
+  }
+
+  .card-3:hover .card-bg,
+  .card-3.active .card-bg {
+    background: linear-gradient(180deg, rgba(110, 185, 90, 0.24), rgba(18, 60, 32, 0.16)), linear-gradient(145deg, #1c0900 0%, #5c2000 60%, #b85500 100%);
+    background-blend-mode: overlay;
+  }
 
   /* ── TUKAR: Warna asas kad diubah ke Forest Green, Orange & Deep Brown ── */
   .card-1 .card-bg { background: linear-gradient(145deg, #021a10 0%, #0c4f30 60%, #1c8554 100%); } /* Green */
@@ -562,6 +579,125 @@
     font-size: 11px;
     letter-spacing: 2px;
     color: rgba(255, 255, 255, 0.3);
+  }
+
+  .promo-modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(2, 8, 8, 0.7);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+    z-index: 200;
+    padding: 24px;
+  }
+
+  .promo-modal.open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .promo-modal-card {
+    position: relative;
+    width: min(420px, 100%);
+    background: rgba(6, 18, 14, 0.98);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 28px;
+    padding: 30px 26px 26px;
+    box-shadow: 0 35px 90px rgba(0, 0, 0, 0.45);
+  }
+
+  .promo-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .promo-modal-header {
+    margin-bottom: 20px;
+  }
+
+  .promo-modal-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #ffd27f;
+    margin-bottom: 10px;
+  }
+
+  .promo-modal-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    margin-bottom: 8px;
+    color: #fff;
+  }
+
+  .promo-modal-header p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.72);
+    line-height: 1.6;
+  }
+
+  .promo-modal-body {
+    display: grid;
+    gap: 18px;
+  }
+
+  .promo-code {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 24px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 18px;
+    padding: 18px 20px;
+    text-align: center;
+    word-break: break-word;
+  }
+
+  .promo-copy-btn {
+    width: 100%;
+    border: none;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--purple), var(--teal));
+    color: #fff;
+    font-weight: 700;
+    padding: 14px 16px;
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+
+  .promo-copy-btn:hover {
+    opacity: 0.92;
+    transform: translateY(-1px);
+  }
+
+  .promo-modal-note {
+    font-size: 13px;
+    color: #b4e4a9;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.2s ease, max-height 0.2s ease;
+  }
+
+  .promo-modal-note.visible {
+    opacity: 1;
+    max-height: 40px;
+    margin-top: 10px;
   }
 
   /* ════════════════════════
