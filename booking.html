@@ -65,7 +65,7 @@ rel="stylesheet"
       Blog
     </a>
 
-    <a href="#">
+    <a href="Coupon.html">
       Coupon
     </a>
 
@@ -143,11 +143,14 @@ rel="stylesheet"
           Package Code
         </label>
 
-        <input
-        type="text"
-        id="package"
-        readonly
-        >
+        <select id="package" required>
+          <option value="" selected disabled>Please choose your package</option>
+          <option value="SEA-PKG-001">SEA-PKG-001 — Seaside Escape Package</option>
+          <option value="SNK-PKG-002">SNK-PKG-002 — Snorkling Nature Package</option>
+          <option value="HIL-PKG-003">HIL-PKG-003 — Hillside Adventure Package</option>
+          <option value="BEA-PKG-004">BEA-PKG-004 — Beach Escape Package</option>
+          <option value="JNG-PKG-005">JNG-PKG-005 — Dual Nature Package</option>
+        </select>
 
       </div>
 
@@ -166,8 +169,24 @@ rel="stylesheet"
 
       </div>
 
-      <!-- COUPON -->
+      <!-- COUPON QUESTION -->
       <div class="input-group">
+
+        <label>
+          Have a coupon?
+        </label>
+
+        <div class="switch-group">
+          <label class="switch">
+            <input type="checkbox" id="hasCouponToggle">
+            <span class="slider"></span>
+          </label>
+          <span id="couponStatusText">No coupon</span>
+        </div>
+
+      </div>
+
+      <div class="input-group coupon-input-group" id="couponInputGroup" style="display:none;">
 
         <label>
           Coupon Code
@@ -176,6 +195,7 @@ rel="stylesheet"
         <input
         type="text"
         id="coupon"
+        placeholder="Enter coupon code"
         >
 
       </div>
@@ -197,6 +217,11 @@ rel="stylesheet"
   </div>
 
 </div>
+
+ <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Penang Wonders · All Rights Reserved</p>
+  </footer>
 
 <script src="booking.js"></script>
 

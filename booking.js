@@ -4,78 +4,421 @@ emailjs.init(
 );
 
 // GET URL PARAMETER
-const params =
-new URLSearchParams(
-  window.location.search
+const params = new URLSearchParams(window.location.search);
+
+// COUPON DISCOUNT LIST
+const couponDiscounts = {
+  NEWYEAR40: 0.40,
+  SUMMER50: 0.50,
+  RAYA35: 0.35
+};
+
+// PACKAGE DATA
+let packageData = {};
+let packagePrice = 0;
+
+// ELEMENTS
+const packageSelect =
+document.getElementById('package');
+
+const couponInput =
+document.getElementById('coupon');
+
+const couponToggle =
+document.getElementById('hasCouponToggle');
+
+const couponStatusText =
+document.getElementById('couponStatusText');
+
+const statusMessage =
+document.getElementById('status');
+
+const submitBtn =
+document.querySelector('.submit-btn');
+
+// FORMAT PRICE
+function formatPrice(value) {
+
+  const amount =
+  Number(value);
+
+  return Number.isInteger(amount)
+
+  ? `RM ${amount}`
+
+  : `RM ${amount.toFixed(2)}`;
+
+}
+
+// GET DISCOUNT
+function getDiscount() {
+
+  const couponCode =
+
+  couponToggle.checked
+
+  ? couponInput.value
+    .trim()
+    .toUpperCase()
+
+  : '';
+
+  return couponDiscounts[couponCode]
+  || 0;
+
+}
+
+// GET FINAL PRICE
+function getFinalPrice() {
+
+  const discount =
+  getDiscount();
+
+  if (discount > 0) {
+
+    return Math.round(
+
+      packagePrice
+      * (1 - discount)
+      * 100
+
+    ) / 100;
+
+  }
+
+  return packagePrice;
+
+}
+
+// UPDATE TOTAL
+function updateTotal() {
+
+  const totalInput =
+  document.getElementById('total');
+
+  // NO PRICE
+  if (!packagePrice) {
+
+    totalInput.value = '';
+
+    return;
+
+  }
+
+  const discount =
+  getDiscount();
+
+  // WITH DISCOUNT
+  if (discount > 0) {
+
+    const discounted =
+    getFinalPrice();
+
+    totalInput.value =
+
+    `${formatPrice(packagePrice)}
+    → ${formatPrice(discounted)}`;
+
+  }
+
+  // WITHOUT DISCOUNT
+  else {
+
+    totalInput.value =
+    formatPrice(packagePrice);
+
+  }
+
+}
+
+// VALIDATE COUPON
+function validateCoupon() {
+
+  if (!couponToggle.checked) {
+
+    statusMessage.textContent = '';
+
+    return true;
+
+  }
+
+  const code =
+
+  couponInput.value
+  .trim()
+  .toUpperCase();
+
+  // EMPTY CODE
+  if (!code) {
+
+    statusMessage.textContent =
+    'Please enter your promo code.';
+
+    return false;
+
+  }
+
+  // INVALID CODE
+  if (!couponDiscounts[code]) {
+
+    statusMessage.textContent =
+    'Invalid promo code. Please enter it again.';
+
+    return false;
+
+  }
+
+  couponInput.value = code;
+
+  statusMessage.textContent = '';
+
+  return true;
+
+}
+
+// UPDATE COUPON FIELD
+function updateCouponFields() {
+
+  const hasCoupon =
+  couponToggle.checked;
+
+  const couponGroup =
+  document.getElementById('couponInputGroup');
+
+  // SHOW / HIDE
+  couponGroup.style.display =
+  hasCoupon ? 'block' : 'none';
+
+  // STATUS TEXT
+  couponStatusText.textContent =
+
+  hasCoupon
+
+  ? 'Coupon enabled'
+
+  : 'No coupon';
+
+  // RESET
+  if (!hasCoupon) {
+
+    couponInput.value = '';
+
+    statusMessage.textContent = '';
+
+  }
+
+  updateTotal();
+
+}
+
+// UPDATE PACKAGE
+function updatePackageSelection() {
+
+  const selectedPackage =
+  packageSelect.value;
+
+  // INVALID PACKAGE
+  if (
+
+    !selectedPackage ||
+
+    !packageData[selectedPackage]
+
+  ) {
+
+    packagePrice = 0;
+
+    updateTotal();
+
+    return;
+
+  }
+
+  // UPDATE PRICE
+  packagePrice =
+
+  Number(
+    packageData[selectedPackage].price
+  );
+
+  updateTotal();
+
+}
+
+// EVENT LISTENER
+couponToggle.addEventListener(
+  'change',
+  updateCouponFields
 );
 
-// PACKAGE ID
-const packageId =
-params.get("package");
+// PACKAGE CHANGE
+packageSelect.addEventListener(
+  'change',
+  updatePackageSelection
+);
 
-// DISPLAY PACKAGE CODE
-document.getElementById("package").value =
-packageId || "UNKNOWN";
+// COUPON INPUT
+couponInput.addEventListener(
+  'input',
+  function() {
 
-// FETCH PACKAGE DATA
+    statusMessage.textContent = '';
+
+    updateTotal();
+
+  }
+);
+
+// COUPON VALIDATION
+couponInput.addEventListener(
+  'blur',
+  validateCoupon
+);
+
+// INITIALIZE
+updateCouponFields();
+
+// FETCH PACKAGE JSON
 fetch("package_option.json")
 
 .then(response => response.json())
 
 .then(data => {
 
-  const pkg =
-  data[packageId];
+  packageData = data;
 
-  // PRICE
-  const price =
-  pkg.price;
+  const packageId =
+  params.get("package");
 
-  // QUANTITY
-  let quantity = 1;
+  // AUTO SELECT PACKAGE
+  if (
 
-  // TOTAL
-  let total =
-  price * quantity;
+    packageId &&
 
-  // DISPLAY TOTAL
-  document.getElementById("total").value =
-  "RM " + total;
+    packageData[packageId]
+
+  ) {
+
+    packageSelect.value =
+    packageId;
+
+    updatePackageSelection();
+
+  }
+
+})
+
+// FETCH ERROR
+.catch(error => {
+
+  console.error(
+    'Unable to load package data:',
+    error
+  );
 
 });
 
 // FORM SUBMIT
 document
+
 .getElementById("bookingForm")
 
 .addEventListener(
+
   "submit",
+
   function(e){
 
     e.preventDefault();
 
+    const selectedPackage =
+    packageSelect.value;
+
+    // PACKAGE CHECK
+    if (!selectedPackage) {
+
+      statusMessage.textContent =
+
+      'Please choose your package before booking.';
+
+      return;
+
+    }
+
+    // COUPON CHECK
+    if (
+
+      couponToggle.checked &&
+
+      !validateCoupon()
+
+    ) {
+
+      return;
+
+    }
+
+    // COUPON CODE
+    const couponCode =
+
+    couponToggle.checked
+
+    ? couponInput.value
+      .trim()
+      .toUpperCase()
+
+    : '';
+
+    // ORIGINAL PRICE
+    const originalPrice =
+    packagePrice;
+
+    // FINAL PRICE
+    const discountedPrice =
+    getFinalPrice();
+
+    // TEMPLATE PARAMS
     const templateParams = {
 
       customer_name:
+
       document.getElementById("name").value,
 
       customer_email:
+
       document.getElementById("email").value,
 
       customer_phone:
+
       document.getElementById("phone").value,
 
       package_code:
-      document.getElementById("package").value,
-
-      total_price:
-      document.getElementById("total").value,
+      selectedPackage,
 
       coupon_code:
-      document.getElementById("coupon").value
-      || "None"
+      couponCode || "None",
+
+      // ADDITIONAL PRICE INFO
+      price_before_discount:
+
+      formatPrice(
+        originalPrice
+      ),
+
+      price_after_discount:
+
+      formatPrice(
+        discountedPrice
+      ),
+
+      total_price:
+
+      document.getElementById("total").value
 
     };
+
+    // DEBUG
+    console.log(templateParams);
 
     /* EMAIL TO ADMIN */
 
