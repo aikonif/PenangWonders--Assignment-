@@ -71,7 +71,8 @@ function applyFilters() {
 
     // If no filters are selected, show all packages
     if (activeFilters.activity.length === 0 && activeFilters.hotel.length === 0) {
-      pkg.classList.remove('hidden');
+      // ensure any inline hiding is removed so CSS determines layout
+      pkg.style.display = '';
       visibleCount++;
       return;
     }
@@ -91,10 +92,12 @@ function applyFilters() {
                       (activeFilters.hotel.length > 0 && hotelMatch && activeFilters.activity.length === 0);
 
     if (shouldShow) {
-      pkg.classList.remove('hidden');
+      // remove inline hide if previously hidden
+      pkg.style.display = '';
       visibleCount++;
     } else {
-      pkg.classList.add('hidden');
+      // hide package using inline style since CSS has no .hidden rule
+      pkg.style.display = 'none';
     }
   });
 
