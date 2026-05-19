@@ -65,7 +65,6 @@
     padding: 0 50px;
     z-index: 100;
     transition: height 0.3s, background 0.3s;
-    background: rgba(6, 32, 35, 0.92);
   }
 
   /* Navbar gets dark background when user scrolls */
