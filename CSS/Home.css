@@ -52,7 +52,7 @@ a {
   height: 46px;
   border-radius: 50%;
   border: 2px solid #f0a500;
-  background-image: url(LogoPenangWonders.png);
+  background-image: url('../PHOTO/LogoPenangWonders.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -113,7 +113,7 @@ a {
   display: flex;
   overflow: hidden;
   position: static;
-  background-image: url('HomeHeroBackground.jpg');
+  background-image: url('../PHOTO/HomeHeroBackground.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

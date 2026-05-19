@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Package Detail - Penang Wonders</title>
+<link rel="stylesheet" href="CSS/package_option.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Nunito:wght@700;800;900&display=swap"/>
+</head>
+<body data-package="" id="packagePage">
+
+<!-- Navbar placeholder (if using components.js)
+<div id="navbar-placeholder"></div> -->
+
+<nav id="navbar">
+  <div class="logo">
+    <div class="logo-circle">
+      <img src="PHOTO/logop.jpeg" alt="Penang Wonders">
+    </div>
+    <span class="logo-name">Penang Wonders</span>
+  </div>
+  <div class="nav-links">
+    <a href="Home.html">Home</a>
+    <a href="package_main.html" class="active">Package</a>
+    <a href="Blog.html">Blog</a>
+    <a href="Coupon.html">Coupon</a>
+  </div>
+</nav>
+
+<div class="content">
+  <div class="hero">
+    <div class="hero-img">
+      <img id="mainImage" src="" alt="Package" onclick="openLightbox(this)">
+      <button class="prev" onclick="prevSlide()">❮</button>
+      <button class="next" onclick="nextSlide()">❯</button>
+    </div>
+    <div class="details">
+      <h1 id="title"></h1>
+      <p class="price" id="price"></p>
+      <button class="showdesc" onclick="toggleText()">Hide Description</button>
+      <div id="text">
+        <div id="desc"></div>
+        <div id="includes"></div>
+        <div id="guide"></div>
+      </div>
+      <br>
+      <a href="#" target="_blank" id="mapLink" class="map-link">📍 View on Google Maps</a>
+      <br>
+      <a href="#" id="bookLink" class="btn">Book Now</a>
+    </div>
+  </div>
+  <div class="extra-section">
+    <h2 id="extraTitle"></h2>
+  </div>
+</div>
+
+<div id="lightbox" class="lightbox">
+  <span class="close">&times;</span>
+  <img id="lightbox-img">
+</div>
+
+<div id="footer-placeholder"></div>
+
+<script src="JS/package_detail.js"></script>
+</body>
+</html>

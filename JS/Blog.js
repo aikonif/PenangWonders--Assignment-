@@ -1,3 +1,17 @@
+// JSON - Updated path
+function fetchData() {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", "JSON/Blog.json", true);  // ← CHANGED
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            const data = JSON.parse(xhr.responseText);
+            displayData(data);
+            showLessReviews();
+        }
+    };
+    xhr.send();
+}
+
 (function() {
     emailjs.init("8RkR1k3XRpxkKYBaX");
 })();
@@ -98,7 +112,7 @@ window.onload = function () {
 // GET data from local JSON file
       function fetchData() {
       const xhr = new XMLHttpRequest();
-      xhr.open("GET", "Blog.json", true);
+      xhr.open("GET", "JSON/Blog.json", true);
       xhr.onload = function () {
         if (xhr.status === 200) {
           const data = JSON.parse(xhr.responseText);
