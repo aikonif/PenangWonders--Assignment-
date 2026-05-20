@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="CSS/Main.css">
 <link rel="stylesheet" href="CSS/package_option.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Nunito:wght@700;800;900&display=swap"/>
+  <link rel="stylesheet" href="CSS/Accessibility.css">
 </head>
   <body data-package="" id="packagePage">
 
@@ -14,6 +15,8 @@
   <div id="navbar-placeholder"></div> -->
 
   <nav id="navbarHTML"></nav>
+
+  <button id="backBtn" class="back-button" aria-label="Go back to previous page">← Back</button>
 
   <div class="content">
     <div class="hero">
@@ -34,7 +37,7 @@
         <br>
         <a href="#" target="_blank" id="mapLink" class="map-link">📍 View on Google Maps</a>
         <br>
-        <a href="#" id="bookLink" class="btn">Book Now</a>
+        <a href="booking.html" id="bookLink" class="btn">Book Now</a>
       </div>
     </div>
     <div class="extra-section">
@@ -54,6 +57,8 @@
   <script src="JS/Navbar.js"></script>
   <script src="JS/Footer.js"></script>
   <script src="JS/Back_To_Top.js"></script>
+  <script src="JS/BackButton.js"></script>
 
+  <script src="JS/Accessibility.js"></script>
 </body>
 </html>

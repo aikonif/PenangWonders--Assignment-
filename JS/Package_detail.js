@@ -10,35 +10,35 @@ const packageConfig = {
         packageCode: 'SEA-PKG-001',
         slideId: 'slide1',
         images: ['PHOTO/package1.jpg', 'PHOTO/package1_2.jpg', 'PHOTO/package1_3.jpg'],
-        mapUrl: 'https://google.com/maps/sea',
+        mapUrl: 'https://maps.app.goo.gl/sDoNDFF3LNKE97TL8',
         extraTitle: 'Experience the Ocean'
     },
     'SNK-PKG-002': {
         packageCode: 'SNK-PKG-002',
         slideId: 'slide2',
         images: ['PHOTO/package2.jpg', 'PHOTO/package2_2.jpg', 'PHOTO/package2_3.jpg'],
-        mapUrl: 'https://google.com/maps/sea',
+        mapUrl: 'https://maps.app.goo.gl/Why3iNqdHR5KkgcM8',
         extraTitle: 'Experience the Ocean'
     },
     'HIL-PKG-003': {
         packageCode: 'HIL-PKG-003',
         slideId: 'slide3',
         images: ['PHOTO/package3.jpg', 'PHOTO/package3_2.jpg', 'PHOTO/package3_3.jpg'],
-        mapUrl: 'https://google.com/maps/hillside',
+        mapUrl: 'https://maps.app.goo.gl/dskHWKUshHr8JN3s6',
         extraTitle: 'Experience the Hills'
     },
     'BEA-PKG-004': {
         packageCode: 'BEA-PKG-004',
         slideId: 'slide4',
         images: ['PHOTO/package4.jpg', 'PHOTO/package4_2.jpg', 'PHOTO/package4_3.jpg'],
-        mapUrl: 'https://google.com/maps/beach',
+        mapUrl: 'https://maps.app.goo.gl/yXa6TrZdRvjfacj88',
         extraTitle: 'Experience the Beach'
     },
     'JNG-PKG-005': {
         packageCode: 'JNG-PKG-005',
         slideId: 'slide5',
         images: ['PHOTO/package5.jpg', 'PHOTO/package5_2.jpg', 'PHOTO/package5_3.jpg'],
-        mapUrl: 'https://google.com/maps/jungle',
+        mapUrl: 'https://maps.app.goo.gl/h49tSz3Dh1j1Fjew6',
         extraTitle: 'Experience the Jungle'
     }
 };

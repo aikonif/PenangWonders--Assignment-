@@ -57,7 +57,7 @@ document.getElementById('promoCopyBtn').addEventListener('click', function() {
   btn.textContent = 'Copied ✓';
   note.textContent = 'Copied! Redirecting to packages…';
   note.classList.add('visible');
-  window.location.href = 'package_alt.html';
+  window.location.href = 'booking.html';
 
   if (navigator.clipboard && window.isSecureContext) {
     navigator.clipboard.writeText(code).catch(() => {
@@ -84,3 +84,66 @@ document.addEventListener('keydown', function(e) {
     hidePromoCode();
   }
 });
+
+/* ── CARD TOGGLE (tap on mobile) ── */
+    function toggleCard(card) {
+      var wasActive = card.classList.contains('active');
+      document.querySelectorAll('.promo-card').forEach(function (c) {
+        c.classList.remove('active');
+      });
+      if (!wasActive) card.classList.add('active');
+    }
+
+    /* ── PROMO MODAL ── */
+    function showPromoCode(event) {
+      event.stopPropagation();
+      var code  = event.currentTarget.getAttribute('data-promo') || '';
+      var modal = document.getElementById('promoModal');
+      var txt   = document.getElementById('promoCodeText');
+      var note  = document.getElementById('promoNote');
+      if (!modal) return;
+      if (txt)  txt.textContent  = code;
+      if (note) note.textContent = '';
+      modal.setAttribute('aria-hidden', 'false');
+      modal.classList.add('is-open');
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var modal    = document.getElementById('promoModal');
+      var closeBtn = document.getElementById('promoClose');
+      var copyBtn  = document.getElementById('promoCopyBtn');
+      var note     = document.getElementById('promoNote');
+
+      function closeModal() {
+        if (!modal) return;
+        modal.setAttribute('aria-hidden', 'true');
+        modal.classList.remove('is-open');
+      }
+
+      if (closeBtn) closeBtn.addEventListener('click', closeModal);
+      if (modal)    modal.addEventListener('click', function (e) {
+        if (e.target === modal) closeModal();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeModal();
+      });
+
+      if (copyBtn) {
+        copyBtn.addEventListener('click', function () {
+          var code = document.getElementById('promoCodeText').textContent || '';
+          if (navigator.clipboard) {
+            navigator.clipboard.writeText(code).then(function () {
+              if (note) note.textContent = '✓ Copied to clipboard!';
+            });
+          } else {
+            var ta = document.createElement('textarea');
+            ta.value = code;
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            if (note) note.textContent = '✓ Copied!';
+          }
+        });
+      }
+    });
