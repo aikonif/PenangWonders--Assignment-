@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="CSS/Main.css">
   <link rel="stylesheet" href="CSS/Coupon.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Nunito:wght@700;800;900&display=swap"/>
+  <link rel="stylesheet" href="CSS/Accessibility.css">
 </head>
 <body>
 
@@ -14,7 +15,7 @@
 
   <!-- HERO -->
   <section class="coupon-hero">
-    <div class="hero-badge">✦ Limited Time Offers</div>
+    <div class="hero-badge">Limited Time Offers</div>
     <h1>Exclusive <em>Promotions</em><br>Just For You</h1>
     <p>Tap any card to explore what's included. Pick a deal that fits your vibe.</p>
   </section>
@@ -22,16 +23,16 @@
   <!-- PROMO CARDS -->
   <section class="promo-grid">
 
-    <!-- Card 1 · New Year -->
+    <!-- Card 1 Â· New Year -->
     <article class="promo-card card-1" onclick="toggleCard(this)">
       <div class="card-bg">
         <img src="PHOTO/CouponNewyear.jpg.jpeg" alt="New Year" class="bg-img">
       </div>
       <div class="card-inner">
-        <div class="card-tag">🎉 New Year</div>
+        <div class="card-tag">New Year</div>
         <div class="card-title">New Year Blast</div>
-        <div class="card-sub">Up to 40% off — Jan only</div>
-        <span class="tap-hint">Tap to explore ↓</span>
+        <div class="card-sub">Up to 40% off Jan only</div>
+        <span class="tap-hint">Tap to explore</span>
       </div>
       <div class="card-expand">
         <div class="expand-label">New Year Special</div>
@@ -43,20 +44,20 @@
           <div class="perk"><div class="perk-dot"></div>Save more with limited-time coupons</div>
           <div class="perk"><div class="perk-dot"></div>Budget-friendly hotel &amp; trip deals</div>
         </div>
-        <button class="expand-cta" type="button" data-promo="NEWYEAR40" onclick="showPromoCode(event)">Claim Offer →</button>
+        <button class="expand-cta" type="button" data-promo="NEWYEAR40" onclick="showPromoCode(event)">Claim Offer</button>
       </div>
     </article>
 
-    <!-- Card 2 · Summer -->
+    <!-- Card 2 Â· Summer -->
     <article class="promo-card card-2" onclick="toggleCard(this)">
       <div class="card-bg">
         <img src="PHOTO/CouponSummer.jpg.webp" alt="Summer" class="bg-img">
       </div>
       <div class="card-inner">
-        <div class="card-tag">☀️ Summer</div>
+        <div class="card-tag">Summer</div>
         <div class="card-title">Summer Splash</div>
         <div class="card-sub">Enjoy bonus savings on bundled trips</div>
-        <span class="tap-hint">Tap to explore ↓</span>
+        <span class="tap-hint">Tap to explore</span>
       </div>
       <div class="card-expand">
         <div class="expand-label">Summer Bundle</div>
@@ -68,20 +69,20 @@
           <div class="perk"><div class="perk-dot"></div>Dedicated summer support line</div>
           <div class="perk"><div class="perk-dot"></div>Exclusive offers for family and group trips</div>
         </div>
-        <button class="expand-cta" type="button" data-promo="SUMMER50" onclick="showPromoCode(event)">Grab the Bundle →</button>
+        <button class="expand-cta" type="button" data-promo="SUMMER50" onclick="showPromoCode(event)">Grab the Bundle</button>
       </div>
     </article>
 
-    <!-- Card 3 · Raya -->
+    <!-- Card 3 Â· Raya -->
     <article class="promo-card card-3" onclick="toggleCard(this)">
       <div class="card-bg">
         <img src="PHOTO/CouponRaya.jpg.jpeg" alt="Raya" class="bg-img">
       </div>
       <div class="card-inner">
-        <div class="card-tag">🌙 Raya</div>
+        <div class="card-tag">Raya</div>
         <div class="card-title">Hari Raya Special</div>
-        <div class="card-sub">Festive rewards — ends soon</div>
-        <span class="tap-hint">Tap to explore ↓</span>
+        <div class="card-sub">Festive rewards ends soon</div>
+        <span class="tap-hint">Tap to explore</span>
       </div>
       <div class="card-expand">
         <div class="expand-label">Festive Season</div>
@@ -93,7 +94,7 @@
           <div class="perk"><div class="perk-dot"></div>Limited-time festive coupon savings</div>
           <div class="perk"><div class="perk-dot"></div>Exclusive holiday deals for unforgettable trips</div>
         </div>
-        <button class="expand-cta" type="button" data-promo="RAYA35" onclick="showPromoCode(event)">Celebrate Now →</button>
+        <button class="expand-cta" type="button" data-promo="RAYA35" onclick="showPromoCode(event)">Celebrate Now</button>
       </div>
     </article>
 
@@ -133,7 +134,7 @@
   <!-- PROMO CODE MODAL -->
   <div class="promo-modal" id="promoModal" aria-hidden="true">
     <div class="promo-modal-card" role="dialog" aria-modal="true" aria-labelledby="promoTitle">
-      <button class="promo-modal-close" id="promoClose" aria-label="Close">×</button>
+      <button class="promo-modal-close" id="promoClose" aria-label="Close">Ã—</button>
       <div class="promo-modal-header">
         <div class="promo-modal-badge">Promo Code</div>
         <h2 id="promoTitle">Your code is ready</h2>
@@ -154,70 +155,9 @@
   <script src="JS/Navbar.js"></script>
   <script src="JS/Footer.js"></script>
   <script src="JS/Back_To_Top.js"></script>
+  <script src="JS/Accessibility.js"></script>
 
   <script>
-    /* ── CARD TOGGLE (tap on mobile) ── */
-    function toggleCard(card) {
-      var wasActive = card.classList.contains('active');
-      document.querySelectorAll('.promo-card').forEach(function (c) {
-        c.classList.remove('active');
-      });
-      if (!wasActive) card.classList.add('active');
-    }
-
-    /* ── PROMO MODAL ── */
-    function showPromoCode(event) {
-      event.stopPropagation();
-      var code  = event.currentTarget.getAttribute('data-promo') || '';
-      var modal = document.getElementById('promoModal');
-      var txt   = document.getElementById('promoCodeText');
-      var note  = document.getElementById('promoNote');
-      if (!modal) return;
-      if (txt)  txt.textContent  = code;
-      if (note) note.textContent = '';
-      modal.setAttribute('aria-hidden', 'false');
-      modal.classList.add('is-open');
-    }
-
-    document.addEventListener('DOMContentLoaded', function () {
-      var modal    = document.getElementById('promoModal');
-      var closeBtn = document.getElementById('promoClose');
-      var copyBtn  = document.getElementById('promoCopyBtn');
-      var note     = document.getElementById('promoNote');
-
-      function closeModal() {
-        if (!modal) return;
-        modal.setAttribute('aria-hidden', 'true');
-        modal.classList.remove('is-open');
-      }
-
-      if (closeBtn) closeBtn.addEventListener('click', closeModal);
-      if (modal)    modal.addEventListener('click', function (e) {
-        if (e.target === modal) closeModal();
-      });
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') closeModal();
-      });
-
-      if (copyBtn) {
-        copyBtn.addEventListener('click', function () {
-          var code = document.getElementById('promoCodeText').textContent || '';
-          if (navigator.clipboard) {
-            navigator.clipboard.writeText(code).then(function () {
-              if (note) note.textContent = '✓ Copied to clipboard!';
-            });
-          } else {
-            var ta = document.createElement('textarea');
-            ta.value = code;
-            document.body.appendChild(ta);
-            ta.select();
-            document.execCommand('copy');
-            document.body.removeChild(ta);
-            if (note) note.textContent = '✓ Copied!';
-          }
-        });
-      }
-    });
   </script>
 
 </body>

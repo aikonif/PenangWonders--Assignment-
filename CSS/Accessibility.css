@@ -1,0 +1,237 @@
+﻿/* ══════════════════════════════════════════
+   Accessibility Widget — Penang Wonders
+   Matches #backToTopBtn sticky button style
+   ══════════════════════════════════════════ */
+
+/* ── Back Button ──
+   Stack order (bottom → top): backToTop (24px) → accessibility (84px) → back (144px)
+   All share right: 24px and width/height: 48px with 12px gaps between them.
+*/
+#backBtn {
+  position: fixed;
+  bottom: 144px;
+  right: 24px;
+  z-index: 9997;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: #1a6b5a;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0,0,0,.28);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: background .2s, transform .2s, opacity .3s;
+  opacity: 0;
+}
+
+#backBtn.back-visible {
+  display: flex;
+  opacity: 1;
+}
+
+#backBtn:hover,
+#backBtn:focus-visible {
+  background: #134f43;
+  transform: scale(1.1);
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+/* ── Accessibility Trigger Button ── */
+#accessibilityBtn {
+  position: fixed;
+  bottom: 84px;
+  right: 24px;
+  z-index: 9998;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: #1a6b5a;
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0,0,0,.28);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .2s, transform .2s;
+}
+
+#accessibilityBtn:hover,
+#accessibilityBtn:focus-visible {
+  background: #134f43;
+  transform: scale(1.1);
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+/* ── Panel ── */
+#accessibilityPanel {
+  position: fixed;
+  bottom: 204px;
+  right: 24px;
+  z-index: 9999;
+  width: 230px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.22);
+  padding: 18px 16px 14px;
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  font-family: inherit;
+}
+
+#accessibilityPanel.a11y-open {
+  display: flex;
+}
+
+#accessibilityPanel h3 {
+  margin: 0 0 6px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: #1a6b5a;
+}
+
+/* ── Row ── */
+.a11y-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.a11y-label {
+  font-size: 13px;
+  color: #333;
+  flex: 1;
+}
+
+/* ── Font size +/- buttons ── */
+.a11y-btn-group {
+  display: flex;
+  gap: 4px;
+}
+
+.a11y-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: 1.5px solid #ccc;
+  background: #f5f5f5;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .15s, border-color .15s;
+  color: #222;
+  font-weight: 700;
+}
+
+.a11y-btn:hover,
+.a11y-btn:focus-visible {
+  background: #e0f0ec;
+  border-color: #1a6b5a;
+  outline: none;
+}
+
+/* ── Toggle switch ── */
+.a11y-toggle {
+  position: relative;
+  width: 40px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+.a11y-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.a11y-toggle-track {
+  position: absolute;
+  inset: 0;
+  background: #ccc;
+  border-radius: 22px;
+  transition: background .2s;
+  cursor: pointer;
+}
+
+.a11y-toggle input:checked + .a11y-toggle-track {
+  background: #1a6b5a;
+}
+
+.a11y-toggle-track::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform .2s;
+  box-shadow: 0 1px 4px rgba(0,0,0,.2);
+}
+
+.a11y-toggle input:checked + .a11y-toggle-track::after {
+  transform: translateX(18px);
+}
+
+/* ── Reset button ── */
+#a11yReset {
+  margin-top: 4px;
+  padding: 7px 0;
+  width: 100%;
+  border: 1.5px solid #1a6b5a;
+  border-radius: 8px;
+  background: transparent;
+  color: #1a6b5a;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .15s, color .15s;
+}
+
+#a11yReset:hover,
+#a11yReset:focus-visible {
+  background: #1a6b5a;
+  color: #fff;
+  outline: none;
+}
+
+/* ── Divider ── */
+.a11y-divider {
+  height: 1px;
+  background: #eee;
+  margin: 2px 0;
+}
+
+/* ══════════════════════════════════════
+   Global accessibility state classes
+   ══════════════════════════════════════ */
+
+/* Dyslexia-friendly font */
+body.a11y-dyslexia * {
+  font-family: 'Arial', 'Helvetica Neue', sans-serif !important;
+  letter-spacing: .04em;
+  word-spacing: .12em;
+  line-height: 1.7 !important;
+}
+
+/* Large cursor */
+body.a11y-large-cursor,
+body.a11y-large-cursor * {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M8 2 L8 26 L13 20 L17 28 L20 27 L16 19 L23 19 Z' fill='black' stroke='white' stroke-width='1.5'/%3E%3C/svg%3E") 0 0, auto !important;
+}
