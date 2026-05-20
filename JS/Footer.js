@@ -1,5 +1,11 @@
-fetch("../Footer.html")
+fetch("Footer.html")
   .then(response => response.text())
   .then(data => {
-    document.getElementById("footerHTML").innerHTML = data;
+    const footerContainer = document.getElementById("footerHTML");
+    if (footerContainer) {
+      footerContainer.innerHTML = data;
+    }
+  })
+  .catch(error => {
+    console.error('Footer load failed:', error);
   });

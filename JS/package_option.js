@@ -266,7 +266,7 @@ const packageId =
 document.body.dataset.package;
 
 // FETCH JSON
-fetch("../JSON/package_option.json")
+fetch("../JSON/package_detail.json")
 
 .then(response => response.json())
 
