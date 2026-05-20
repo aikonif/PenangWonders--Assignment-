@@ -276,3 +276,173 @@ footer {
     font-size: 12px;
   }
 }
+
+/* ============================================================ */
+/* HAMBURGER MENU — Mobile & Tablet                             */
+/* ============================================================ */
+
+/* ── Hamburger button (hidden on desktop) ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1100;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.hamburger .bar {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: white;
+  border-radius: 2px;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity   0.25s ease,
+              width     0.3s ease;
+  transform-origin: center;
+}
+
+/* Bars morph into × when open */
+.hamburger.open .bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger.open .bar:nth-child(2) {
+  opacity: 0;
+  width: 0;
+}
+.hamburger.open .bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── Mobile / Tablet (≤768px): show hamburger, hide desktop nav ── */
+@media (max-width: 768px) {
+
+  /* Override the desktop responsive rules above for nav-links */
+  #navbar {
+    padding: 0 20px;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  /* Full-screen overlay panel */
+  .nav-links {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(160deg,
+      rgba(4, 22, 24, 0.97) 0%,
+      rgba(7, 37, 39, 0.97) 100%);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    z-index: 1050;
+    list-style: none;
+    /* Hidden by default */
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-14px);
+    transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Open state — toggled by Navbar.js */
+  .nav-links.nav-open {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+  }
+
+  /* Gold accent hairline beneath navbar height */
+  .nav-links::before {
+    content: '';
+    position: absolute;
+    top: 72px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 36px;
+    height: 2px;
+    background: #f0a500;
+    border-radius: 2px;
+    opacity: 0.7;
+  }
+
+  /* Link styling inside the overlay */
+  .nav-links a {
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+    letter-spacing: 5px;
+    color: rgba(255, 255, 255, 0.82);
+    position: relative;
+    padding-bottom: 6px;
+    /* Hidden until panel opens */
+    opacity: 0;
+    transform: translateY(18px);
+    transition: color     0.2s ease,
+                opacity   0.4s ease,
+                transform 0.4s ease;
+  }
+
+  /* Staggered entrance for each link */
+  .nav-links li:nth-child(1) a { transition-delay: 0.06s; }
+  .nav-links li:nth-child(2) a { transition-delay: 0.12s; }
+  .nav-links li:nth-child(3) a { transition-delay: 0.18s; }
+  .nav-links li:nth-child(4) a { transition-delay: 0.24s; }
+  .nav-links li:nth-child(5) a { transition-delay: 0.30s; }
+
+  .nav-links.nav-open a {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Gold underline on hover / active */
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: #f0a500;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: #f0a500;
+    text-decoration: none;
+  }
+
+  .nav-links a:hover::after,
+  .nav-links a.active::after {
+    width: 100%;
+  }
+
+  /* Lock scroll when menu is open */
+  body.menu-open {
+    overflow: hidden;
+  }
+}
+
+/* ── Tablet-only tweak: slightly larger text ── */
+@media (min-width: 601px) and (max-width: 768px) {
+  .nav-links a {
+    font-size: 20px;
+    letter-spacing: 6px;
+  }
+}
