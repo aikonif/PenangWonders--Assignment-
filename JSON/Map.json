@@ -1,0 +1,132 @@
+{
+  "attractions": [
+    {
+      "id": 1,
+      "name": "Penang Hill",
+      "lat": 5.4242,
+      "lng": 100.2644,
+      "description": "Panoramic hill station with funicular railway, cool climate & breathtaking sunrise views over George Town.",
+      "iconEmoji": "🚠",
+      "category": "Nature & Views",
+      "type": "highlight",
+      "link": null
+    },
+    {
+      "id": 2,
+      "name": "Kek Lok Si Temple",
+      "lat": 5.3998,
+      "lng": 100.2736,
+      "description": "Magnificent Buddhist temple complex, iconic seven-story pagoda and the giant Kuan Yin statue.",
+      "iconEmoji": "🏯",
+      "category": "Cultural & Heritage",
+      "type": "highlight",
+      "link": null
+    },
+    {
+      "id": 3,
+      "name": "George Town UNESCO Zone",
+      "lat": 5.4141,
+      "lng": 100.3288,
+      "description": "Historic colonial architecture, vibrant street art, clan jetties, and authentic local cafes.",
+      "iconEmoji": "🎨",
+      "category": "Heritage & Art",
+      "type": "highlight",
+      "link": null
+    },
+    {
+      "id": 4,
+      "name": "Batu Ferringhi Beach",
+      "lat": 5.4769,
+      "lng": 100.2445,
+      "description": "Golden sandy beach, water sports, night market & stunning sunset views.",
+      "iconEmoji": "🏖️",
+      "category": "Beach & Relax",
+      "type": "highlight",
+      "link": null
+    },
+    {
+      "id": 5,
+      "name": "Pinang Peranakan Mansion",
+      "lat": 5.4171,
+      "lng": 100.3379,
+      "description": "Green-hued mansion museum showcasing Peranakan heritage, antiques and ornate design.",
+      "iconEmoji": "🏛️",
+      "category": "Museum",
+      "type": "highlight",
+      "link": null
+    },
+    {
+      "id": 6,
+      "name": "Entopia Butterfly Farm",
+      "lat": 5.4347,
+      "lng": 100.2589,
+      "description": "Tropical butterfly sanctuary with lush gardens & interactive nature exhibits.",
+      "iconEmoji": "🦋",
+      "category": "Nature",
+      "type": "highlight",
+      "link": null
+    }
+  ],
+  "packageOffers": [
+    {
+      "id": 1,
+      "name": "Seaside Escape Package",
+      "packageId": "SEA-PKG-001",
+      "lat": 5.4642,
+      "lng": 100.3044,
+      "description": "Enjoy a relaxing seaside getaway with ocean views, beach access, and premium amenities.",
+      "iconEmoji": "🌊",
+      "price": "RM 150",
+      "type": "package",
+      "link": "package_detail.html?id=SEA-PKG-001"
+    },
+    {
+      "id": 2,
+      "name": "Snorkling Nature Package",
+      "packageId": "SNK-PKG-002",
+      "lat": 5.4842,
+      "lng": 100.2844,
+      "description": "Discover underwater wonders with guided snorkeling tours and nature excursions.",
+      "iconEmoji": "🐠",
+      "price": "RM 200",
+      "type": "package",
+      "link": "package_detail.html?id=SNK-PKG-002"
+    },
+    {
+      "id": 3,
+      "name": "Hillside Adventure Package",
+      "packageId": "HIL-PKG-003",
+      "lat": 5.4442,
+      "lng": 100.2544,
+      "description": "Experience thrilling mountain trails, fresh air, and stunning panoramic views.",
+      "iconEmoji": "⛰️",
+      "price": "RM 250",
+      "type": "package",
+      "link": "package_detail.html?id=HIL-PKG-003"
+    },
+    {
+      "id": 4,
+      "name": "Beach Escape Package",
+      "packageId": "BEA-PKG-004",
+      "lat": 5.4969,
+      "lng": 100.2345,
+      "description": "Sun, sand, and sea - perfect beachfront getaway with water sports included.",
+      "iconEmoji": "🏄",
+      "price": "RM 280",
+      "type": "package",
+      "link": "package_detail.html?id=BEA-PKG-004"
+    },
+    {
+      "id": 5,
+      "name": "Dual Nature Package",
+      "packageId": "JNG-PKG-005",
+      "lat": 5.4542,
+      "lng": 100.3144,
+      "description": "Best of both worlds - jungle trekking and beach relaxation combined.",
+      "iconEmoji": "🌴",
+      "price": "RM 350",
+      "type": "package",
+      "link": "package_detail.html?id=JNG-PKG-005"
+    }
+  ]
+}

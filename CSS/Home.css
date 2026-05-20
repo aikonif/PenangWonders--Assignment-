@@ -10,6 +10,18 @@
   background-position: center;
   background-repeat: no-repeat;
   height: 100vh;
+  animation: heroZoom 1.5s ease-out;
+}
+
+@keyframes heroZoom {
+    0% {
+        transform: scale(1.005);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 /* Left golden panel */
@@ -40,8 +52,8 @@
   justify-content: center;
   text-align: center;
   position: absolute;
-  right: 0;
-  top: 0;
+  right: -15px;
+  top: 0px;
   height: 100%;
 }
 
@@ -200,133 +212,172 @@
     z-index: 1;
     margin-bottom: 20px;
 }
+
 .map-card {
-  background: white;
-  border-radius: 2rem;
-  box-shadow: 0 20px 35px -12px rgba(0,0,0,0.2);
-  overflow: hidden;
-  margin-bottom: 3rem;
-  transition: 0.2s;
-}
-.map-title {
-  background: #f4edd8;
-  padding: 1rem 1.8rem;
-  border-bottom: 1px solid #e2d5b6;
-}
-.map-title h3 {
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: #2b5e42;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-#map {
-  height: 480px;
-  width: 100%;
-  background: #cbcdb5;
-  z-index: 1;
-}
-.map-caption {
-  padding: 0.8rem 1.5rem;
-  background: #fffbf0;
-  font-size: 0.85rem;
-  color: #4a5b52;
-  border-top: 1px solid #ece1ca;
-}
-
-/* Map section container */
-.map-container {
-    margin: 2rem auto;
-    padding: 0 1rem;
-    max-width: 1300px;
-}
-
-.map-container h2 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    color: #1e3a2f;
-    border-left: 5px solid #f5b642;
-    padding-left: 1rem;
-}
-
-/* Attractions grid */
-.attractions-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    max-width: 1300px;
-    margin: 3rem auto;
-    padding: 0 1rem;
-}
-
-/* Attraction card */
-.attraction-card {
     background: white;
-    border-radius: 16px;
+    border-radius: 2rem;
+    box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.2);
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-bottom: 3rem;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
-.attraction-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+/* Dark mode for map card - matching Home.css color scheme */
+.map-card.dark-mode {
+    background: #050505;
+    box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.5);
 }
 
-/* Card image */
-.card-img {
-    height: 200px;
-    background-size: cover;
-    background-position: center;
-    position: relative;
+.map-title {
+    background: #f4edd8;
+    padding: 1rem 1.8rem;
+    border-bottom: 1px solid #e2d5b6;
+    transition: background 0.3s ease, border-color 0.3s ease;
 }
 
-.card-img .emoji-overlay {
-    font-size: 3rem;
-    padding: 1rem 0 0 1rem;
-    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-}
-
-/* Card content */
-.card-content {
-    padding: 1.2rem;
-}
-
-.card-content h4 {
-    font-size: 1.3rem;
-    margin-bottom: 0.5rem;
-    color: #1e3a2f;
-}
-
-.card-content p {
-    font-size: 0.9rem;
-    color: #4a5b52;
-    line-height: 1.4;
-    margin-bottom: 0.8rem;
-}
-
-/* Category badge */
-.badge {
-    display: inline-block;
-    background: #eef3fc;
-    padding: 0.3rem 0.8rem;
-    border-radius: 20px;
-    font-size: 0.75rem;
+.map-title h3 {
+    font-size: 1.6rem;
     font-weight: 600;
-    color: #2c7da0;
-}
-
-/* Click hint */
-.click-hint {
-    margin-top: 12px;
-    font-size: 0.75rem;
-    color: #f5a623;
-    font-weight: 500;
+    color: #2b5e42;
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 10px;
+    transition: color 0.3s ease;
+}
+
+/* Dark mode for map title - matching Home.css */
+.map-card.dark-mode .map-title {
+    background: #041618;
+    border-bottom: 1px solid #f0a500;
+}
+
+.map-card.dark-mode .map-title h3 {
+    color: #ffffff;
+}
+
+.map-caption {
+    padding: 0.8rem 1.5rem;
+    background: #fffbf0;
+    font-size: 0.85rem;
+    color: #4a5b52;
+    border-top: 1px solid #ece1ca;
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Map Toggle Controls */
+.map-toggle-controls {
+    display: flex;
+    gap: 20px;
+    margin-top: 2px;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 8px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.toggle-label:hover {
+    background: rgba(240, 165, 0, 0.8);
+    color: black;
+}
+
+.toggle-label input {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #f0a500;
+}
+
+/* Dark mode support for toggles */
+.map-card.dark-mode .toggle-label {
+    background: rgba(6, 32, 35, 0.9);
+    border: 1px solid #f0a500;
+}
+
+.map-card.dark-mode .toggle-label:hover {
+    background: #f0a500;
+    color: #041618;
+}
+
+@media (max-width: 600px) {
+    .map-toggle-controls {
+        justify-content: center;
+        gap: 12px;
+    }
+    
+    .toggle-label {
+        padding: 6px 12px;
+        font-size: 11px;
+    }
+}
+
+/* Dark mode for map caption - matching Home.css */
+.map-card.dark-mode .map-caption {
+    background: #041618;
+    color: rgba(255, 255, 255, 0.6);
+    border-top: 1px solid #f0a500;
+}
+
+#map {
+    height: 480px;
+    width: 100%;
+    background: #cbcdb5;
+    z-index: 1;
+}
+
+/* Map Dark Mode Toggle Button */
+.map-card {
+    position: relative;
+    z-index: 1;
+}
+
+.map-theme-toggle {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.map-theme-toggle:hover {
+    background: #f0a500;
+    color: black;
+    transform: scale(1.02);
+}
+
+/* Dark mode button styling - matching Home.css */
+.map-card.dark-mode .map-theme-toggle {
+    background: rgba(6, 32, 35, 0.92);
+    color: white;
+    border: 0.1px solid #f0a500;
+}
+
+.map-card.dark-mode .map-theme-toggle:hover {
+    background: #f0a500;
+    color: #041618;
 }
 
 /* Responsive */
@@ -412,27 +463,52 @@
     letter-spacing: 1px;
   }
 
-  .hero-left {
-    width: 100%;
-    height: 55vh;
-    clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
-    padding: 90px 24px 40px;
-    align-items: flex-start;
+  /* HERO SECTION - Mobile Fix */
+  .hero {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+    background-position: 75% center;  /* Shows right side of background */
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .line1 { font-size: 30px; }
-  .line2 { font-size: 46px; }
-  .line3, .line4 { font-size: 26px; }
+  /* Hide hero-left completely */
+  .hero-left {
+    display: none;
+  }
 
+  /* Center hero-right */
   .hero-right {
     position: static;
     width: 100%;
-    height: 45vh;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
   }
 
   .hero-right h1 {
     font-size: 42px;
     letter-spacing: 5px;
+  }
+
+  .discover {
+    font-size: 18px;
+    letter-spacing: 5px;
+  }
+
+  .tagline {
+    font-size: 12px;
+    letter-spacing: 2px;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .contact-bar {
@@ -461,5 +537,35 @@
     flex-direction: column;
     text-align: center;
     padding: 24px 20px;
+  }
+
+  .card {
+    display: flex;
+    align-items: center;
+    text-align: left;
+  }
+  
+  .card-img {
+    height: 80px;
+    width: 80px;
+    min-width: 80px;
+    font-size: 35px;
+    margin: 10px;
+    border-radius: 12px;
+  }
+  
+  .card-info {
+    padding: 10px 15px 10px 0;
+    flex: 1;
+  }
+  
+  .card-info h3 {
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+  
+  .card-info p {
+    font-size: 11px;
+    margin-bottom: 4px;
   }
 }

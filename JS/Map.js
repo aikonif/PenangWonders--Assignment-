@@ -7,173 +7,237 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Only initialize map if the map container exists on this page
     const mapContainer = document.getElementById('penang-map');
-    if (!mapContainer) return; // Exit if no map on this page
+    if (!mapContainer) return;
     
-    // ---------- ATTRACTIONS DATA ----------
-    const attractions = [
-        {
-            id: 1,
-            name: "Penang Hill",
-            lat: 5.4242,
-            lng: 100.2644,
-            description: "Panoramic hill station with funicular railway, cool climate & breathtaking sunrise views over George Town.",
-            iconEmoji: "🚠",
-            category: "Nature & Views",
-            imgColor: "linear-gradient(135deg, #2f6b47, #9eb67b)"
-        },
-        {
-            id: 2,
-            name: "Kek Lok Si Temple",
-            lat: 5.3998,
-            lng: 100.2736,
-            description: "Magnificent Buddhist temple complex, iconic seven-story pagoda and the giant Kuan Yin statue.",
-            iconEmoji: "🏯",
-            category: "Cultural & Heritage",
-            imgColor: "linear-gradient(135deg, #b5651e, #e9b35f)"
-        },
-        {
-            id: 3,
-            name: "George Town UNESCO Zone",
-            lat: 5.4141,
-            lng: 100.3288,
-            description: "Historic colonial architecture, vibrant street art, clan jetties, and authentic local cafes.",
-            iconEmoji: "🎨",
-            category: "Heritage & Art",
-            imgColor: "linear-gradient(135deg, #3b7b86, #6fb3b2)"
-        },
-        {
-            id: 4,
-            name: "Batu Ferringhi Beach",
-            lat: 5.4769,
-            lng: 100.2445,
-            description: "Golden sandy beach, water sports, night market & stunning sunset views.",
-            iconEmoji: "🏖️",
-            category: "Beach & Relax",
-            imgColor: "linear-gradient(135deg, #1f8a8a, #9ad0c2)"
-        },
-        {
-            id: 5,
-            name: "Pinang Peranakan Mansion",
-            lat: 5.4171,
-            lng: 100.3379,
-            description: "Green-hued mansion museum showcasing Peranakan heritage, antiques and ornate design.",
-            iconEmoji: "🏛️",
-            category: "Museum",
-            imgColor: "linear-gradient(135deg, #497c5c, #b3cfa0)"
-        },
-        {
-            id: 6,
-            name: "Entopia Butterfly Farm",
-            lat: 5.4347,
-            lng: 100.2589,
-            description: "Tropical butterfly sanctuary with lush gardens & interactive nature exhibits.",
-            iconEmoji: "🦋",
-            category: "Nature",
-            imgColor: "linear-gradient(135deg, #439a86, #b1dfcc)"
-        }
-    ];
-
-    // ---------- INITIALIZE MAP ----------
-    const map = L.map('penang-map').setView([5.4141, 100.3288], 12.5);
-
-    // Add OpenStreetMap tiles (free, no API key)
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-        subdomains: 'abcd',
-        maxZoom: 19,
-        minZoom: 10
-    }).addTo(map);
-
-    // Add scale bar
-    L.control.scale({ metric: true, imperial: false }).addTo(map);
-
-    // ---------- ADD MARKERS ----------
-    const markers = [];
-
-    attractions.forEach(attraction => {
-        const marker = L.marker([attraction.lat, attraction.lng], {
-            riseOnHover: true
+    // ---------- LOAD DATA FROM JSON ----------
+    fetch('JSON/Map.json')
+        .then(response => response.json())
+        .then(data => {
+            initializeMap(data.attractions, data.packageOffers);
+        })
+        .catch(error => {
+            console.error('Error loading map data:', error);
+        });
+    
+    function initializeMap(attractions, packageOffers) {
+        
+        // ---------- INITIALIZE MAP (DARK MODE DEFAULT) ----------
+        const map = L.map('penang-map').setView([5.4141, 100.3288], 12.5);
+        
+        // Use dark tiles as default
+        let currentTileLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+            subdomains: 'abcd',
+            maxZoom: 19,
+            minZoom: 10
         }).addTo(map);
         
-        const popupContent = `
-            <div style="font-family: 'Segoe UI', Arial, sans-serif; min-width: 220px;">
-                <strong style="font-size:1.15rem; color:#1e5a3a;">${attraction.iconEmoji} ${attraction.name}</strong>
-                <p style="margin:8px 0; font-size:0.85rem; line-height:1.4;">${attraction.description}</p>
-                <span style="background:#f5c542; padding:3px 10px; border-radius:40px; font-size:0.7rem; font-weight:bold; display:inline-block;">${attraction.category}</span>
-            </div>
-        `;
-        marker.bindPopup(popupContent);
+        // Add scale bar
+        L.control.scale({ metric: true, imperial: false }).addTo(map);
         
-        markers.push({
-            id: attraction.id,
-            marker: marker,
-            latlng: [attraction.lat, attraction.lng],
-            name: attraction.name
+        // Apply dark mode to map card UI by default
+        const mapCard = document.querySelector('.map-card');
+        if (mapCard) {
+            mapCard.classList.add('dark-mode');
+        }
+        
+        // ---------- CUSTOM MARKER ICONS ----------
+        
+        // Blue marker for Penang Highlights
+        const blueMarkerIcon = L.divIcon({
+            className: 'custom-blue-marker',
+            html: '<div style="background-color: #1877f2; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3);"><span style="font-size: 18px;">📍</span></div>',
+            iconSize: [32, 32],
+            popupAnchor: [0, -16]
         });
-    });
-
-    // ---------- BUILD ATTRACTION CARDS ----------
-    const gridContainer = document.getElementById('attractions-grid');
-    
-    if (gridContainer) {
-        attractions.forEach(att => {
-            const card = document.createElement('div');
-            card.className = 'attraction-card';
+        
+        // Gold marker for Package Offers
+        const goldMarkerIcon = L.divIcon({
+            className: 'custom-gold-marker',
+            html: '<div style="background-color: #f0a500; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3);"><span style="font-size: 18px;">🏨</span></div>',
+            iconSize: [32, 32],
+            popupAnchor: [0, -16]
+        });
+        
+        // Dark mode marker styles
+        const style = document.createElement('style');
+        style.textContent = `
+            .map-card.dark-mode .custom-blue-marker div {
+                background-color: #3b82f6 !important;
+                border: 2px solid #1a1a2e !important;
+            }
+            .map-card.dark-mode .custom-gold-marker div {
+                background-color: #f0a500 !important;
+                border: 2px solid #1a1a2e !important;
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // ---------- STORE MARKERS FOR TOGGLE ----------
+        let highlightMarkers = [];
+        let packageMarkers = [];
+        
+        // Add Highlight Markers (Penang Highlights)
+        attractions.forEach(attraction => {
+            const marker = L.marker([attraction.lat, attraction.lng], {
+                icon: blueMarkerIcon,
+                riseOnHover: true
+            }).addTo(map);
             
-            card.innerHTML = `
-                <div class="card-img" style="background: ${att.imgColor}; background-size: cover; background-position: center;">
-                    <div class="emoji-overlay">${att.iconEmoji}</div>
-                </div>
-                <div class="card-content">
-                    <h4>${att.name}</h4>
-                    <p>${att.description}</p>
-                    <div class="badge">📌 ${att.category}</div>
-                    <div class="click-hint">
-                        <span>📍</span> Click to view on map
-                    </div>
+            const popupContent = `
+                <div style="font-family: 'Segoe UI', Arial, sans-serif; min-width: 220px;">
+                    <strong style="font-size:1.15rem; color:#1877f2;">${attraction.iconEmoji} ${attraction.name}</strong>
+                    <p style="margin:8px 0; font-size:0.85rem; line-height:1.4;">${attraction.description}</p>
+                    <span style="background:#1877f2; padding:3px 10px; border-radius:40px; font-size:0.7rem; font-weight:bold; display:inline-block; color:white;">${attraction.category}</span>
                 </div>
             `;
+            marker.bindPopup(popupContent);
             
-            card.addEventListener('click', function() {
-                const markerObj = markers.find(m => m.id === att.id);
-                if (markerObj) {
-                    map.flyTo(markerObj.latlng, 15, {
-                        duration: 1.2,
-                        easeLinearity: 0.5
-                    });
-                    setTimeout(() => {
-                        markerObj.marker.openPopup();
-                    }, 300);
+            highlightMarkers.push({
+                id: attraction.id,
+                marker: marker,
+                latlng: [attraction.lat, attraction.lng],
+                name: attraction.name
+            });
+        });
+        
+        // Add Package Markers
+        packageOffers.forEach(pkg => {
+            const marker = L.marker([pkg.lat, pkg.lng], {
+                icon: goldMarkerIcon,
+                riseOnHover: true
+            }).addTo(map);
+            
+            const popupContent = `
+                <div style="font-family: 'Segoe UI', Arial, sans-serif; min-width: 240px;">
+                    <strong style="font-size:1.15rem; color:#f0a500;">${pkg.iconEmoji} ${pkg.name}</strong>
+                    <p style="margin:8px 0; font-size:0.85rem; line-height:1.4;">${pkg.description}</p>
+                    <div style="margin:8px 0;">
+                        <span style="background:#f0a500; padding:3px 10px; border-radius:40px; font-size:0.7rem; font-weight:bold; display:inline-block; color:black;">${pkg.price}</span>
+                    </div>
+                    <a href="${pkg.link}" style="display:inline-block; margin-top:8px; background:#f0a500; color:black; padding:5px 12px; border-radius:30px; text-decoration:none; font-size:0.75rem; font-weight:bold;">View Package →</a>
+                </div>
+            `;
+            marker.bindPopup(popupContent);
+            
+            packageMarkers.push({
+                id: pkg.id,
+                marker: marker,
+                latlng: [pkg.lat, pkg.lng],
+                name: pkg.name,
+                link: pkg.link
+            });
+        });
+        
+        // ---------- TOGGLE FUNCTIONALITY ----------
+        const toggleHighlights = document.getElementById('toggleHighlights');
+        const togglePackages = document.getElementById('togglePackages');
+        
+        function updateMarkerVisibility() {
+            const showHighlights = toggleHighlights ? toggleHighlights.checked : true;
+            const showPackages = togglePackages ? togglePackages.checked : true;
+            
+            highlightMarkers.forEach(item => {
+                if (showHighlights) {
+                    item.marker.addTo(map);
+                } else {
+                    map.removeLayer(item.marker);
                 }
             });
             
-            gridContainer.appendChild(card);
-        });
-    }
-
-    // ---------- WELCOME POPUP ----------
-    setTimeout(() => {
-        const welcomePopup = L.popup()
-            .setLatLng([5.4141, 100.3288])
-            .setContent(`
-                <div style="text-align:center; font-weight:500; padding:5px;">
-                    🌟 Welcome to Penang Wonders! 🌟<br>
-                    Click any marker or attraction card to explore.
-                </div>
-            `)
-            .openOn(map);
+            packageMarkers.forEach(item => {
+                if (showPackages) {
+                    item.marker.addTo(map);
+                } else {
+                    map.removeLayer(item.marker);
+                }
+            });
+        }
         
+        if (toggleHighlights) {
+            toggleHighlights.addEventListener('change', updateMarkerVisibility);
+        }
+        if (togglePackages) {
+            togglePackages.addEventListener('change', updateMarkerVisibility);
+        }
+        
+        // ---------- MAP DARK MODE / LIGHT MODE TOGGLE ----------
+        const toggleBtn = document.createElement('button');
+        toggleBtn.textContent = '☀️ Light Mode';
+        toggleBtn.className = 'map-theme-toggle';
+        toggleBtn.setAttribute('aria-label', 'Toggle map theme');
+        
+        const mapCardElement = document.querySelector('.map-card');
+        if (mapCardElement) {
+            mapCardElement.style.position = 'relative';
+            mapCardElement.appendChild(toggleBtn);
+        }
+        
+        const lightTiles = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
+        const darkTiles = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
+        let isDarkMode = true;
+        
+        function setMapTheme(isDark) {
+            map.removeLayer(currentTileLayer);
+            
+            const tileUrl = isDark ? darkTiles : lightTiles;
+            currentTileLayer = L.tileLayer(tileUrl, {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                subdomains: 'abcd',
+                maxZoom: 19,
+                minZoom: 10
+            }).addTo(map);
+            
+            const mapCard = document.querySelector('.map-card');
+            if (mapCard) {
+                if (isDark) {
+                    mapCard.classList.add('dark-mode');
+                } else {
+                    mapCard.classList.remove('dark-mode');
+                }
+            }
+        }
+        
+        toggleBtn.addEventListener('click', function() {
+            isDarkMode = !isDarkMode;
+            
+            if (isDarkMode) {
+                setMapTheme(true);
+                toggleBtn.textContent = '☀️ Light Mode';
+                toggleBtn.style.background = 'rgba(0, 0, 0, 0.7)';
+            } else {
+                setMapTheme(false);
+                toggleBtn.textContent = '🌙 Dark Mode';
+                toggleBtn.style.background = 'rgba(0, 0, 0, 0.7)';
+            }
+        });
+        
+        // ---------- WELCOME POPUP ----------
         setTimeout(() => {
-            map.closePopup(welcomePopup);
-        }, 4500);
-    }, 800);
-
-    // ---------- RESPONSIVE FIX ----------
-    window.addEventListener('resize', function() {
-        setTimeout(function() {
-            map.invalidateSize();
-        }, 100);
-    });
-
-    console.log("🗺️ Penang Map Loaded!");
+            const welcomePopup = L.popup()
+                .setLatLng([5.4141, 100.3288])
+                .setContent(`
+                    <div style="text-align:center; font-weight:500; padding:5px;">
+                        🌟 Welcome to Penang Wonders! 🌟<br>
+                        🗺️ <strong>Penang Highlights</strong> (Blue Markers)<br>
+                        🏨 <strong>Package Offers</strong> (Gold Markers)<br>
+                        💡 Use checkboxes to show/hide markers
+                    </div>
+                `)
+                .openOn(map);
+            
+            setTimeout(() => {
+                map.closePopup(welcomePopup);
+            }, 6000);
+        }, 800);
+        
+        // ---------- RESPONSIVE FIX ----------
+        window.addEventListener('resize', function() {
+            setTimeout(function() {
+                map.invalidateSize();
+            }, 100);
+        });
+        
+        console.log("🗺️ Penang Map Loaded! Data loaded from Map.json");
+    }
 });
