@@ -1,102 +1,111 @@
+/* ============================================================
+   package.css — Penang Wonders
+   Desktop sidebar layout + Mobile bottom-sheet filter
+   ============================================================ */
 
-/* CONTENT */
+/* ── Page layout ── */
 .content {
-  margin-top: 60px;
   display: flex;
-  min-height: calc(100vh - 90px);
-  background: linear-gradient(180deg, #072527, #041618);
-  align-items: flex-start;
+  gap: 32px;
+  padding: 100px 40px 60px;
+  min-height: 100vh;
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
-/* FILTER PANEL */
+/* ══════════════════════════════════════════
+   DESKTOP SIDEBAR FILTERS
+══════════════════════════════════════════ */
 .filters {
-  width: 25%;
+  flex-shrink: 0;
+  width: 220px;
   background: rgba(255, 255, 255, 0.04);
-  padding: 30px;
-  border-right: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 2px 0 12px rgba(0,0,0,0.15);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 28px 20px;
+  height: fit-content;
   position: sticky;
   top: 90px;
-  height: fit-content;
 }
 
 .filters h2 {
-  margin-top: 0;
-  margin-bottom: 14px;
   font-family: 'Cinzel', serif;
-  color: #f0a500;
+  font-size: 12px;
   letter-spacing: 2px;
-  font-size: 18px;
+  color: #f0a500;
+  margin-bottom: 14px;
+  margin-top: 20px;
+  text-transform: uppercase;
+}
+
+.filters h2:first-child {
+  margin-top: 0;
 }
 
 .filters label {
-  display: block;
-  margin: 14px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.75);
   cursor: pointer;
-  color: rgba(255,255,255,0.8);
-  transition: all 0.2s ease;
-  padding: 8px 12px;
-  border-radius: 6px;
+  padding: 6px 0;
+  transition: color 0.2s;
 }
 
 .filters label:hover {
-  color: #f0a500;
-  background: rgba(240, 165, 0, 0.1);
+  color: white;
 }
 
-.filters input {
-  margin-right: 8px;
+.filters input[type="checkbox"] {
+  accent-color: #f0a500;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
 }
 
 .clear-btn {
-  display: block;
+  margin-top: 24px;
   width: 100%;
-  margin-top: 20px;
-  padding: 10px 15px;
-  background: rgba(240, 165, 0, 0.1);
-  border: 1px solid #f0a500;
+  padding: 9px;
+  background: transparent;
+  border: 1px solid rgba(240,165,0,0.4);
+  border-radius: 50px;
   color: #f0a500;
-  border-radius: 6px;
-  cursor: pointer;
   font-family: 'Cinzel', serif;
-  font-size: 14px;
+  font-size: 11px;
   letter-spacing: 1px;
-  transition: all 0.3s ease;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
 }
 
 .clear-btn:hover {
-  background: #f0a500;
-  color: #000;
+  background: rgba(240,165,0,0.1);
+  border-color: #f0a500;
 }
 
-/* PACKAGES */
+/* ══════════════════════════════════════════
+   PACKAGES GRID
+══════════════════════════════════════════ */
 .packages {
-  width: 75%;
-  padding: 30px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 25px;
-  justify-content: flex-start;
-  align-content: flex-start;
-  align-items: stretch;
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+  align-content: start;
 }
 
 .package {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 18px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
-  transition: transform 0.3s, border-color 0.3s;
-  flex: 0 0 260px;
-  display: flex;
-  flex-direction: column;
-  height: 380px;
+  transition: transform 0.25s, box-shadow 0.25s;
 }
 
 .package:hover {
-  transform: translateY(-6px);
-  border-color: #f0a500;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.35);
 }
 
 .package img {
@@ -106,105 +115,326 @@
 }
 
 .package-content {
-  padding: 18px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+  padding: 18px 20px 20px;
 }
 
-.package h3 {
-  margin: 0 0 10px;
+.package-content h3 {
   font-family: 'Cinzel', serif;
-  color: white;
-  letter-spacing: 1px;
+  font-size: 15px;
+  margin-bottom: 6px;
 }
 
-.package p {
-  margin: 6px 0;
-  font-size: 14px;
+.package-content p {
+  font-size: 13px;
   color: rgba(255,255,255,0.65);
-  line-height: 1.6;
+  margin-bottom: 4px;
 }
 
-.price {
-  margin-top: 12px;
-  font-weight: bold;
+.package-content .price {
   color: #f0a500;
-  font-size: 18px;
-  font-family: 'Cinzel', serif;
-}
-
-.btn {
-  display: inline-block;
-  margin-top: auto;
-  padding: 10px 16px;
-  background: transparent;
-  color: #f0a500;
-  border: 1px solid #f0a500;
-  border-radius: 50px;
-  text-decoration: none;
-  font-size: 12px;
-  letter-spacing: 1px;
-  font-family: 'Cinzel', serif;
-  transition: all 0.3s;
-}
-
-.btn:hover {
-  background: #f0a500;
-  color: black;
+  font-weight: 800;
+  font-size: 15px;
+  margin: 10px 0 14px;
 }
 
 .no-results {
+  display: none;
+  grid-column: 1 / -1;
   text-align: center;
   padding: 60px 20px;
-  color: rgba(255,255,255,0.7);
-  font-size: 18px;
-  display: none;
-  background: rgba(240, 165, 0, 0.05);
-  border: 1px solid rgba(240, 165, 0, 0.2);
-  border-radius: 12px;
-  margin: 20px 0;
-  width: 100%;
+  color: rgba(255,255,255,0.4);
+  font-size: 14px;
 }
 
-/* RESPONSIVE */
-@media (max-width: 900px) {
+/* ══════════════════════════════════════════
+   MOBILE FILTER FAB
+   — hidden on desktop, shown on ≤ 768px
+══════════════════════════════════════════ */
+.filter-fab {
+  display: none;
+  position: fixed;
+  bottom: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  align-items: center;
+  gap: 8px;
+  padding: 13px 26px;
+  background: #f0a500;
+  color: #000;
+  border: none;
+  border-radius: 50px;
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  cursor: pointer;
+  z-index: 900;
+  box-shadow: 0 6px 24px rgba(240,165,0,0.45);
+  transition: box-shadow 0.2s, background 0.2s;
+}
+
+.filter-fab:hover {
+  box-shadow: 0 10px 32px rgba(240,165,0,0.55);
+}
+
+.filter-fab:active {
+  background: #d4920a;
+}
+
+.fab-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.fab-badge {
+  background: #072527;
+  color: #f0a500;
+  border-radius: 50px;
+  font-size: 11px;
+  padding: 1px 7px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+/* ══════════════════════════════════════════
+   BACKDROP
+   — always in DOM; JS toggles visibility
+══════════════════════════════════════════ */
+.sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 1200;
+  /* Hidden by default via pointer-events + opacity, NOT display:none */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.sheet-backdrop.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ══════════════════════════════════════════
+   BOTTOM SHEET PANEL
+   — always rendered on mobile; transform
+     controls whether it is visible
+══════════════════════════════════════════ */
+.filter-sheet {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  max-height: 85vh;
+  background: linear-gradient(175deg, #0d3538 0%, #072527 100%);
+  border-top: 1px solid rgba(240,165,0,0.25);
+  border-radius: 24px 24px 0 0;
+  z-index: 1300;
+  flex-direction: column;
+  overflow: hidden;
+  /* Slide off-screen — display:flex always on mobile, hidden via transform */
+  transform: translateY(100%);
+  transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Hidden on desktop */
+  display: none;
+}
+
+/* Open state */
+.filter-sheet.sheet-open {
+  transform: translateY(0);
+}
+
+/* Drag handle */
+.sheet-handle {
+  width: 40px;
+  height: 4px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 2px;
+  margin: 12px auto 0;
+  flex-shrink: 0;
+}
+
+/* Header */
+.sheet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  flex-shrink: 0;
+}
+
+.sheet-title {
+  font-family: 'Cinzel', serif;
+  font-size: 15px;
+  letter-spacing: 2px;
+  color: white;
+  margin: 0;
+}
+
+.sheet-close {
+  width: 32px;
+  height: 32px;
+  background: rgba(255,255,255,0.07);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.sheet-close svg {
+  width: 16px;
+  height: 16px;
+}
+
+.sheet-close:hover {
+  background: rgba(255,255,255,0.14);
+}
+
+/* Scrollable body */
+.sheet-body {
+  overflow-y: auto;
+  padding: 20px 24px;
+  flex: 1;
+  -webkit-overflow-scrolling: touch;
+}
+
+.sheet-section {
+  margin-bottom: 28px;
+}
+
+.sheet-section-label {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  color: #f0a500;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+/* Chips */
+.chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chip {
+  padding: 9px 16px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 50px;
+  color: rgba(255,255,255,0.75);
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.15s;
+}
+
+.chip:active {
+  transform: scale(0.95);
+}
+
+.chip.chip-active {
+  background: rgba(240,165,0,0.18);
+  border-color: #f0a500;
+  color: #f0a500;
+}
+
+/* Footer */
+.sheet-footer {
+  display: flex;
+  gap: 12px;
+  padding: 16px 24px calc(16px + env(safe-area-inset-bottom));
+  border-top: 1px solid rgba(255,255,255,0.07);
+  flex-shrink: 0;
+}
+
+.sheet-clear {
+  flex: 1;
+  padding: 13px;
+  background: transparent;
+  border: 1px solid rgba(240,165,0,0.35);
+  border-radius: 50px;
+  color: #f0a500;
+  font-family: 'Cinzel', serif;
+  font-size: 12px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.sheet-clear:hover {
+  background: rgba(240,165,0,0.08);
+}
+
+.sheet-apply {
+  flex: 2;
+  padding: 13px;
+  background: #f0a500;
+  border: none;
+  border-radius: 50px;
+  color: #000;
+  font-family: 'Cinzel', serif;
+  font-size: 12px;
+  letter-spacing: 1px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.sheet-apply:hover {
+  opacity: 0.85;
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE — MOBILE & TABLET (≤ 768px)
+══════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  /* Hide desktop sidebar */
+  #desktopFilters {
+    display: none;
+  }
 
   .content {
-    flex-direction: column;
+    padding: 90px 16px 120px;
   }
 
-  .filters,
   .packages {
-    width: 100%;
+    grid-template-columns: 1fr;
+    gap: 18px;
   }
 
-  .filters {
-    position: relative;
-    top: 0;
+  /* Show FAB */
+  .filter-fab {
+    display: flex;
   }
 
+  /* 
+   * KEY FIX: On mobile the sheet is ALWAYS display:flex.
+   * Visibility is controlled by transform (translateY) only.
+   * This means sheet-open just needs to change the transform.
+   */
+  .filter-sheet {
+    display: flex;
+  }
 }
 
-@media (max-width: 600px) {
-
-  #navbar {
-    padding: 0 20px;
-  }
-
-  .logo-name {
-    font-size: 11px;
-  }
-
-  .nav-links a {
-    margin-left: 18px;
-    font-size: 11px;
-    letter-spacing: 1px;
-  }
-
+/* Tablet: 2-column package grid */
+@media (min-width: 500px) and (max-width: 768px) {
   .packages {
-    padding: 20px;
-    justify-content: center;
+    grid-template-columns: repeat(2, 1fr);
   }
-
 }

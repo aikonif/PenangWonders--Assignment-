@@ -1,133 +1,177 @@
-// Get the navbar element
-const navbar = document.getElementById("navbar");
+/* ============================================================
+   package.js — Penang Wonders
+   • Desktop sidebar checkbox filtering
+   • Mobile bottom-sheet chip filtering
+   • Both sync to the same active state
+   ============================================================ */
 
-// When user scrolls, shrink the navbar
-window.addEventListener("scroll", function () {
-  if (window.scrollY > 50) {
-    navbar.classList.add("scrolled");
-  } else {
-    navbar.classList.remove("scrolled");
-  }
-});
+(function () {
+  "use strict";
 
-// Highlight the active nav link based on which section is visible
-const sections = document.querySelectorAll("section, div[id]");
-const navLinks = document.querySelectorAll(".nav-links a");
+  /* ── Shared filter state ── */
+  var activeFilters = { activity: [], hotel: [] };
 
-window.addEventListener("scroll", function () {
-  let currentSection = "";
+  /* ── DOM refs ── */
+  var packages  = document.querySelectorAll(".package");
+  var noResults = document.querySelector(".no-results");
 
-  sections.forEach(function (section) {
-    const sectionTop = section.offsetTop - 100;
-    if (window.scrollY >= sectionTop) {
-      currentSection = section.getAttribute("id");
-    }
-  });
+  /* ── Desktop refs ── */
+  var checkboxes = document.querySelectorAll(".filters input[type='checkbox']");
+  var clearBtn   = document.getElementById("clear-filters");
 
-  navLinks.forEach(function (link) {
-    link.classList.remove("active");
-    if (link.getAttribute("href") === "#" + currentSection) {
-      link.classList.add("active");
-    }
-  });
-});
+  /* ── FAB + sheet refs ── */
+  var filterFab  = document.getElementById("filterFab");
+  var fabBadge   = document.getElementById("fabBadge");
+  var backdrop   = document.getElementById("sheetBackdrop");
+  var sheet      = document.getElementById("filterSheet");
+  var sheetClose = document.getElementById("sheetClose");
+  var sheetClear = document.getElementById("sheetClear");
+  var sheetApply = document.getElementById("sheetApply");
+  var chips      = document.querySelectorAll(".chip");
 
-// Smooth scroll when clicking nav links
-navLinks.forEach(function (link) {
-  link.addEventListener("click", function (e) {
-    const targetId = link.getAttribute("href").replace("#", "");
-    const targetEl = document.getElementById(targetId);
-    if (targetEl) {
-      e.preventDefault();
-      targetEl.scrollIntoView({ behavior: "smooth" });
-    }
-  });
-});
+  /* ══════════════════════════════════════
+     FILTER LOGIC
+  ══════════════════════════════════════ */
+  function applyFilters() {
+    var visibleCount = 0;
 
-const filterCheckboxes = document.querySelectorAll('.filters input[type="checkbox"]');
-const packages = document.querySelectorAll('.package');
-const noResults = document.querySelector('.no-results');
-const clearFiltersBtn = document.getElementById('clear-filters');
+    packages.forEach(function (pkg) {
+      var activities = pkg.dataset.activities ? pkg.dataset.activities.split(",") : [];
+      var hotels     = pkg.dataset.hotels     ? pkg.dataset.hotels.split(",")     : [];
 
-function applyFilters() {
-  const activeFilters = {
-    activity: [],
-    hotel: []
-  };
+      var actMatch = activeFilters.activity.length === 0 ||
+        activeFilters.activity.some(function (f) { return activities.indexOf(f) !== -1; });
 
-  // Collect all checked filters
-  filterCheckboxes.forEach(checkbox => {
-    if (checkbox.checked) {
-      const filterType = checkbox.dataset.filter;
-      activeFilters[filterType].push(checkbox.value);
-    }
-  });
+      var hotelMatch = activeFilters.hotel.length === 0 ||
+        activeFilters.hotel.some(function (f) { return hotels.indexOf(f) !== -1; });
 
-  let visibleCount = 0;
+      var show = actMatch && hotelMatch;
+      pkg.style.display = show ? "" : "none";
+      if (show) visibleCount++;
+    });
 
-  packages.forEach(pkg => {
-    const pkgActivities = (pkg.dataset.activities || '').split(',').map(a => a.trim()).filter(Boolean);
-    const pkgHotels = (pkg.dataset.hotels || '').split(',').map(h => h.trim()).filter(Boolean);
-
-    // If no filters are selected, show all packages
-    if (activeFilters.activity.length === 0 && activeFilters.hotel.length === 0) {
-      // ensure any inline hiding is removed so CSS determines layout
-      pkg.style.display = '';
-      visibleCount++;
-      return;
+    if (noResults) {
+      noResults.style.display = visibleCount === 0 ? "block" : "none";
     }
 
-    // Check if package matches ANY of the selected activity filters
-    const activityMatch = activeFilters.activity.length === 0 ||
-                          activeFilters.activity.some(filter => pkgActivities.includes(filter));
-
-    // Check if package matches ANY of the selected hotel filters
-    const hotelMatch = activeFilters.hotel.length === 0 ||
-                       activeFilters.hotel.some(filter => pkgHotels.includes(filter));
-
-    // Package is visible if it matches filters from both categories (if both have selections)
-    // OR if it matches filters from at least one category
-    const shouldShow = (activityMatch && hotelMatch) ||
-                      (activeFilters.activity.length > 0 && activityMatch && activeFilters.hotel.length === 0) ||
-                      (activeFilters.hotel.length > 0 && hotelMatch && activeFilters.activity.length === 0);
-
-    if (shouldShow) {
-      // remove inline hide if previously hidden
-      pkg.style.display = '';
-      visibleCount++;
-    } else {
-      // hide package using inline style since CSS has no .hidden rule
-      pkg.style.display = 'none';
-    }
-  });
-
-  // Show/hide no results message
-  if (noResults) {
-    noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+    updateBadge();
+    syncDesktopCheckboxes();
   }
 
-  // Update clear button visibility
-  if (clearFiltersBtn) {
-    clearFiltersBtn.style.display = (activeFilters.activity.length > 0 || activeFilters.hotel.length > 0) ? 'block' : 'none';
+  function clearAllFilters() {
+    activeFilters.activity = [];
+    activeFilters.hotel    = [];
+    applyFilters();
+    syncChips();
   }
-}
 
-function clearAllFilters() {
-  filterCheckboxes.forEach(checkbox => {
-    checkbox.checked = false;
+  function updateBadge() {
+    var count = activeFilters.activity.length + activeFilters.hotel.length;
+    if (fabBadge) {
+      fabBadge.textContent = count;
+      fabBadge.hidden = count === 0;
+    }
+  }
+
+  /* ══════════════════════════════════════
+     DESKTOP CHECKBOXES
+  ══════════════════════════════════════ */
+  checkboxes.forEach(function (cb) {
+    cb.addEventListener("change", function () {
+      var type  = cb.dataset.filter;
+      var value = cb.value;
+
+      if (cb.checked) {
+        if (activeFilters[type].indexOf(value) === -1) {
+          activeFilters[type].push(value);
+        }
+      } else {
+        activeFilters[type] = activeFilters[type].filter(function (v) { return v !== value; });
+      }
+
+      applyFilters();
+      syncChips();
+    });
   });
-  applyFilters();
-}
 
-// Add event listeners to all checkboxes
-filterCheckboxes.forEach(checkbox => {
-  checkbox.addEventListener('change', applyFilters);
-});
+  if (clearBtn) {
+    clearBtn.addEventListener("click", clearAllFilters);
+  }
 
-// Add event listener to clear button
-if (clearFiltersBtn) {
-  clearFiltersBtn.addEventListener('click', clearAllFilters);
-}
+  function syncDesktopCheckboxes() {
+    checkboxes.forEach(function (cb) {
+      var type  = cb.dataset.filter;
+      var value = cb.value;
+      cb.checked = activeFilters[type] && activeFilters[type].indexOf(value) !== -1;
+    });
+  }
 
-// Apply filters on page load (in case some checkboxes are pre-checked)
-document.addEventListener('DOMContentLoaded', applyFilters);
+  /* ══════════════════════════════════════
+     BOTTOM SHEET — OPEN / CLOSE
+  ══════════════════════════════════════ */
+  function openSheet() {
+    if (!sheet || !backdrop) return;
+    syncChips();
+    sheet.classList.add("sheet-open");
+    backdrop.classList.add("visible");
+    document.body.classList.add("menu-open");
+  }
+
+  function closeSheet() {
+    if (!sheet || !backdrop) return;
+    sheet.classList.remove("sheet-open");
+    backdrop.classList.remove("visible");
+    document.body.classList.remove("menu-open");
+  }
+
+  if (filterFab)  filterFab.addEventListener("click", openSheet);
+  if (sheetClose) sheetClose.addEventListener("click", closeSheet);
+  if (backdrop)   backdrop.addEventListener("click", closeSheet);
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") closeSheet();
+  });
+
+  /* ══════════════════════════════════════
+     CHIPS
+  ══════════════════════════════════════ */
+  chips.forEach(function (chip) {
+    chip.addEventListener("click", function () {
+      var type  = chip.dataset.filter;
+      var value = chip.dataset.value;
+
+      if (activeFilters[type].indexOf(value) !== -1) {
+        activeFilters[type] = activeFilters[type].filter(function (v) { return v !== value; });
+        chip.classList.remove("chip-active");
+      } else {
+        activeFilters[type].push(value);
+        chip.classList.add("chip-active");
+      }
+
+      updateBadge();
+    });
+  });
+
+  function syncChips() {
+    chips.forEach(function (chip) {
+      var type  = chip.dataset.filter;
+      var value = chip.dataset.value;
+      var active = activeFilters[type] && activeFilters[type].indexOf(value) !== -1;
+      chip.classList.toggle("chip-active", active);
+    });
+  }
+
+  if (sheetApply) {
+    sheetApply.addEventListener("click", function () {
+      applyFilters();
+      closeSheet();
+    });
+  }
+
+  if (sheetClear) {
+    sheetClear.addEventListener("click", function () {
+      clearAllFilters();
+    });
+  }
+
+})();

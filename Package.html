@@ -18,8 +18,8 @@
 
   <div class="content">
 
-    <!-- FILTERS -->
-    <div class="filters">
+    <!-- ══ DESKTOP SIDEBAR FILTERS ══ -->
+    <div class="filters" id="desktopFilters">
 
       <h2>Activities</h2>
 
@@ -71,7 +71,7 @@
 
     </div>
 
-    <!-- PACKAGES -->
+    <!-- ══ PACKAGES GRID ══ -->
     <div class="packages">
 
       <div class="package"
@@ -166,7 +166,70 @@
     </div>
 
   </div>
-  <button id = "backToTopBtn">↑</button>
+
+  <!-- ══ MOBILE FILTER FAB (visible on mobile/tablet only) ══ -->
+  <button class="filter-fab" id="filterFab" aria-label="Open filters">
+    <svg class="fab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="4" y1="6"  x2="20" y2="6"/>
+      <line x1="4" y1="12" x2="14" y2="12"/>
+      <line x1="4" y1="18" x2="10" y2="18"/>
+    </svg>
+    <span class="fab-label">Filter</span>
+    <span class="fab-badge" id="fabBadge" hidden>0</span>
+  </button>
+
+  <!-- ══ BOTTOM SHEET BACKDROP ══ -->
+  <div class="sheet-backdrop" id="sheetBackdrop"></div>
+
+  <!-- ══ MOBILE FILTER BOTTOM SHEET ══ -->
+  <div class="filter-sheet" id="filterSheet" role="dialog" aria-modal="true" aria-label="Filter packages">
+
+    <!-- Drag handle -->
+    <div class="sheet-handle"></div>
+
+    <div class="sheet-header">
+      <h2 class="sheet-title">Filter Packages</h2>
+      <button class="sheet-close" id="sheetClose" aria-label="Close filters">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6"  y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="sheet-body">
+
+      <div class="sheet-section">
+        <p class="sheet-section-label">Activities</p>
+        <div class="chip-group" id="chipActivities">
+          <button class="chip" data-filter="activity" data-value="jungle-trekking">🌿 Jungle Trekking</button>
+          <button class="chip" data-filter="activity" data-value="snorkeling">🤿 Snorkeling</button>
+          <button class="chip" data-filter="activity" data-value="beach">🏖 Beach</button>
+          <button class="chip" data-filter="activity" data-value="mountain-climbing">⛰ Mountain Climbing</button>
+        </div>
+      </div>
+
+      <div class="sheet-section">
+        <p class="sheet-section-label">Hotel Preferences</p>
+        <div class="chip-group" id="chipHotels">
+          <button class="chip" data-filter="hotel" data-value="close-to-city">🏙 Close to City</button>
+          <button class="chip" data-filter="hotel" data-value="close-to-nature">🌲 Close to Nature</button>
+          <button class="chip" data-filter="hotel" data-value="comfy">🛋 Comfy</button>
+          <button class="chip" data-filter="hotel" data-value="modern">✨ Modern</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="sheet-footer">
+      <button class="sheet-clear" id="sheetClear">Clear All</button>
+      <button class="sheet-apply" id="sheetApply">Show Results</button>
+    </div>
+
+  </div>
+
+  <button id="backToTopBtn">↑</button>
+
   <!-- FOOTER -->
   <div id="footerHTML"></div>
 
