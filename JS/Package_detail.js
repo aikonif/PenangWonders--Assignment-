@@ -115,7 +115,7 @@ function startAutoSlide() {
 }
 
 // Load package data from JSON file (updated path to JSON folder)
-fetch('JSON/package_option.json')
+fetch('JSON/package_detail.json')
     .then(response => {
         if (!response.ok) {
             throw new Error('Failed to load package data');
