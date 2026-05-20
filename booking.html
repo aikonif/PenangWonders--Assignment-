@@ -3,188 +3,175 @@
 
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title> Booking - Penang Wonders </title>
-
-<link rel="stylesheet" href="CSS/booking.css">
-
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Nunito:wght@400;700;800&display=swap"/>
-
-<!-- EMAILJS -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <title> Booking - Penang Wonders </title>
+  <link rel="stylesheet" href="CSS/Main.css">
+  <link rel="stylesheet" href="CSS/booking.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Nunito:wght@700;800;900&display=swap"/>
+  <!-- EMAILJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 </head>
 
 <body>
+  <!-- NAVBAR -->
+  <nav id="navbarHTML"></nav>
 
-<!-- NAVBAR -->
-<nav id="navbar">
-  <div class="logo">
-    <div class="logo-circle"></div>
-    <span class="logo-name">Penang Wonders</span>
-  </div>
+  <!-- BOOKING -->
+  <div class="booking-container">
 
-  <div class="nav-links">
-    <a href="Home.html">Home</a>
-    <a href="Package.html" class="active">Package</a>
-    <a href="Blog.html">Blog</a>
-    <a href="Coupon.html">Coupon</a>
-  </div>
-</nav>
+    <div class="booking-card">
 
-<!-- BOOKING -->
-<div class="booking-container">
+      <h1>
+        Book Your Adventure
+      </h1>
 
-  <div class="booking-card">
+      <p class="subtitle">
 
-    <h1>
-      Book Your Adventure
-    </h1>
+        Complete your booking below and
+        we’ll contact you shortly.
 
-    <p class="subtitle">
+      </p>
 
-      Complete your booking below and
-      we’ll contact you shortly.
+      <form id="bookingForm">
 
-    </p>
+        <!-- NAME -->
+        <div class="input-group">
 
-    <form id="bookingForm">
-
-      <!-- NAME -->
-      <div class="input-group">
-
-        <label>
-          Full Name
-        </label>
-
-        <input
-        type="text"
-        id="name"
-        required
-        >
-
-      </div>
-
-      <!-- EMAIL -->
-      <div class="input-group">
-
-        <label>
-          Email Address
-        </label>
-
-        <input
-        type="email"
-        id="email"
-        required
-        >
-
-      </div>
-
-      <!-- PHONE -->
-      <div class="input-group">
-
-        <label>
-          Phone Number
-        </label>
-
-        <input
-        type="text"
-        id="phone"
-        required
-        >
-
-      </div>
-
-      <!-- PACKAGE -->
-      <div class="input-group">
-
-        <label>
-          Package Code
-        </label>
-
-        <select id="package" required>
-          <option value="" selected disabled>Please choose your package</option>
-          <option value="SEA-PKG-001">SEA-PKG-001 — Seaside Escape Package</option>
-          <option value="SNK-PKG-002">SNK-PKG-002 — Snorkling Nature Package</option>
-          <option value="HIL-PKG-003">HIL-PKG-003 — Hillside Adventure Package</option>
-          <option value="BEA-PKG-004">BEA-PKG-004 — Beach Escape Package</option>
-          <option value="JNG-PKG-005">JNG-PKG-005 — Dual Nature Package</option>
-        </select>
-
-      </div>
-
-      <!-- TOTAL -->
-      <div class="input-group">
-
-        <label>
-          Total Price
-        </label>
-
-        <input
-        type="text"
-        id="total"
-        readonly
-        >
-
-      </div>
-
-      <!-- COUPON QUESTION -->
-      <div class="input-group">
-
-        <label>
-          Have a coupon?
-        </label>
-
-        <div class="switch-group">
-          <label class="switch">
-            <input type="checkbox" id="hasCouponToggle">
-            <span class="slider"></span>
+          <label>
+            Full Name
           </label>
-          <span id="couponStatusText">No coupon</span>
+
+          <input
+          type="text"
+          id="name"
+          required
+          >
+
         </div>
 
-      </div>
+        <!-- EMAIL -->
+        <div class="input-group">
 
-      <div class="input-group coupon-input-group" id="couponInputGroup" style="display:none;">
+          <label>
+            Email Address
+          </label>
 
-        <label>
-          Coupon Code
-        </label>
+          <input
+          type="email"
+          id="email"
+          required
+          >
 
-        <input
-        type="text"
-        id="coupon"
-        placeholder="Enter coupon code"
+        </div>
+
+        <!-- PHONE -->
+        <div class="input-group">
+
+          <label>
+            Phone Number
+          </label>
+
+          <input
+          type="text"
+          id="phone"
+          required
+          >
+
+        </div>
+
+        <!-- PACKAGE -->
+        <div class="input-group">
+
+          <label>
+            Package Code
+          </label>
+
+          <select id="package" required>
+            <option value="" selected disabled>Please choose your package</option>
+            <option value="SEA-PKG-001">SEA-PKG-001 — Seaside Escape Package</option>
+            <option value="SNK-PKG-002">SNK-PKG-002 — Snorkling Nature Package</option>
+            <option value="HIL-PKG-003">HIL-PKG-003 — Hillside Adventure Package</option>
+            <option value="BEA-PKG-004">BEA-PKG-004 — Beach Escape Package</option>
+            <option value="JNG-PKG-005">JNG-PKG-005 — Dual Nature Package</option>
+          </select>
+
+        </div>
+
+        <!-- TOTAL -->
+        <div class="input-group">
+
+          <label>
+            Total Price
+          </label>
+
+          <input
+          type="text"
+          id="total"
+          readonly
+          >
+
+        </div>
+
+        <!-- COUPON QUESTION -->
+        <div class="input-group">
+
+          <label>
+            Have a coupon?
+          </label>
+
+          <div class="switch-group">
+            <label class="switch">
+              <input type="checkbox" id="hasCouponToggle">
+              <span class="slider"></span>
+            </label>
+            <span id="couponStatusText">No coupon</span>
+          </div>
+
+        </div>
+
+        <div class="input-group coupon-input-group" id="couponInputGroup" style="display:none;">
+
+          <label>
+            Coupon Code
+          </label>
+
+          <input
+          type="text"
+          id="coupon"
+          placeholder="Enter coupon code"
+          >
+
+        </div>
+
+        <!-- BUTTON -->
+        <button
+        type="submit"
+        class="submit-btn"
         >
 
-      </div>
+          Confirm Booking
 
-      <!-- BUTTON -->
-      <button
-      type="submit"
-      class="submit-btn"
-      >
+        </button>
 
-        Confirm Booking
+      </form>
 
-      </button>
+      <p id="status"></p>
 
-    </form>
-
-    <p id="status"></p>
+    </div>
 
   </div>
 
-</div>
+  <button id = "backToTopBtn">↑</button>
+  <!-- FOOTER -->
+  <div id="footerHTML"></div>
 
- <!-- FOOTER -->
-  <footer>
-    <p>© 2025 Penang Wonders · All Rights Reserved</p>
-  </footer>
-
-<script src="JS/booking.js"></script>
+  <script src="JS/booking.js"></script>
+  <script src="JS/Navbar.js"></script>
+  <script src="JS/Footer.js"></script>
+  <script src="JS/Back_To_Top.js"></script>
 
 </body>
 </html>

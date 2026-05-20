@@ -1,26 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hotel Blog | Penang Wonders</title>
+    <link rel="stylesheet" href="CSS/Main.css">
     <link rel="stylesheet" href="CSS/Blog.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Nunito:wght@700;800;900&display=swap"/>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
 </head>
 <body>
-    <header id="navbar">
-        <div class="logo">
-            <div class="logo-circle"></div>
-            <span class="logo-name">Penang Wonders</span>
-        </div>
-        <nav class="nav-links">
-            <a href="Home.html">Home</a>
-            <a href="package_main.html">Package</a>
-            <a href="Blog.html" class="active">Blog</a>
-            <a href="Coupon.html">Coupon</a>
-        </nav>
-    </header>
+    <nav id="navbarHTML"></nav>
 
     <main>
         <section class="hero">
@@ -215,11 +206,14 @@
         </section>
     </main>
 
-    <footer class="footer">
-        <p>© 2025 Penang Wonders · All Rights Reserved</p>
-    </footer>
+    <button id = "backToTopBtn">↑</button>
+    <div id="footerHTML"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="JS/Navbar.js"></script>
+    <script src="JS/Footer.js"></script>
     <script src="JS/Blog.js"></script>
+    <script src="JS/Back_To_Top.js"></script>
+    
 </body>
 </html>

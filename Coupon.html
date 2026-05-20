@@ -1,27 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Coupon</title>
+  <link rel="stylesheet" href="CSS/Main.css">
+  <link rel="stylesheet" href="CSS/Coupon.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Nunito:wght@700;800;900&display=swap"/>
-  <link rel="stylesheet" href="CSS/Coupon.css" />
+
 </head>
 <body>
 
 <!-- ── NAV ── -->
-  <nav id="navbar">
-  <div class="logo">
-    <div class="logo-circle"></div>
-    <span class="logo-name">Penang Wonders</span>
-  </div>
-  <ul class="nav-links">
-    <li><a href="Home.html">Home</a></li>
-    <li><a href="package_main.html">Package</a></li>
-    <li><a href="Blog.html">Blog</a></li>
-    <li><a href="Coupon.html" class="active">Coupon</a></li>
-  </ul>
-</nav>
+  <nav id="navbarHTML"></nav>
 
   <!-- Mobile dropdown -->
   <div class="mobile-menu" id="mobileMenu">
@@ -32,159 +23,161 @@
     <button class="nav-btn" onclick="alert('Redirecting to deals page…')">Get a Deal →</button>
   </div>
 
-<!-- ── MAIN ── -->
-<div class="page-wrap">
+  <!-- ── MAIN ── -->
+  <div class="page-wrap">
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-badge">✦ Limited Time Offers</div>
-    <h1>Exclusive <em>Promotions</em><br>Just For You</h1>
-    <p>Hover over any card to explore what's included. Pick a deal that fits your vibe.</p>
-  </section>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-badge">✦ Limited Time Offers</div>
+      <h1>Exclusive <em>Promotions</em><br>Just For You</h1>
+      <p>Hover over any card to explore what's included. Pick a deal that fits your vibe.</p>
+    </section>
 
-  <!-- PROMO CARDS -->
-  <section class="promo-grid">
+    <!-- PROMO CARDS -->
+    <section class="promo-grid">
 
-    <!-- Card 1 · New Year -->
-    <article class="promo-card card-1" onclick="toggleCard(this)">
-      <div class="card-bg">
-        <img src="PHOTO/CouponNewyear.jpg.jpeg" alt="New Year" class="bg-img">
-      </div>
-      <div class="card-orb"></div>
-      <div class="card-inner">
-        <div class="card-tag">🎉 New Year</div>
-        <span class="card-icon"></span>
-        <div class="card-title">New Year Blast</div>
-        <div class="card-sub">Up to 40% off — Jan only</div>
-      </div>
-      <div class="card-expand">
-        <div class="expand-label">New Year Special</div>
-        <div class="expand-title">New Year Blast Pack</div>
-        <div class="expand-desc">Enjoy unforgettable Penang getaways with exclusive coupons and promotional package prices.</div>
-        <div class="expand-perks">
-          <div class="perk"><div class="perk-dot"></div>Up to 40% off selected Penang packages</div>
-          <div class="perk"><div class="perk-dot"></div>Exclusive New Year travel discounts</div>
-          <div class="perk"><div class="perk-dot"></div>Save more with limited-time coupons</div>
-          <div class="perk"><div class="perk-dot"></div>Budget-friendly hotel & trip deals</div>
+      <!-- Card 1 · New Year -->
+      <article class="promo-card card-1" onclick="toggleCard(this)">
+        <div class="card-bg">
+          <img src="PHOTO/CouponNewyear.jpg.jpeg" alt="New Year" class="bg-img">
         </div>
-        <button class="expand-cta" type="button" data-promo="NEWYEAR40" onclick="showPromoCode(event)">Claim Offer →</button>
-      </div>
-    </article>
-
-    <!-- Card 2 · Summer -->
-    <article class="promo-card card-2" onclick="toggleCard(this)">
-      <div class="card-bg">
-        <img src="PHOTO/CouponSummer.jpg.webp" alt="summer" class="bg-img">
-      </div>
-      <div class="card-orb"></div>
-      <div class="card-inner">
-        <div class="card-tag">☀️ Summer</div>
-        <span class="card-icon"></span>
-        <div class="card-title">Summer Splash</div>
-        <div class="card-sub">Enjoy bonus savings on bundled trips</div>
-      </div>
-      <div class="card-expand">
-        <div class="expand-label">Summer Bundle</div>
-        <div class="expand-title">Summer Splash Pack</div>
-        <div class="expand-desc">Discover the best summer vacation deals for fun and relaxing Penang trips.</div>
-        <div class="expand-perks">
-          <div class="perk"><div class="perk-dot"></div>Up to 50% off summer travel packages</div>
-          <div class="perk"><div class="perk-dot"></div>Extra savings with limited-time travel coupons</div>
-          <div class="perk"><div class="perk-dot"></div>Dedicated summer support line</div>
-          <div class="perk"><div class="perk-dot"></div>Exclusive offers for family and group trips</div>
+        <div class="card-orb"></div>
+        <div class="card-inner">
+          <div class="card-tag">🎉 New Year</div>
+          <span class="card-icon"></span>
+          <div class="card-title">New Year Blast</div>
+          <div class="card-sub">Up to 40% off — Jan only</div>
         </div>
-        <button class="expand-cta" type="button" data-promo="SUMMER50" onclick="showPromoCode(event)">Grab the Bundle →</button>
-      </div>
-    </article>
-
-    <!-- Card 3 · Raya -->
-    <article class="promo-card card-3" onclick="toggleCard(this)">
-      <div class="card-bg">
-         <img src="PHOTO/CouponRaya.jpg.jpeg" alt="raya" class="bg-img">
-      </div>
-      <div class="card-orb"></div>
-      <div class="card-inner">
-        <div class="card-tag">🌙 Raya</div>
-        <span class="card-icon"></span>
-        <div class="card-title">Hari Raya Special</div>
-        <div class="card-sub">Festive rewards — ends soon</div>
-      </div>
-      <div class="card-expand">
-        <div class="expand-label">Festive Season</div>
-        <div class="expand-title">Hari Raya Special</div>
-        <div class="expand-desc">Enjoy exclusive Raya promotions on exciting Penang trip packages and vacations.</div>
-        <div class="expand-perks">
-          <div class="perk"><div class="perk-dot"></div>35% off festive bundles</div>
-          <div class="perk"><div class="perk-dot"></div>Special family and group travel promotions</div>
-          <div class="perk"><div class="perk-dot"></div>Limited-time festive coupon savings</div>
-          <div class="perk"><div class="perk-dot"></div>Exclusive holiday deals for unforgettable trips</div>
+        <div class="card-expand">
+          <div class="expand-label">New Year Special</div>
+          <div class="expand-title">New Year Blast Pack</div>
+          <div class="expand-desc">Enjoy unforgettable Penang getaways with exclusive coupons and promotional package prices.</div>
+          <div class="expand-perks">
+            <div class="perk"><div class="perk-dot"></div>Up to 40% off selected Penang packages</div>
+            <div class="perk"><div class="perk-dot"></div>Exclusive New Year travel discounts</div>
+            <div class="perk"><div class="perk-dot"></div>Save more with limited-time coupons</div>
+            <div class="perk"><div class="perk-dot"></div>Budget-friendly hotel & trip deals</div>
+          </div>
+          <button class="expand-cta" type="button" data-promo="NEWYEAR40" onclick="showPromoCode(event)">Claim Offer →</button>
         </div>
-        <button class="expand-cta" type="button" data-promo="RAYA35" onclick="showPromoCode(event)">Celebrate Now →</button>
-      </div>
-    </article>
+      </article>
 
-  </section>
+      <!-- Card 2 · Summer -->
+      <article class="promo-card card-2" onclick="toggleCard(this)">
+        <div class="card-bg">
+          <img src="PHOTO/CouponSummer.jpg.webp" alt="summer" class="bg-img">
+        </div>
+        <div class="card-orb"></div>
+        <div class="card-inner">
+          <div class="card-tag">☀️ Summer</div>
+          <span class="card-icon"></span>
+          <div class="card-title">Summer Splash</div>
+          <div class="card-sub">Enjoy bonus savings on bundled trips</div>
+        </div>
+        <div class="card-expand">
+          <div class="expand-label">Summer Bundle</div>
+          <div class="expand-title">Summer Splash Pack</div>
+          <div class="expand-desc">Discover the best summer vacation deals for fun and relaxing Penang trips.</div>
+          <div class="expand-perks">
+            <div class="perk"><div class="perk-dot"></div>Up to 50% off summer travel packages</div>
+            <div class="perk"><div class="perk-dot"></div>Extra savings with limited-time travel coupons</div>
+            <div class="perk"><div class="perk-dot"></div>Dedicated summer support line</div>
+            <div class="perk"><div class="perk-dot"></div>Exclusive offers for family and group trips</div>
+          </div>
+          <button class="expand-cta" type="button" data-promo="SUMMER50" onclick="showPromoCode(event)">Grab the Bundle →</button>
+        </div>
+      </article>
 
-  <!-- DIVIDER -->
-  <div class="divider">
-    <div class="divider-line"></div>
-    <div class="divider-text">Follow our social media and stay updated with exclusive travel promotions crafted for your next escape.</div>
-    <div class="divider-line"></div>
-  </div>
+      <!-- Card 3 · Raya -->
+      <article class="promo-card card-3" onclick="toggleCard(this)">
+        <div class="card-bg">
+          <img src="PHOTO/CouponRaya.jpg.jpeg" alt="raya" class="bg-img">
+        </div>
+        <div class="card-orb"></div>
+        <div class="card-inner">
+          <div class="card-tag">🌙 Raya</div>
+          <span class="card-icon"></span>
+          <div class="card-title">Hari Raya Special</div>
+          <div class="card-sub">Festive rewards — ends soon</div>
+        </div>
+        <div class="card-expand">
+          <div class="expand-label">Festive Season</div>
+          <div class="expand-title">Hari Raya Special</div>
+          <div class="expand-desc">Enjoy exclusive Raya promotions on exciting Penang trip packages and vacations.</div>
+          <div class="expand-perks">
+            <div class="perk"><div class="perk-dot"></div>35% off festive bundles</div>
+            <div class="perk"><div class="perk-dot"></div>Special family and group travel promotions</div>
+            <div class="perk"><div class="perk-dot"></div>Limited-time festive coupon savings</div>
+            <div class="perk"><div class="perk-dot"></div>Exclusive holiday deals for unforgettable trips</div>
+          </div>
+          <button class="expand-cta" type="button" data-promo="RAYA35" onclick="showPromoCode(event)">Celebrate Now →</button>
+        </div>
+      </article>
 
-  <!-- SOCIAL BAR -->
-  <div class="social-bar">
+    </section>
 
-    <a href="https://www.instagram.com/ahmdrfaie._?igsh=MWFya2l6dG4zcW5seg==" class="social-btn ig" aria-label="Instagram">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-        <circle cx="12" cy="12" r="4"/>
-        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
-      </svg>
-      <span>Instagram</span>
-    </a>
-
-    <a href="https://www.facebook.com/share/p/1DnMK7sscr/" class="social-btn fb" aria-label="Facebook">
-      <svg viewBox="0 0 24 24" fill="currentColor">
-        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-      </svg>
-      <span>Facebook</span>
-    </a>
-
-    <a href="https://www.tiktok.com/@rifz_need_kurumi?_r=1&_t=ZS-96DWs3eDxBp" class="social-btn tk" aria-label="TikTok">
-      <svg viewBox="0 0 24 24" fill="currentColor">
-        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V9.17a8.26 8.26 0 0 0 4.83 1.55V7.27a4.85 4.85 0 0 1-1.06-.58z"/>
-      </svg>
-      <span>TikTok</span>
-    </a>
-
-
-  </div>
-
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2025 Penang Wonders · All Rights Reserved</p>
-  </footer>
-
-  <div class="promo-modal" id="promoModal" aria-hidden="true">
-    <div class="promo-modal-card" role="dialog" aria-modal="true" aria-labelledby="promoTitle">
-      <button class="promo-modal-close" id="promoClose" aria-label="Close promo code">×</button>
-      <div class="promo-modal-header">
-        <div class="promo-modal-badge">Promo Code</div>
-        <h2 id="promoTitle">Your code is ready</h2>
-        <p>Tap copy and use the code at checkout for the discount.</p>
-      </div>
-      <div class="promo-modal-body">
-        <div class="promo-code" id="promoCodeText">NEWYEAR40</div>
-        <button class="promo-copy-btn" id="promoCopyBtn" type="button">Claim Code</button>
-      </div>
-      <div class="promo-modal-note" id="promoNote" aria-live="polite"></div>
+    <!-- DIVIDER -->
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-text">Follow our social media and stay updated with exclusive travel promotions crafted for your next escape.</div>
+      <div class="divider-line"></div>
     </div>
+
+    <!-- SOCIAL BAR -->
+    <div class="social-bar">
+
+      <a href="https://www.instagram.com/ahmdrfaie._?igsh=MWFya2l6dG4zcW5seg==" class="social-btn ig" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+        </svg>
+        <span>Instagram</span>
+      </a>
+
+      <a href="https://www.facebook.com/share/p/1DnMK7sscr/" class="social-btn fb" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+        </svg>
+        <span>Facebook</span>
+      </a>
+
+      <a href="https://www.tiktok.com/@rifz_need_kurumi?_r=1&_t=ZS-96DWs3eDxBp" class="social-btn tk" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V9.17a8.26 8.26 0 0 0 4.83 1.55V7.27a4.85 4.85 0 0 1-1.06-.58z"/>
+        </svg>
+        <span>TikTok</span>
+      </a>
+
+
+    </div>
+
+    <button id = "backToTopBtn">↑</button>
+    <!-- FOOTER -->
+    <div id="footerHTML"></div>
+
+    <div class="promo-modal" id="promoModal" aria-hidden="true">
+      <div class="promo-modal-card" role="dialog" aria-modal="true" aria-labelledby="promoTitle">
+        <button class="promo-modal-close" id="promoClose" aria-label="Close promo code">×</button>
+        <div class="promo-modal-header">
+          <div class="promo-modal-badge">Promo Code</div>
+          <h2 id="promoTitle">Your code is ready</h2>
+          <p>Tap copy and use the code at checkout for the discount.</p>
+        </div>
+        <div class="promo-modal-body">
+          <div class="promo-code" id="promoCodeText">NEWYEAR40</div>
+          <button class="promo-copy-btn" id="promoCopyBtn" type="button">Claim Code</button>
+        </div>
+        <div class="promo-modal-note" id="promoNote" aria-live="polite"></div>
+      </div>
+    </div>
+
   </div>
 
-</div>
-
-<script src="JS/Coupon.js"></script>
+  <script src="JS/Coupon.js"></script>
+  <script src="JS/Navbar.js"></script>
+  <script src="JS/Footer.js"></script>
+  <script src="JS/Back_To_Top.js"></script>
 
 </body>
 </html>
