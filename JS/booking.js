@@ -510,7 +510,7 @@ document
       setTimeout(function(){
 
         window.location.href =
-        "package_alt.html";
+        "Package.html";
 
       }, 2000);
 

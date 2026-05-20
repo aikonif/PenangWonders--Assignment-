@@ -227,7 +227,7 @@ footer {
   #navbar {
     padding: 0 30px;
   }
-  
+
   .nav-links {
     gap: 25px;
   }
@@ -237,15 +237,10 @@ footer {
   #navbar {
     padding: 0 20px;
   }
-  
-  .nav-links {
-    gap: 15px;
-  }
-  
-  .nav-links a {
-    font-size: 11px;
-  }
-  
+
+  /* NOTE: no font-size or gap override for .nav-links here —
+     those are handled entirely by the hamburger overlay block below */
+
   .contact-bar {
     margin: 0 15px;
     padding: 12px 20px;
@@ -253,23 +248,15 @@ footer {
 }
 
 @media (max-width: 600px) {
-  .nav-links {
-    gap: 12px;
-  }
-  
-  .nav-links a {
-    font-size: 10px;
-  }
-  
   .contact-bar {
     flex-wrap: wrap;
     gap: 8px;
   }
-  
+
   .contact-item {
     font-size: 10px;
   }
-  
+
   .icon {
     width: 28px;
     height: 28px;
@@ -381,10 +368,10 @@ footer {
     opacity: 0.7;
   }
 
-  /* Link styling inside the overlay */
-  .nav-links a {
+  /* Link styling inside the overlay — use #navbar for higher specificity */
+  #navbar .nav-links a {
     font-family: 'Cinzel', serif;
-    font-size: 18px;
+    font-size: 18px !important;
     letter-spacing: 5px;
     color: rgba(255, 255, 255, 0.82);
     position: relative;
@@ -398,19 +385,19 @@ footer {
   }
 
   /* Staggered entrance for each link */
-  .nav-links li:nth-child(1) a { transition-delay: 0.06s; }
-  .nav-links li:nth-child(2) a { transition-delay: 0.12s; }
-  .nav-links li:nth-child(3) a { transition-delay: 0.18s; }
-  .nav-links li:nth-child(4) a { transition-delay: 0.24s; }
-  .nav-links li:nth-child(5) a { transition-delay: 0.30s; }
+  #navbar .nav-links li:nth-child(1) a { transition-delay: 0.06s; }
+  #navbar .nav-links li:nth-child(2) a { transition-delay: 0.12s; }
+  #navbar .nav-links li:nth-child(3) a { transition-delay: 0.18s; }
+  #navbar .nav-links li:nth-child(4) a { transition-delay: 0.24s; }
+  #navbar .nav-links li:nth-child(5) a { transition-delay: 0.30s; }
 
-  .nav-links.nav-open a {
+  #navbar .nav-links.nav-open a {
     opacity: 1;
     transform: translateY(0);
   }
 
   /* Gold underline on hover / active */
-  .nav-links a::after {
+  #navbar .nav-links a::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -422,14 +409,14 @@ footer {
     transition: width 0.3s ease;
   }
 
-  .nav-links a:hover,
-  .nav-links a.active {
+  #navbar .nav-links a:hover,
+  #navbar .nav-links a.active {
     color: #f0a500;
     text-decoration: none;
   }
 
-  .nav-links a:hover::after,
-  .nav-links a.active::after {
+  #navbar .nav-links a:hover::after,
+  #navbar .nav-links a.active::after {
     width: 100%;
   }
 
@@ -441,8 +428,8 @@ footer {
 
 /* ── Tablet-only tweak: slightly larger text ── */
 @media (min-width: 601px) and (max-width: 768px) {
-  .nav-links a {
-    font-size: 20px;
+  #navbar .nav-links a {
+    font-size: 20px !important;
     letter-spacing: 6px;
   }
 }
