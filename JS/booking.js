@@ -325,7 +325,7 @@ couponInput.addEventListener(
 updateCouponFields();
 
 // FETCH PACKAGE JSON
-fetch("JSON/package_option.json")
+fetch("JSON/package_detail.json")
 
 .then(response => response.json())
 
@@ -501,7 +501,7 @@ document
       document.getElementById("status")
       .innerHTML =
 
-      "✅ Booking successful! Redirecting to homepage...";
+      "✅ Booking successful! Redirecting to package page...";
 
       document.getElementById("bookingForm")
       .reset();
