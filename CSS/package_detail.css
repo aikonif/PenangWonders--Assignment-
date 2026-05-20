@@ -2,8 +2,8 @@
   /* Match the dark theme and font from package.css */
   font-family: 'Nunito', sans-serif;
   margin: 0;
-  background: #041618;
   color: white;
+  background: linear-gradient(180deg, #072527, #041618);
 }
 
 /* BACK BUTTON */
@@ -59,7 +59,6 @@
   flex-direction: column;
   align-items: center;
   min-height: calc(100vh - 90px);
-  background: linear-gradient(180deg, #072527, #041618);
   padding: 30px;
   transition: margin-top 0.3s ease;
 }
