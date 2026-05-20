@@ -433,3 +433,8 @@ footer {
     letter-spacing: 6px;
   }
 }
+
+/* Responsive - Add to bottom of Main.css */
+@media (max-width: 1024px) { #navbar { padding: 0 30px; } .nav-links { gap: 25px; } .hero-right h1 { font-size: 60px; } .cards { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 768px) { #navbar { padding: 0 16px; } .logo-name { font-size: 12px; } .logo-circle { width: 36px; height: 36px; } .hero { flex-direction: column; height: auto; } .hero-left { width: 100%; padding: 80px 24px 40px; } .hero-right { position: static; width: 100%; } .hero-right h1 { font-size: 42px; } .cards { grid-template-columns: 1fr; } .contact-bar { margin: 0 12px; padding: 12px 16px; } #penang-map { height: 350px; } .attractions-grid { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .hero-right h1 { font-size: 32px; } #penang-map { height: 280px; } }
