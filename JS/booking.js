@@ -325,7 +325,7 @@ couponInput.addEventListener(
 updateCouponFields();
 
 // FETCH PACKAGE JSON
-fetch("package_option.json")
+fetch("JSON/package_option.json")
 
 .then(response => response.json())
 
