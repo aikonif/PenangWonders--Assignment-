@@ -57,6 +57,11 @@
   list-style: none;
 }
 
+.promo-grid:hover .promo-card {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 36px rgba(0, 0, 0, 0.55);
+}
+
 /* ── PROMO CARD ─────────────────────────────────────────────── */
 .promo-card {
   position: relative;
@@ -68,6 +73,57 @@
   min-height: 360px;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Card front content */
+.card-inner {
+  position: relative;
+  z-index: 2;
+  margin-top: auto;
+  padding: 1.4rem 1.25rem 1.1rem;
+  color: #ffffff;
+  transition: opacity 0.2s ease;
+}
+
+/* Expanded overlay panel */
+.card-expand {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  background: rgba(4, 22, 24, 0.96);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 14px;
+  padding: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Desktop: hover shows overlay */
+@media (hover: hover) {
+  .promo-card:hover .card-expand {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .promo-card:hover .card-inner {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* Mobile: tap shows overlay */
+.promo-card.active .card-expand {
+  opacity: 1;
+  visibility: visible;
+}
+
+.promo-card.active .card-inner {
+  opacity: 0;
+  visibility: hidden;
 }
 
 .promo-card:hover {

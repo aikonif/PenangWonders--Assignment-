@@ -147,3 +147,25 @@ document.addEventListener('keydown', function(e) {
         });
       }
     });
+
+  /* ── GRID HOVER EFFECT ── */
+document.addEventListener('DOMContentLoaded', function() {
+  const promoGrid = document.querySelector('.promo-grid');
+  const promoCards = document.querySelectorAll('.promo-card');
+  
+  if (promoGrid && promoCards.length > 0) {
+    promoGrid.addEventListener('mouseenter', function() {
+      promoCards.forEach(card => {
+        card.style.transform = 'translateY(-4x)';
+        card.style.boxShadow = '0 8px 36px rgba(0, 0, 0, 0.55)';
+      });
+    });
+    
+    promoGrid.addEventListener('mouseleave', function() {
+      promoCards.forEach(card => {
+        card.style.transform = '';
+        card.style.boxShadow = '';
+      });
+    });
+  }
+});

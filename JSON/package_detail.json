@@ -2,20 +2,17 @@
   "SEA-PKG-001": {
     "title": "Seaside Escape Package",
     "price": 150,
-
-    "description": "Discover the thrill of nature with our exclusive adventure package. Begin your mornings with guided jungle trekking, where lush greenery, exotic wildlife, and hidden waterfalls await. In the afternoons, challenge yourself with mountain climbing, scaling scenic trails that reward you with breathtaking panoramic views of the coastline and surrounding valleys. After a day of exploration, unwind at our seaside hotel with comfortable rooms, fresh local cuisine, and the soothing sound of ocean waves. Perfect for travelers who crave both relaxation and adventure.",
-
+    "description": "Escape to the beautiful coastline of Penang with this relaxing seaside package. Enjoy stunning ocean views, gentle sea breezes, and the soothing sound of waves. Perfect for couples and families looking for a peaceful retreat by the sea. Spend your days lounging on golden sands, swimming in crystal clear waters, and watching spectacular sunsets over the horizon.",
     "includes": [
-      "Guided jungle trekking tours",
-      "Mountain climbing with professional guides",
-      "Seaside accommodation with private balcony",
-      "Complimentary breakfast and evening"
+      "Beachfront accommodation with sea view balcony",
+      "Daily complimentary breakfast by the beach",
+      "Welcome drink upon arrival",
+      "Free access to hotel swimming pool"
     ],
-
     "guide": {
       "name": "En. Ahmad",
       "phone": "+6013-467-8901",
-      "info": "Seasoned adventurer with over 10 years of experience leading tours in Penang's wilderness."
+      "info": "Local hospitality expert with years of experience ensuring guests have a memorable seaside vacation."
     }
   },
 

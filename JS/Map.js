@@ -9,6 +9,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const mapContainer = document.getElementById('penang-map');
     if (!mapContainer) return;
     
+    // Global variables to store map and markers
+    let globalMap = null;
+    let globalMarkers = [];
+    
     // ---------- LOAD DATA FROM JSON ----------
     fetch('JSON/Map.json')
         .then(response => response.json())
@@ -23,6 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // ---------- INITIALIZE MAP (DARK MODE DEFAULT) ----------
         const map = L.map('penang-map').setView([5.4141, 100.3288], 12.5);
+        globalMap = map;
         
         // Use dark tiles as default
         let currentTileLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
@@ -101,6 +106,9 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         
+        // Store globally for card connection
+        globalMarkers = highlightMarkers;
+        
         // Add Package Markers
         packageOffers.forEach(pkg => {
             const marker = L.marker([pkg.lat, pkg.lng], {
@@ -160,6 +168,48 @@ document.addEventListener('DOMContentLoaded', function() {
         if (togglePackages) {
             togglePackages.addEventListener('change', updateMarkerVisibility);
         }
+        
+        // ---------- CONNECT CARDS TO MAP ----------
+        const cardToMarkerMap = {
+            0: 4,  // First card → Street Food Trail (id: 4)
+            1: 1,  // Second card → Kek Lok Si Temple (id: 1)
+            2: 3,  // Third card → Batu Ferringhi Beach (id: 3)
+            3: 2,   // Fourth card → George Town UNESCO Zone / Street Art (id: 2)
+        };
+        
+        const cards = document.querySelectorAll('.card');
+        
+        cards.forEach((card, index) => {
+            card.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Get the marker ID for this card
+                const markerId = cardToMarkerMap[index];
+                
+                // Find the marker
+                const markerObj = highlightMarkers.find(m => m.id === markerId);
+                
+                if (markerObj) {
+                    // Scroll to map section smoothly
+                    const mapCard = document.querySelector('.map-card');
+                    if (mapCard) {
+                        mapCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                    
+                    // Fly to marker location and open popup after a short delay
+                    setTimeout(() => {
+                        map.flyTo(markerObj.latlng, 15, {
+                            duration: 1.2,
+                            easeLinearity: 0.5
+                        });
+                        
+                        setTimeout(() => {
+                            markerObj.marker.openPopup();
+                        }, 300);
+                    }, 500);
+                }
+            });
+        });
         
         // ---------- MAP DARK MODE / LIGHT MODE TOGGLE ----------
         const toggleBtn = document.createElement('button');
@@ -221,7 +271,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         🌟 Welcome to Penang Wonders! 🌟<br>
                         🗺️ <strong>Penang Highlights</strong> (Blue Markers)<br>
                         🏨 <strong>Package Offers</strong> (Gold Markers)<br>
-                        💡 Use checkboxes to show/hide markers
+                        💡 Click on any "Penang Highlights" card to see it on the map!
                     </div>
                 `)
                 .openOn(map);
@@ -238,6 +288,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 100);
         });
         
-        console.log("🗺️ Penang Map Loaded! Data loaded from Map.json");
+        console.log("🗺️ Penang Map Loaded! Cards connected to map markers.");
     }
 });

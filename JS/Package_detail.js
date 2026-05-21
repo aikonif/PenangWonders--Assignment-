@@ -134,10 +134,10 @@ fetch('JSON/package_detail.json')
         
         if (titleEl) titleEl.textContent = pkg.title;
         if (priceEl) priceEl.textContent = 'RM ' + pkg.price;
-        if (descEl) descEl.innerHTML = `<p>${pkg.description}</p>`;
+        if (descEl) descEl.innerHTML = `<br><p>${pkg.description}</p>`;
         
         if (includesEl) {
-            let includesHTML = '<p>→ Includes:<br><br>';
+            let includesHTML = '<br><p>→ Includes:<br>';
             if (pkg.includes && pkg.includes.length) {
                 pkg.includes.forEach(item => {
                     includesHTML += `- ${item}<br>`;
@@ -149,7 +149,7 @@ fetch('JSON/package_detail.json')
         
         if (guideEl) {
             guideEl.innerHTML = `
-                <p>Tour Guide:<br><br>
+                <br><p>Tour Guide:<br>
                 ${pkg.guide?.name || 'N/A'}<br>
                 ${pkg.guide?.phone || 'N/A'}<br><br>
                 ${pkg.guide?.info || 'No guide information available.'}</p>
