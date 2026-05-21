@@ -105,6 +105,18 @@
       "price": "RM 350",
       "type": "package",
       "link": "package_detail.html?id=JNG-PKG-005"
+    },
+    {
+      "id": 6,
+      "name": "THANK YOU MADAM 💖💖💖",
+      "packageId": "JNG-PKG-005",
+      "lat": 5.630497788596472,  
+      "lng": 99.84605410789423,
+      "description": "For teaching us diligently.",
+      "iconEmoji": "📖",
+      "price": "RM 350",
+      "type": "package",
+      "link": null
     }
   ]
 }
