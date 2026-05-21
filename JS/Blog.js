@@ -1,17 +1,6 @@
 // JSON - Updated path
-function fetchData() {
-    const xhr = new XMLHttpRequest();
-    xhr.open("GET", "JSON/Blog.json", true);  // ← CHANGED
-    xhr.onload = function () {
-        if (xhr.status === 200) {
-            const data = JSON.parse(xhr.responseText);
-            displayData(data);
-            showLessReviews();
-        }
-    };
-    xhr.send();
-}
 
+// EmailJS - Initialize and send email
 (function() {
     emailjs.init("8RkR1k3XRpxkKYBaX");
 })();
@@ -27,6 +16,7 @@ function sendEmail(event) {
         });
 }
 
+// Show thank you message after form submission
 function showThankYou() {
     const message = document.getElementById('thankYouMessage');
     message.hidden = false;
@@ -36,7 +26,7 @@ function showThankYou() {
 }
 
 
-
+// Reviews - Show all or show less
 function showAllReviews() {
     document.querySelectorAll('.review-card.hidden-review').forEach(card => {
         card.classList.remove('hidden-review');
@@ -58,6 +48,7 @@ function showLessReviews() {
     if (lessButton) lessButton.style.display = 'none';
 }
 
+// Navbar - Shrink on scroll and highlight active section
 const navbar = document.getElementById("navbar");
 
 // When user scrolls, shrink the navbar
@@ -123,6 +114,7 @@ window.onload = function () {
       xhr.send();
     }
 
+    // Add new review from form submission
     function addReview(event) {
     event.preventDefault();
     const form = event.target;
@@ -158,6 +150,7 @@ window.onload = function () {
       });
     }
 
+    // Render star rating as filled and empty stars
     function renderStars(rating = 0) {
       const value = Math.max(0, Math.min(5, Number(rating) || 0));
       const filled = '★'.repeat(value);
