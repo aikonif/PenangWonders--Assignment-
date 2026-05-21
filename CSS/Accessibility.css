@@ -222,7 +222,17 @@
    Global accessibility state classes
    ══════════════════════════════════════ */
 
+body,
+body * {
+  transition: letter-spacing 0.2s ease, word-spacing 0.2s ease, line-height 0.2s ease, opacity 0.2s ease;
+}
+
+body.a11y-fade {
+  opacity: 0.92;
+}
+
 /* Dyslexia-friendly font */
+body.a11y-dyslexia,
 body.a11y-dyslexia * {
   font-family: 'Arial', 'Helvetica Neue', sans-serif !important;
   letter-spacing: .04em;
