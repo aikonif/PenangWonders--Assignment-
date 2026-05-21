@@ -1,9 +1,6 @@
-
-
-
 .coupon-hero {
   text-align: center;
-  padding: 7rem 1.5rem 2.5rem;   
+  padding: 7rem 1.5rem 2.5rem;
   max-width: 680px;
   margin: 0 auto;
 }
@@ -42,6 +39,7 @@
   margin: 0;
 }
 
+/* ── PROMO GRID ─────────────────────────────────────────────── */
 .promo-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -52,12 +50,7 @@
   list-style: none;
 }
 
-.promo-grid:hover .promo-card {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 36px rgba(0, 0, 0, 0.55);
-}
-
-
+/* ── PROMO CARD ─────────────────────────────────────────────── */
 .promo-card {
   position: relative;
   border-radius: 14px;
@@ -70,53 +63,16 @@
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.card-inner {
-  position: relative;
-  z-index: 2;
-  margin-top: auto;
-  padding: 1.4rem 1.25rem 1.1rem;
-  color: #ffffff;
-  transition: opacity 0.2s ease;
-}
-
-
-.card-expand {
+/* EXTENDED HOVER ZONE */
+.promo-card::after {
+  content: '';
   position: absolute;
-  inset: 0;
-  z-index: 10;
-  background: rgba(4, 22, 24, 0.96);
-  backdrop-filter: blur(10px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  border-radius: 14px;
-  padding: 1.5rem;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-
-@media (hover: hover) {
-  .promo-card:hover .card-expand {
-    opacity: 1;
-    visibility: visible;
-  }
-  
-  .promo-card:hover .card-inner {
-    opacity: 0;
-    visibility: hidden;
-  }
-}
-
-.promo-card.active .card-expand {
-  opacity: 1;
-  visibility: visible;
-}
-
-.promo-card.active .card-inner {
-  opacity: 0;
-  visibility: hidden;
+  top: -30px;
+  left: -30px;
+  right: -30px;
+  bottom: -30px;
+  background: transparent;
+  z-index: -1;
 }
 
 .promo-card:hover {
@@ -124,6 +80,20 @@
   box-shadow: 0 8px 36px rgba(0, 0, 0, 0.55);
 }
 
+.promo-card:hover .card-expand {
+  max-height: 440px;
+  opacity: 1;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
+.card-inner {
+  position: relative;
+  z-index: 2;
+  margin-top: auto;
+  padding: 1.4rem 1.25rem 1.1rem;
+  color: #ffffff;
+}
 
 .card-bg {
   position: absolute;
@@ -138,6 +108,7 @@
   display: block;
 }
 
+/* Gradient overlay */
 .promo-card::before {
   content: '';
   position: absolute;
@@ -150,15 +121,6 @@
   );
   z-index: 1;
   pointer-events: none;
-}
-
-
-.card-inner {
-  position: relative;
-  z-index: 2;
-  margin-top: auto;
-  padding: 1.4rem 1.25rem 1.1rem;
-  color: #ffffff;
 }
 
 .card-tag {
@@ -189,7 +151,6 @@
   color: rgba(255, 255, 255, 0.72);
 }
 
-
 .tap-hint {
   display: none;
   font-size: 0.7rem;
@@ -198,7 +159,7 @@
   margin-top: 0.5rem;
 }
 
-
+/* ── EXPANDED PANEL ─────────────────────────────────────────── */
 .card-expand {
   position: relative;
   z-index: 3;
@@ -214,17 +175,7 @@
   padding-bottom: 0;
 }
 
-
-@media (hover: hover) {
-  .promo-card:hover .card-expand {
-    max-height: 440px;
-    opacity: 1;
-    padding-top: 1.25rem;
-    padding-bottom: 1.25rem;
-  }
-}
-
-
+/* Mobile tap to expand */
 .promo-card.active .card-expand {
   max-height: 440px;
   opacity: 1;
@@ -298,7 +249,7 @@
   transform: scale(1.03);
 }
 
-
+/* ── DIVIDER ────────────────────────────────────────────────── */
 .coupon-divider {
   display: flex;
   align-items: center;
@@ -323,7 +274,7 @@
   margin: 0;
 }
 
-
+/* ── SOCIAL BAR ─────────────────────────────────────────────── */
 .social-bar {
   display: flex;
   justify-content: center;
@@ -347,14 +298,29 @@
   transition: transform 0.2s, opacity 0.2s;
 }
 
-.social-btn:hover { transform: translateY(-2px); opacity: 0.88; }
-.social-btn svg   { width: 18px; height: 18px; flex-shrink: 0; }
+.social-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.88;
+}
 
-.social-btn.ig { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
-.social-btn.fb { background: #1877f2; }
-.social-btn.tk { background: #010101; border: 1px solid rgba(255,255,255,0.15); }
+.social-btn svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
 
+.social-btn.ig {
+  background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+}
+.social-btn.fb {
+  background: #1877f2;
+}
+.social-btn.tk {
+  background: #010101;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
 
+/* ── PROMO MODAL ────────────────────────────────────────────── */
 .promo-modal {
   display: none;
   position: fixed;
@@ -395,7 +361,10 @@
   padding: 0.1rem 0.3rem;
   transition: color 0.2s;
 }
-.promo-modal-close:hover { color: #ffffff; }
+
+.promo-modal-close:hover {
+  color: #ffffff;
+}
 
 .promo-modal-badge {
   display: inline-block;
@@ -450,7 +419,10 @@
   cursor: pointer;
   transition: opacity 0.2s;
 }
-.promo-copy-btn:hover { opacity: 0.85; }
+
+.promo-copy-btn:hover {
+  opacity: 0.85;
+}
 
 .promo-modal-note {
   font-size: 0.8rem;
@@ -459,7 +431,7 @@
   min-height: 1.2em;
 }
 
-
+/* ── RESPONSIVE: TABLET ─────────────────────────────────────── */
 @media (max-width: 1024px) {
   .promo-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -475,7 +447,7 @@
   }
 }
 
-
+/* ── RESPONSIVE: MOBILE ─────────────────────────────────────── */
 @media (max-width: 768px) {
   .coupon-hero {
     padding: 6rem 1.25rem 2rem;
@@ -495,7 +467,6 @@
   .promo-card {
     min-height: 270px;
   }
-
 
   .tap-hint {
     display: block;
