@@ -1,13 +1,9 @@
-/* =============================================================
-   Coupon.css — Penang Wonders
-   Page-specific styles only.
-   Navbar / hamburger / footer are handled by Main.css + Navbar.js
-   ============================================================= */
 
-/* ── HERO ───────────────────────────────────────────────────── */
+
+
 .coupon-hero {
   text-align: center;
-  padding: 7rem 1.5rem 2.5rem;   /* 7rem top = clears fixed navbar */
+  padding: 7rem 1.5rem 2.5rem;   
   max-width: 680px;
   margin: 0 auto;
 }
@@ -46,7 +42,6 @@
   margin: 0;
 }
 
-/* ── PROMO GRID ─────────────────────────────────────────────── */
 .promo-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -62,7 +57,7 @@
   box-shadow: 0 8px 36px rgba(0, 0, 0, 0.55);
 }
 
-/* ── PROMO CARD ─────────────────────────────────────────────── */
+
 .promo-card {
   position: relative;
   border-radius: 14px;
@@ -75,7 +70,6 @@
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* Card front content */
 .card-inner {
   position: relative;
   z-index: 2;
@@ -85,7 +79,7 @@
   transition: opacity 0.2s ease;
 }
 
-/* Expanded overlay panel */
+
 .card-expand {
   position: absolute;
   inset: 0;
@@ -102,7 +96,7 @@
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-/* Desktop: hover shows overlay */
+
 @media (hover: hover) {
   .promo-card:hover .card-expand {
     opacity: 1;
@@ -115,7 +109,6 @@
   }
 }
 
-/* Mobile: tap shows overlay */
 .promo-card.active .card-expand {
   opacity: 1;
   visibility: visible;
@@ -131,7 +124,7 @@
   box-shadow: 0 8px 36px rgba(0, 0, 0, 0.55);
 }
 
-/* Background image */
+
 .card-bg {
   position: absolute;
   inset: 0;
@@ -145,7 +138,6 @@
   display: block;
 }
 
-/* Gradient overlay */
 .promo-card::before {
   content: '';
   position: absolute;
@@ -160,7 +152,7 @@
   pointer-events: none;
 }
 
-/* Card front */
+
 .card-inner {
   position: relative;
   z-index: 2;
@@ -197,7 +189,7 @@
   color: rgba(255, 255, 255, 0.72);
 }
 
-/* Tap hint — shown only on touch devices via media query below */
+
 .tap-hint {
   display: none;
   font-size: 0.7rem;
@@ -206,7 +198,7 @@
   margin-top: 0.5rem;
 }
 
-/* ── EXPANDED PANEL ─────────────────────────────────────────── */
+
 .card-expand {
   position: relative;
   z-index: 3;
@@ -222,7 +214,7 @@
   padding-bottom: 0;
 }
 
-/* Desktop: hover expands */
+
 @media (hover: hover) {
   .promo-card:hover .card-expand {
     max-height: 440px;
@@ -232,7 +224,7 @@
   }
 }
 
-/* Mobile / tablet: tap toggles .active */
+
 .promo-card.active .card-expand {
   max-height: 440px;
   opacity: 1;
@@ -306,7 +298,7 @@
   transform: scale(1.03);
 }
 
-/* ── DIVIDER ────────────────────────────────────────────────── */
+
 .coupon-divider {
   display: flex;
   align-items: center;
@@ -331,7 +323,7 @@
   margin: 0;
 }
 
-/* ── SOCIAL BAR ─────────────────────────────────────────────── */
+
 .social-bar {
   display: flex;
   justify-content: center;
@@ -362,7 +354,7 @@
 .social-btn.fb { background: #1877f2; }
 .social-btn.tk { background: #010101; border: 1px solid rgba(255,255,255,0.15); }
 
-/* ── PROMO MODAL ────────────────────────────────────────────── */
+
 .promo-modal {
   display: none;
   position: fixed;
@@ -467,7 +459,7 @@
   min-height: 1.2em;
 }
 
-/* ── RESPONSIVE: TABLET ─────────────────────────────────────── */
+
 @media (max-width: 1024px) {
   .promo-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -483,7 +475,7 @@
   }
 }
 
-/* ── RESPONSIVE: MOBILE ─────────────────────────────────────── */
+
 @media (max-width: 768px) {
   .coupon-hero {
     padding: 6rem 1.25rem 2rem;
@@ -504,7 +496,7 @@
     min-height: 270px;
   }
 
-  /* Show tap hint on touch screens */
+
   .tap-hint {
     display: block;
   }

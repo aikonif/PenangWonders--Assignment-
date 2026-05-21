@@ -3,13 +3,13 @@ window.addEventListener("scroll", () => {
   navbar.classList.toggle("scrolled", window.scrollY > 50);
 });
 
-/* ── Mobile hamburger ── */
+
 function toggleMenu(btn) {
   btn.classList.toggle('open');
   document.getElementById('mobileMenu').classList.toggle('open');
 }
 
-/* ── Touch / tap to expand cards on mobile ── */
+
 function toggleCard(card) {
   const isMobile = window.matchMedia('(hover: none)').matches;
   if (!isMobile) return; // desktop uses CSS :hover
@@ -23,7 +23,7 @@ function toggleCard(card) {
   if (!wasActive) card.classList.add('active');
 }
 
-/* Close mobile menu on outside click */
+
 document.addEventListener('click', function(e) {
   const menu = document.getElementById('mobileMenu');
   const ham  = document.querySelector('.hamburger');
@@ -85,7 +85,7 @@ document.addEventListener('keydown', function(e) {
   }
 });
 
-/* ── CARD TOGGLE (tap on mobile) ── */
+
     function toggleCard(card) {
       var wasActive = card.classList.contains('active');
       document.querySelectorAll('.promo-card').forEach(function (c) {
@@ -94,7 +94,7 @@ document.addEventListener('keydown', function(e) {
       if (!wasActive) card.classList.add('active');
     }
 
-    /* ── PROMO MODAL ── */
+  
     function showPromoCode(event) {
       event.stopPropagation();
       var code  = event.currentTarget.getAttribute('data-promo') || '';
@@ -148,7 +148,7 @@ document.addEventListener('keydown', function(e) {
       }
     });
 
-  /* ── GRID HOVER EFFECT ── */
+
 document.addEventListener('DOMContentLoaded', function() {
   const promoGrid = document.querySelector('.promo-grid');
   const promoCards = document.querySelectorAll('.promo-card');
