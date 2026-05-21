@@ -85,6 +85,7 @@
   const dyslexia = document.getElementById('a11yDyslexia');
   const cursor   = document.getElementById('a11yCursor');
   const resetBtn = document.getElementById('a11yReset');
+  const bodyEl   = document.body;
 
   const STORAGE_KEY = 'pw_a11y';
   const BASE_FONT   = 16;
@@ -136,6 +137,14 @@
     btn.setAttribute('aria-expanded', 'false');
   }
 
+  function fadeAccessibilityChange(callback) {
+    bodyEl.classList.add('a11y-fade');
+    window.setTimeout(function () {
+      callback();
+      bodyEl.classList.remove('a11y-fade');
+    }, 180);
+  }
+
   btn.addEventListener('click', function (e) {
     e.stopPropagation();
     panel.classList.contains('a11y-open') ? closePanel() : openPanel();
@@ -160,7 +169,12 @@
 
   /* ── Toggles ── */
   dyslexia.addEventListener('change', function () {
-    state.dyslexiaFont = this.checked; apply(); save();
+    const checked = this.checked;
+    fadeAccessibilityChange(function () {
+      state.dyslexiaFont = checked;
+      apply();
+      save();
+    });
   });
 
   cursor.addEventListener('change', function () {
