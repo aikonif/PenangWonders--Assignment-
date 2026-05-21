@@ -1,8 +1,6 @@
-// ============================================================
 // package_detail.js - Dynamic package detail page
 // Uses URL parameter to load the correct package
 // Updated paths: JSON folder, PHOTO folder
-// ============================================================
 
 // Package configuration with correct PHOTO paths
 const packageConfig = {
@@ -49,7 +47,7 @@ const packageId = urlParams.get('id');
 
 // Validate package ID - redirect if invalid
 if (!packageId || !packageConfig[packageId]) {
-    window.location.href = 'package_main.html';
+    window.location.href = 'Package.html';
 }
 
 const config = packageConfig[packageId];

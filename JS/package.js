@@ -1,25 +1,25 @@
-/* ============================================================
+/* 
    package.js — Penang Wonders
    • Desktop sidebar checkbox filtering
    • Mobile bottom-sheet chip filtering
    • Both sync to the same active state
-   ============================================================ */
+  */
 
 (function () {
   "use strict";
 
-  /* ── Shared filter state ── */
+  //Shared filter state
   var activeFilters = { activity: [], hotel: [] };
 
-  /* ── DOM refs ── */
+  // DOM refs  
   var packages  = document.querySelectorAll(".package");
   var noResults = document.querySelector(".no-results");
 
-  /* ── Desktop refs ── */
+  // Desktop refs 
   var checkboxes = document.querySelectorAll(".filters input[type='checkbox']");
   var clearBtn   = document.getElementById("clear-filters");
 
-  /* ── FAB + sheet refs ── */
+  // FAB + sheet refs 
   var filterFab  = document.getElementById("filterFab");
   var fabBadge   = document.getElementById("fabBadge");
   var backdrop   = document.getElementById("sheetBackdrop");
@@ -29,9 +29,9 @@
   var sheetApply = document.getElementById("sheetApply");
   var chips      = document.querySelectorAll(".chip");
 
-  /* ══════════════════════════════════════
+  /*
      FILTER LOGIC
-  ══════════════════════════════════════ */
+ */
   function applyFilters() {
     var visibleCount = 0;
 
@@ -73,9 +73,9 @@
     }
   }
 
-  /* ══════════════════════════════════════
+  /* 
      DESKTOP CHECKBOXES
-  ══════════════════════════════════════ */
+   */
   checkboxes.forEach(function (cb) {
     cb.addEventListener("change", function () {
       var type  = cb.dataset.filter;
@@ -106,9 +106,9 @@
     });
   }
 
-  /* ══════════════════════════════════════
+  /*
      BOTTOM SHEET — OPEN / CLOSE
-  ══════════════════════════════════════ */
+  */
   function openSheet() {
     if (!sheet || !backdrop) return;
     syncChips();
@@ -132,9 +132,9 @@
     if (e.key === "Escape") closeSheet();
   });
 
-  /* ══════════════════════════════════════
+  /* 
      CHIPS
-  ══════════════════════════════════════ */
+   */
   chips.forEach(function (chip) {
     chip.addEventListener("click", function () {
       var type  = chip.dataset.filter;
